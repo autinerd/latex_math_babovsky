@@ -186,13 +186,53 @@ Aufgaben:
 	\item Berechnen Sie die Tangentialebene an die Funktion  $f(x_1,x_2)=e^{-2.5x_1^2-(x_2-1)^2}, (x_1,x_2) \in \mathbb{R}$ im Punkt $(0,\frac{3}{2},e^{-\frac{1}{4}})$
 \end{enumerate}
 
-%%% insert missing parts
-
 \section{Totale Differenzierbarkeit}
 
 \begin{defi}[Betrag eines Vektors]
-	Der Betrag eines Vektors $x=(x_1,\dots,x_n)\in\mathbb{R}^n$ ist definiert als
+	Der Betrag eines Vektors $x=(x_1,\dots,x_n)\in\mathbb{R}^n$ ist definiert als:
+	\[\vert x \vert = \sqrt{x_1^2+\dots+x_n^2}\]
 \end{defi}
+
+\begin{defi}[Vektorfunktion]
+	Eine eindeutige Abbildung $f:\mathbb{D}\to W,\mathbb{D}\subset\mathbb{R}^n,W\subset\mathbb{R}^m,m>1$ mit mehrdimensionalem Wertebereich heißt \underline{Vektorfunktion}.
+\end{defi}
+
+\begin{beispiel}
+	Es sei $\mathbb{D}\subset\mathbb{R}^3\to\mathbb{R}^2$ gegeben durch
+	\[f(x_1,x_2,x_3)=\begin{pmatrix}
+	x_1+x_3 \\ x_2+x_3
+	\end{pmatrix}\]
+	f hat 2 Ergebniskomponenten:
+	\[f_1(x_1,x_2,x_3)=x_1+x_2,f_2(x_1,x_2,x_3)=x_2+x_3\]
+\end{beispiel}
+
+\begin{defi}[total differenzierbar]
+	Es sei $f:\mathbb{D}\to \mathbb{R}^m,\mathbb{D}\subset\mathbb{R}^n$ eine Abbildung und $x_0\in\mathbb{D}$. Die Funktion f heißt total differenzierbar in $x_0$, falls es eine Matrix $A\in\mathbb{R}^{m\times n}$ und eine Restfunktion $R:\mathbb{D}\to\mathbb{R}^m$ gibt, für die gilt: $f(x)=f(x_0)+A(x-x_0)+\vert x-x_0 \vert\cdot R(x)$ und \[\lim_{x\to x_0} R(x)=0\]
+\end{defi}
+
+\begin{satz}[Jacobi-Matrix]
+	Es sei $f:\mathbb{D}\to \mathbb{R}^m,\mathbb{D}\subset\mathbb{R}^n$ eine Abbildung und $x_0\in\mathbb{D}$. Weiterhin sei f in $x_0$ total differenzierbar mit der Matrix
+	\[A=(a_{ij});i=1,\dots,m;j=1,\dots,n \in\mathbb{R}^{m\times n}\]
+	Dann ist f in $x_0$ stetig und alle Komponentenfunktionen $f_1,\dots,f_m:\mathbb{R}^n\to\mathbb{R}$ sind in $x_0$ partiell differenzierbar, wobei gilt: $a_{ij}=\frac{\partial f_i}{\partial x_j}(x_0)$.
+	
+	\[A=\begin{pmatrix}
+	\frac{\partial f_1}{\partial x_1}(x_0) & \frac{\partial f_1}{\partial x_2}(x_0) & \cdots & \frac{\partial f_1}{\partial x_n}(x_0) \\
+	\frac{\partial f_2}{\partial x_1}(x_0) & \frac{\partial f_2}{\partial x_2}(x_0) & \cdots & \frac{\partial f_2}{\partial x_n}(x_0) \\
+	\vdots & \vdots & \ddots & \vdots \\
+	\frac{\partial f_m}{\partial x_1}(x_0) & \frac{\partial f_m}{\partial x_2}(x_0) & \cdots & \frac{\partial f_m}{\partial x_n}(x_0)
+	\end{pmatrix}\]
+	
+	Die Matrix heißt Funktionalmatrix oder auch Jacobi-Matrix von f und wird mit $Df(x_0)$ oder $J_f(x_0)$ bezeichnet.
+\end{satz}
+
+\begin{beispiel}
+	Gegeben sei die Funktion $g:\mathbb{R}\to\mathbb{R}^2$ durch \[g(x)=\begin{pmatrix}2x^3 \\ \ln(x^2+1)
+	\end{pmatrix} = \begin{pmatrix}
+	g_1(x) \\ g_2(x)
+	\end{pmatrix}\]
+	Berechnen Sie die Jacobi-Matrix $D_g(x)$:
+	\[D_g(x)=\begin{pmatrix}6x^2 \\ \frac{1}{x^2+1}\cdot2x\end{pmatrix}\]
+\end{beispiel}
 
 \section{Extremwerte}
 
