@@ -234,6 +234,70 @@ Aufgaben:
 	\[D_g(x)=\begin{pmatrix}6x^2 \\ \frac{1}{x^2+1}\cdot2x\end{pmatrix}\]
 \end{beispiel}
 
+\begin{aufg}
+	\[f(x)=\begin{pmatrix}
+	x_1 + x_2 \\
+	x_1^2\cdot\sin x_2 \\
+	e^{x_1x_2}
+	\end{pmatrix}\]
+	\[D_f(x_1,x_2)=?\]
+\end{aufg}
+
+\begin{bemerkung}
+	Nach Definition 1.2.4 kann eine Funktion f(x), die total differenzierbar ist, in der Nähe von $x_0$ durch \[f(x_0)+D_f(x_0)(x-x_0)\] angenähert werden.
+	
+	Da die Annäherungsfunktion linear ist, spricht man auch von Linearisierung.
+	
+	Hierfür muss aber klar sein, dass f auch wirklich total differenzierbar ist.
+\end{bemerkung}
+
+\begin{satz}
+	Es sei $f:\mathbb{D}\to \mathbb{R}^m,\mathbb{D}\subset\mathbb{R}^n$ eine Abbildung, deren Komponentenfunktionen $f_1,\dots,f_m$ alle stetig partiell differenzierbar sind. Dann ist f total differenzierbar.
+\end{satz}
+
+\begin{beispiel}
+	Gegeben sei $f:\mathbb{R}^3\to\mathbb{R}$ durch
+	\[f(x_1,x_2,x_3)=x_1^2x_2+x_1x_2\sin(x_3)\]
+	$Df(x_1,x_2,x_3)=\begin{pmatrix}
+	2x_1x_2+x_2\sin(x_3) & x_1^2+x_1\sin(x_3) & x_1x_2\cos(x_3)
+	\end{pmatrix}$
+	
+	f soll in der Nähe des Punktes $x_0=(x_{01},x_{02},x_{03})=(1,1,\frac{\pi}{2})$ angenähert werden. Zur Berechnung der Näherung wird benötigt: $f(x_0)+Df(x_0)(x-x_0)$
+	
+	$f(x_0)=1+1\cdot1=2$
+	
+	$Df(x_0)=\begin{pmatrix}3 & 2 & 0\end{pmatrix}$
+	
+	$2+\begin{pmatrix}3 & 2 & 0\end{pmatrix}\cdot\begin{pmatrix}
+	x_1 - 1 \\
+	x_2 - 1 \\
+	x_3 - \frac{\pi}{2}
+	\end{pmatrix}$
+	
+	$f(x_1,x_2,x_3)=3x_1+2x_2-3$
+\end{beispiel}
+
+\begin{aufg}
+Gegeben sei die Funktion $f:\mathbb{R}^2\to\mathbb{R}^3$ durch $f(x_1,x_2)=\begin{pmatrix}x_1+x_2 & x_1^2\sin(x_2) & e^{x_1x_2}\end{pmatrix}^T$ (siehe Aufgabe 1.2.7)
+
+	Berechnen Sie die Näherung der Funktion in der Nähe von $x_0=(1,0)$
+\end{aufg}
+
+\begin{aufg}
+	Berechnen Sie die Tangentialebenen an die Funktion $f(x_1,x_2)=e^{-2.5x_1^2-(x_3-1)^2}$ $(x_1,x_2)\in\mathbb{R}^2$ im Punkt $(x_{01},x_{02},f(x_{01},x_{02}))=(0,1,1)$.
+
+	Verwenden Sie dazu zunächst die Formel für die Tangentialebenen und dann die Formel für die totale Differenzierbarkeit.
+\end{aufg}
+
+\begin{defi}[totale Differenzierbarkeit]
+Sei $f:\mathbb{R}^2\to\mathbb{R}$ eine total differenzierbare Funktion. Dann kann f in der Nähe eines Punktes $(x_{01},x_{02})\in\mathbb{R}^2$ durch $f(x_{01},x_{02})+Df(x_{01},x_{02})\begin{pmatrix}x_1-x_{01} \\ x_2-x_{02}\end{pmatrix}$ angenähert werden.
+
+	Es gilt also $f(x_1,x_2)=f(x_{01},x_{02})+\begin{pmatrix}
+		\frac{\partial f}{\partial x_1}(x_{01},x_{02}) & \frac{\partial f}{\partial x_2}(x_{01},x_{02})\end{pmatrix}\begin{pmatrix}
+			x_1-x_{01} \\ x_2-x_{02}
+		\end{pmatrix}
+\end{defi}
+
 \section{Extremwerte}
 
 \begin{defi}[Lokales Extremum]
