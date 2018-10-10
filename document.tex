@@ -10,6 +10,8 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{enumitem}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
 
 
 \begin{document}
@@ -295,7 +297,7 @@ Sei $f:\mathbb{R}^2\to\mathbb{R}$ eine total differenzierbare Funktion. Dann kan
 	Es gilt also $f(x_1,x_2)=f(x_{01},x_{02})+\begin{pmatrix}
 		\frac{\partial f}{\partial x_1}(x_{01},x_{02}) & \frac{\partial f}{\partial x_2}(x_{01},x_{02})\end{pmatrix}\begin{pmatrix}
 			x_1-x_{01} \\ x_2-x_{02}
-		\end{pmatrix}
+		\end{pmatrix}$
 \end{defi}
 
 \section{Extremwerte}
@@ -337,6 +339,15 @@ Sei $f:\mathbb{R}^2\to\mathbb{R}$ eine total differenzierbare Funktion. Dann kan
 
 \begin{aufg}
 	\[f:\mathbb{R}^2\to\mathbb{R}\hspace{1cm}f(x_1,x_2)=\sin(x_1)\cdot\sin(x_2)\]
+
+	\[\nabla f(x_1,x_2)=\begin{pmatrix}
+		\cos(x_1)\cdot\sin(x_2) \\
+		\sin(x_1)\cdot\cos(x_2)
+	\end{pmatrix} =: \begin{pmatrix}0 \\ 0\end{pmatrix}\]
+
+		$\cos(x_1)\cdot\sin(x_2)=0$
+
+		$(x_1=\pi)$ od. $\sin(x_2)=0$
 \end{aufg}
 
 \begin{bemerkung}
@@ -536,10 +547,23 @@ Sei $f:\mathbb{R}^2\to\mathbb{R}$ eine total differenzierbare Funktion. Dann kan
 	$\to x_1=1, x_2=1, x_3=1$
 	
 	Berechnen Sie die Hesse-Matrix
+
+	Beispiel ***:
+	
+	\[f:\mathbb{R}^2\to\mathbb{R} f(x,y)=\begin{cases}
+		x \cdot y\cdot\frac{x^2-y^2}{x^2+y^2} & (x,y)\ne(0,0) \\
+		0 & (x,y)=(0,0)
+	\end{cases}\]
+
+	(a) Stetigkeit in (0,0)
+
+	\[\bar{P} \lim_{P\to\bar{P}}f(x_1,\dots,x_n)=f(\bar{x_1},\dots,\bar{x_n}\]
+
+	Es gilt: $\lim_{(x,y)\to(0,0)} f(x,y)=\lim_{(x,y)\to(0,0)} |x\cdot y\cdot\frac{x^2-y^2}{x^2+y^2}|=\lim_{(x,y)\to(0,0)} \underbrace{|x\cdot y|}_{\to 0}\cdot\underbrace{|\frac{x^2-y^2}{x^2+y^2}|}_{\leq 1}$
 \end{beispiel}
 
 \begin{aufg}
-	Papula S.332 zu Abschnitt 2 -> Aufg. 24
+	Papula S.332 zu Abschnitt 2 $\to$ Aufg. 24
 	
 	\begin{enumerate}
 		\item $f(x_1,x_2)=x_1^2(1-x_2)-x_2^3+12x_2+13$
@@ -548,6 +572,118 @@ Sei $f:\mathbb{R}^2\to\mathbb{R}$ eine total differenzierbare Funktion. Dann kan
 	\end{enumerate}
 \end{aufg}
 
+\chapter{Grundlagen der Integralrechnung reeller Funktionenmit mehreren Variablen}
 
+	\section{Zweidimensionale Integralrechnung}
 
+	\begin{defi}[beschränkt]
+		Eine Menge $U\subset\mathbb{R}^2$ heißt \underline{beschränkt}, wenn es ein Rechteck R gibt, sodass $U\subset R$ gilt.
+	\end{defi}
+
+	\begin{bemerkung}
+		%\begin{tikzpicture}
+		%	\begin{axis}
+		%		\addplot3[] coordinates {
+		%			(0,0,0) (0,0.5,0) (0,1,0) (0,1.5,0) (0,2,0)
+		%			(1,0,0) (1,0.5,0) (1,1,0) (1,1.5,0) (1,2,0)
+		%			(2,0,0) (2,0.5,0) (2,1,0) (2,1.5,0) (2,2,0)
+		%		}
+		%	\end{axis}
+		%\end{tikzpicture}
+	\end{bemerkung}
+	
+	\begin{bemerkung}
+		Es sei $U\subset \mathbb{R}^2$ eine beschränkte Menge und $f:U\to \mathbb{R}$ eine stetige Funktion. Da ein Volumen betrachtet wird, werden die alten Näherungsrechtecke durch Näherungsquader ersetzt und deren Volumen zusammengezählt.
+
+		U wird also in n kleine Teilbereiche $u_1,\dots,u_n$ zerlegt. Die Fläche dieser Teilbereiche wird mit $\delta u_1,\dots,\Delta u_n$ bezeichnet.
+
+		Zur Berechnung des Rauminhalts des Quaders wird weiterhin die Quaderhöhe benötigt. Dazu wird ein Punkt $(x_i,y_i)\in U_i$ gewählt und sein Funktionswert $f(x_i,y_i)$ als Höhe des Quaders betrachtet. Das Teilvolumen beträgt dann $f(x_i,y_i)\cdot\Delta u_i$
+
+		Falls $U_i$ ein Rechteck ist mit den Seiten $\Delta x_i$ und $\Delta y_i$, so ergibt sich das Teilvolumen
+		
+		\[\Delta V_i = f(x_i,y_i)\cdot \Delta U_i=f(x_i,y_i)\cdot \Delta x_i\cdot \Delta y_i\]
+
+		Als Näherung für das Gesamtvolumen eribt sich also
+
+		\[V_n(f)=\sum^{n}_{i=1} f(x_i,y_i)\cdot\Delta U_i\]
+
+		Hier wurde der gesamte Definitionsbereich U in die n Teilbereiche $U_1,\dots,U_n$ zerlegt.
+
+		Der genaue Wert für das Volumen kann berechnet werden, indem n gegen $\infty$ geht.
+
+		Deshalb wird definiert:
+
+		\[\int_{U} f(x,y)dU=\int_{U} f(x,y)dxdy\]
+
+		\[= \lim_{n\to\infty} \sum^{n}_{i=1} f(x_i,y_i)\cdot\Delta U_i\]
+
+		Um klarzustellen, dass es sich um ein zweidimensionales Integral handelt, werden oft die zwei Integralsymbole verwendet:
+
+		\[\iint_{U} f(x,y)dU=\iint_{U} f(x,y)dxdy\]
+	\end{bemerkung}
+
+	\begin{defi}[konvex]
+		Eine Menge $U\subset\mathbb{R}^2$ oder $U\subset\mathbb{R}^3$ heißt \underline{konvex}, falls für alle Punkte $x,y\in U$ auch die gesamte Verbindungsstrecke von x nach y in U liegt.
+	\end{defi}
+
+	\begin{bemerkung}
+		% Skizze
+
+		Es sei $U\subset\mathbb{R}^2$ eine beschränkte und konvexe Menge und $f:U\to\mathbb{R}$ eine stetige Funktion. Da U beschränkt ist, gibt es einen kleinsten vorkommenden x-Wert a und einen größten vorkommenden x-Wert b.
+
+		Der Flächeninhalt der Schnittfläche des Körpers bei einem beliebigen x-Wert zwischen a und b wird mit $I(x)$ bezeichnet.
+
+		Der Körper, dessen Volumen wir ausrechnen, setzt sich aus all diesen Schnittflächen zusammen. Für jedes $x\in [a,b]$ existiert eine Schnittfläche mit Flächeninhalt $I(x)$, das heißt durch Aufsummieren dieser unendlich vielen Flächeninhalte ergibt sich das Volumen des Körpers.
+
+		\[\iint_U f(x,y)dxdy = \int^a_b I(x)dx\]
+
+		Der Flächeninhalt von I(x) kann einfach mit einem eindimensionalen Integral berechnet werden.
+
+		\[I(x) = \int^{y_o(x)}_{y_u(x)} f(x,y)dy \]
+
+		Insgesamt ergibt sich also:
+
+		\[\iint_U f(x,y)dxdy = \int^b_a \left(\int^{y_o(x)}_{y_u(x)} f(x,y)dy\right)dx\]
+	\end{bemerkung}
+
+	\begin{satz}
+		Es sei $U\subset\mathbb{R}^2$ eine beschränkte und konvexe Menge und $f:U\to\mathbb{R}$ eine stetige Funktion. Weiterhin sei a der kleinste in U vorkommende x-Wert und b der größete in U vorkommende x-Wert. Für $x\in [a,b]$ bezeichnen wir den kleinsten y-Wert für den $(x,y) \in U$ gilt, als $y_u(x)$ und den größten y-Wert als $y_o(x)$.
+
+		Dann ist $\iint_U f(x,y)dxdy = \int^b_a \left(\int^{y_o(x)}_{y_u(x)} f(x,y)dy\right)dx$
+	\end{satz}
+
+	\begin{beispiel}
+		\begin{enumerate}
+			\item $U=\{(x,y):x \in [0,1], y \in [0,2]\}$ und $f:U\to\mathbb{R}$ mit $f(x,y)=x^2+y^2$
+
+				$a=0,b=1,y_u(x)=0,y_o(x)=2$
+
+				\[\int^1_0 \left(\int^{2}_{0} (x^2+y^2)dy\right)dx\]
+				\[\int^1_0 \left(\left[x^2y+\frac{y^3}{3}\right]^{2}_{0}\right)dx\]
+				\[\int^1_0 \left(2x^2+\frac{2^3}{3}\right)dx\]
+				\[\left[\frac{2}{3}x^3+\frac{8}{3}x\right]^1_0\]
+				\[\frac{2}{3}+\frac{8}{3}=\frac{10}{3}\]
+
+		\item $U=\{(x,y):x \geq 0, x \leq 1, y \leq x, y \geq 0\}$
+
+			$f:U\to\mathbb{R}$ mit $f(x,y)=x\cdot\sin(y)$
+
+			$a=0,b=1,y_u(x)=0,y_o(x)=x$
+
+			\[\int^1_0 \left(\int^{x}_{0} x\cdot\sin(y)dy\right)dx\]
+			\[\int^1_0 \left(\left[x\cdot-\cos(y)\right]^{x}_{0}\right)dx\]
+			\[\int^1_0 \left(2x^2+\frac{2^3}{3}\right)dx\]
+			\[\left[\frac{2}{3}x^3+\frac{8}{3}x\right]^1_0\]
+			\[\frac{2}{3}+\frac{8}{3}=\frac{10}{3}\]
+		\end{enumerate}
+	\end{beispiel}
+
+	\begin{aufg}
+		$f:U\to\mathbb{R}$ mit $f(x,y)=x^2+y$
+
+		\begin{enumerate}
+			\item $U=\{(x,y):1 \leq x \leq 2, 2 \leq y \leq 3\}$
+			\item $U=\{(x,y):0 \leq x \leq 1, x^2 \leq y \leq \sqrt{x}\}$
+		\end{enumerate}
+	\end{aufg}
 \end{document}          
