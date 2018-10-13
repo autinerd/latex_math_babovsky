@@ -1,4 +1,5 @@
 % !TeX encoding = UTF-8
+% chktex-file 21 chktex-file -2
 \documentclass[12pt,a4paper]{scrreprt}
 \usepackage[utf8]{inputenc}
 \newtheorem{defi}{Definition}[section]
@@ -40,7 +41,7 @@
 \begin{defi}
 	$P=(p_1,\ldots,p_n)$ und $Q=(q_1,\ldots,q_n)$ bezeichnen zwei Punkte im n-dimensionalen Raum $\mathbb{R}^n$
 	
-	$\left|P-Q\right|=\sqrt{\left(p_1-q_1\right)^2 + \cdots + \left( p_n+q_n \right)^2}$ heißt Abstand der Punkte P und Q.
+	$\left|P-Q\right|=\sqrt{{\left(p_1-q_1\right)}^2 + \cdots + {\left(p_n+q_n\right)}^2}$ heißt Abstand der Punkte P und Q.
 	
 	Die Delta-Umgebung des Punktes P ist eine Teilmenge des $\mathbb{R}^n$ mit der Eigenschaft $U_\delta\left(P\right)=\left\{Q\in\mathbb{R}^n:\left|Q-P\right|<\delta\right\}$.
 	
@@ -90,7 +91,7 @@ Es seien $\mathbb{D} \subset \mathbb{R}^2, f:\mathbb{D}->\mathbb{R}$ eine partie
 \end{satz}
 
 \begin{beispiel}
-	Gegeben sei $f:\mathbb{R}^2->\mathbb{R}$ durch $f(x_1,x_2)=\sin(x_1\cdot x_2^2)$
+	Gegeben sei $f:\mathbb{R}^2\to\mathbb{R}$ durch $f(x_1,x_2)=\sin(x_1\cdot x_2^2)$
 
 	$\frac{\partial f}{\partial x_1}(x_1,x_2)=\cos(x_1\cdot x_2^2)\cdot x_2^2$
 	
@@ -122,7 +123,7 @@ Es seien $\mathbb{D} \subset \mathbb{R}^2, f:\mathbb{D}->\mathbb{R}$ eine partie
 \begin{beispiel}
 	Gegeben sei $f:\mathbb{R}^2\to\mathbb{R}$ durch $f(x_1,x_2)=\left| x_1 \right| + x_2$
 	$\frac{\partial f}{\partial x_2}(x_1,x_2)=1$
-	$\left| x_1 \right|$ ist nur für $x_1 \neq 0$ differenzierbar, d.h. f ist nicht auf dem gesamten Definitionsbereich partiell differenzierbar.
+	$\left| x_1 \right|$ ist nur für $x_1 \neq 0$ differenzierbar, d.h. $f$ ist nicht auf dem gesamten Definitionsbereich partiell differenzierbar.
 \end{beispiel}
 
 \begin{defi}[Gradient]
@@ -184,19 +185,19 @@ Es seien $\mathbb{D} \subset \mathbb{R}^2, f:\mathbb{D}->\mathbb{R}$ eine partie
 Aufgaben:
 
 \begin{enumerate}
-	\item Berechnen Sie alle ersten und zweiten partiellen Ableitungen der Funktion $f(x_1,x_2)=e^{-2.5x_1^2-(x_2-1)^2}, (x_1,x_2) \in \mathbb{R}$
+	\item Berechnen Sie alle ersten und zweiten partiellen Ableitungen der Funktion $f(x_1,x_2)=e^{-2.5x_1^2-{(x_2-1)}^2}, (x_1,x_2) \in \mathbb{R}$
 	\item Berechnen die den Gradienten der Funktion $f(x_1,x_2,x_3)=\frac{(x_1-1)\cdot\ln(x_1+1)}{x_2^2+x_3^2+1}$ an der Stelle $(0,0,0)$
-	\item Berechnen Sie die Tangentialebene an die Funktion  $f(x_1,x_2)=e^{-2.5x_1^2-(x_2-1)^2}, (x_1,x_2) \in \mathbb{R}$ im Punkt $(0,\frac{3}{2},e^{-\frac{1}{4}})$
+	\item Berechnen Sie die Tangentialebene an die Funktion  $f(x_1,x_2)=e^{-2.5x_1^2-{(x_2-1)}^2}, (x_1,x_2) \in \mathbb{R}$ im Punkt $(0,\frac{3}{2},e^{-\frac{1}{4}})$
 \end{enumerate}
 
 \begin{defi}[k-mal partiell differenzierbar]
 	Es sei $D\subset\mathbb{R}^n,f:D\to\mathbb{R}$ eine partiell differenzierbare Funktion und $x_0 \in D$. Die Funktion f heißt zweimal \underline{partiell differenzierbar} in $x_0$, wenn alle partiellen Ableitungen $\frac{\partial f}{\partial x_i}$ in $x_0$ wieder partiell differenzierbar sind.
 
-	Man schreibt $\frac{\partial^2 f}{\partial x_jx_i}(x_0)=\frac{\partial}{\partial x_j}\left(\frac{\partial f}{\partial x_i}\right)(x_0)=f_{x_jx_i}(x_0)$
+	Man schreibt $\frac{\partial^2 f}{\partial x_j x_i}(x_0)=\frac{\partial}{\partial x_j}\left(\frac{\partial f}{\partial x_i}\right)(x_0)=f_{x_j x_i}(x_0)$
 
 	Dieser Ausdruck heißt dann \underline{zweite partielle Ableitung} von f.
 
-	Allgemein heißt f \underline{k-mal partiell differenzierbar}, wennn alle (k-1)ten partiellen Ableitungen von f wieder partiell differenzierbar sind. Man schreibt:
+	Allgemein heißt f \underline{k-mal partiell differenzierbar}, wennn alle (k-1)-ten partiellen Ableitungen von f wieder partiell differenzierbar sind. Man schreibt:
 
 	\[\frac{\partial f}{\partial x_{ik} \partial x_{i(k-1)} \dots \partial x_{i1}}(x_0) = \frac{\partial}{\partial x_{ik}}\left(\frac{\partial^{k-1} f}{\partial x_{i(k-1)} \dots \partial x_{i1}}\right)(x_0)=f_{x_{ik} \dots x_{i1}}\]
 \end{defi}
@@ -215,7 +216,7 @@ Aufgaben:
 \end{aufg}
 
 \begin{defi}[stetig partiell differenzierbar]
-	Es sei $D\subset\mathbb{R}^n,f:D\to\mathbb{R}$. f heißt k-mal \underline{stetig partiell differenzierbar}, falls f k-mal partiell differenzierbar ist und alle partiellen Ableitungen der Ordnung k stetig sind.
+	Es sei $D\subset\mathbb{R}^n,f:D\to\mathbb{R}$. $f$ heißt k-mal \underline{stetig partiell differenzierbar}, falls f k-mal partiell differenzierbar ist und alle partiellen Ableitungen der Ordnung k stetig sind.
 \end{defi}
 
 \begin{satz}[Satz von Schwarz]
@@ -306,7 +307,7 @@ Aufgaben:
 \end{aufg}
 
 \begin{bemerkung}
-	Nach Definition 1.2.4 kann eine Funktion f(x), die total differenzierbar ist, in der Nähe von $x_0$ durch \[f(x_0)+D_f(x_0)(x-x_0)\] angenähert werden.
+	Nach Definition 1.2.4 kann eine Funktion $f(x)$, die total differenzierbar ist, in der Nähe von $x_0$ durch \[f(x_0)+D_f(x_0)(x-x_0)\] angenähert werden.
 	
 	Da die Annäherungsfunktion linear ist, spricht man auch von Linearisierung.
 	
@@ -340,13 +341,17 @@ Aufgaben:
 \end{beispiel}
 
 \begin{aufg}
-Gegeben sei die Funktion $f:\mathbb{R}^2\to\mathbb{R}^3$ durch $f(x_1,x_2)=\begin{pmatrix}x_1+x_2 & x_1^2\sin(x_2) & e^{x_1x_2}\end{pmatrix}^T$ (siehe Aufgabe 1.2.7)
+Gegeben sei die Funktion $f:\mathbb{R}^2\to\mathbb{R}^3$ durch 
+
+$f(x_1,x_2)=\begin{pmatrix}x_1+x_2 & x_1^2\sin(x_2) & e^{x_1x_2}\end{pmatrix}^T$ (siehe Aufgabe 1.2.7)
 
 	Berechnen Sie die Näherung der Funktion in der Nähe von $x_0=(1,0)$
 \end{aufg}
 
 \begin{aufg}
-	Berechnen Sie die Tangentialebenen an die Funktion $f(x_1,x_2)=e^{-2.5x_1^2-(x_3-1)^2}$ $(x_1,x_2)\in\mathbb{R}^2$ im Punkt $(x_{01},x_{02},f(x_{01},x_{02}))=(0,1,1)$.
+	Berechnen Sie die Tangentialebenen an die Funktion
+	
+	$f(x_1,x_2)=e^{-2.5x_1^2-{(x_3-1)}^2}$ $(x_1,x_2)\in\mathbb{R}^2$ im Punkt $(x_{01},x_{02},f(x_{01},x_{02}))=(0,1,1)$.
 
 	Verwenden Sie dazu zunächst die Formel für die Tangentialebenen und dann die Formel für die totale Differenzierbarkeit.
 \end{aufg}
@@ -395,7 +400,7 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 \begin{bemerkung}
 	Durch Einsetzen der Maximalen absoluten Fehler und Bilden der Beträge ergibt sich der (lineare) maximale absolute Fehler:
 
-	\[\left|\Delta f\right|\approx \left|\frac{\partial f}{\partial x_1}(x_1,\dots,x_n)\right|\cdot\left|\Delta x_1\right|+\dots+\left|\frac{\partial f}{\partial x_n}(x_1,\dots,x_n)\right|\cdot\left|\Delta x_n\right|\]
+	\[\left|\Delta f\right|\approx \left|\frac{\partial f}{\partial x_1}(x_1,\dots,x_n)\right|\cdot\left|\Delta x_1\right|+\cdots+\left|\frac{\partial f}{\partial x_n}(x_1,\dots,x_n)\right|\cdot\left|\Delta x_n\right|\]
 \end{bemerkung}
 
 \begin{aufg}
@@ -414,7 +419,7 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 
 \begin{defi}[Lokales Extremum]
 	Es seien $U\subset\mathbb{R}^n$ eine offene Menge und $f:U\to\mathbb{R}$ eine Abbildung.
-	\begin{enumerate}[label=(\roman*)]
+	\begin{enumerate}[label=\emph{(\roman*)}]
 		\item Ein Punkt $x_0\in U$ heißt \underline{lokales Maximum} von $f$, falls $f$ in der Nähe von $x_0$ nicht größer wird als bei $x_0$, das heißt:
 		$f(x)\le f(x_0)$ für alle $x$ in der Nähe von $x_0$.
 		\item Ein Punkt $x_0\in U$ heißt \underline{lokales Minimum} von $f$, falls $f$ in der Nähe von $x_0$ nicht kleiner wird als bei $x_0$, das heißt:
@@ -444,7 +449,7 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 	
 	$\to x_1=x_2=0$
 	
-	D.h. falls es ein Extremum gibt, dann liegt es bei (0,0).
+	Das heißt falls es ein Extremum gibt, dann liegt es bei (0,0).
 \end{beispiel}
 
 \begin{aufg}
@@ -462,7 +467,7 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 
 \begin{bemerkung}
 	Es sei $f:(a,b)\to\mathbb{R}$ zweimal differenzierbar und $f'(x_0)=0$.
-	\begin{enumerate}[label=(\roman*)]
+	\begin{enumerate}[label=\emph{(\roman*)}]
 		\item Ist $f''(x_0)>0$, so hat f in $x_0$ ein lokales Minimum.
 		\item Ist $f''(x_0)<0$, so hat f in $x_0$ ein lokales Maximum.
 	\end{enumerate}
@@ -470,17 +475,21 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 
 \begin{defi}
 	Eine Matrix $A=(a_{ij}), i,j=1,\dots,n \in \mathbb{R}^{n\times n}$ heißt \underline{positiv definit}, falls gilt:
+
+
 	$a_{11}>0,\det\begin{pmatrix}
 	a_{11} & a_{12} \\ a_{21} & a_{22}
 	\end{pmatrix} > 0, \dots, \det\begin{pmatrix}
 	a_{11} & \cdots & a_{1n} \\
-	a_{21} &  & a_{2n} \\
-	\vdots & & \vdots \\
+	a_{21} & \cdots & a_{2n} \\
+	\vdots & \ddots & \vdots \\
 	a_{n1} & \cdots & a_{nn}
-	\end{pmatrix} > 0$, also $\det\begin{pmatrix}
+	\end{pmatrix} > 0$, 
+	
+	also $\det\begin{pmatrix}
 	a_{11} & \cdots & a_{1k} \\
-	a_{21} &  & a_{2k} \\
-	\vdots & & \vdots \\
+	a_{21} & \cdots & a_{2k} \\
+	\vdots & \ddots & \vdots \\
 	a_{k1} & \cdots & a_{kk}
 	\end{pmatrix} > 0$ für alle $k=1,\dots,n$.
 	
@@ -563,7 +572,7 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 
 \begin{satz}
 	Es sei $U\subset\mathbb{R}^n$ eine offene Menge, $f:U\to\mathbb{R}$ zweimal stetig differenzierbar und $x_0\in U$ ein Punkt mit $\nabla f(x_0)=0$.
-	\begin{enumerate}[label=(\roman*)]
+	\begin{enumerate}[label=\emph{(\roman*)}]
 		\item Ist $H_f(x_0)$ positiv definit, so hat f in $x_0$ ein lokales Minimum.
 		\item Ist $H_f(x_0)$ negativ definit, so hat f in $x_0$ ein lokales Maximum.
 		\item Ist $\underline{U\subset\mathbb{R}^2}$ und gilt $\det H_f(x_0) < 0$, so liegt kein Extremwert vor.
@@ -618,7 +627,7 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 	\end{pmatrix}$
 	
 	$H_f(k_1\pi,k_2\pi)=\begin{pmatrix}
-	-(-1)^{k_1} & 0 \\ 0 & -(-1)^{k_2} 
+	-{(-1)}^{k_1} & 0 \\ 0 & -{(-1)}^{k_2} 
 	\end{pmatrix}$
 	
 	\vspace{1cm}
@@ -677,7 +686,7 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 	
 	\begin{enumerate}
 		\item $f(x_1,x_2)=x_1^2(1-x_2)-x_2^3+12x_2+13$
-		\item $f(x_1,x_2)=(x_1-1)^2(1-x_2)-x_2^3+12x_2+3$
+		\item $f(x_1,x_2)={(x_1-1)}^2(1-x_2)-x_2^3+12x_2+3$
 		\item $f(x_1,x_2)=4(x_1^2-25)(x_2-2)+5x_2^2+12x_2$
 	\end{enumerate}
 \end{aufg}
@@ -747,7 +756,7 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 
 		\[\iint_U f(x,y)dxdy = \int^a_b I(x)dx\]
 
-		Der Flächeninhalt von I(x) kann einfach mit einem eindimensionalen Integral berechnet werden.
+		Der Flächeninhalt von $I(x)$ kann einfach mit einem eindimensionalen Integral berechnet werden.
 
 		\[I(x) = \int^{y_o(x)}_{y_u(x)} f(x,y)dy \]
 
@@ -769,9 +778,9 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 				$a=0,b=1,y_u(x)=0,y_o(x)=2$
 
 				\[\int^1_0 \left(\int^{2}_{0} (x^2+y^2)dy\right)dx\]
-				\[\int^1_0 \left(\left[x^2y+\frac{y^3}{3}\right]^{2}_{0}\right)dx\]
+				\[\int^1_0 \left({\left[x^2y+\frac{y^3}{3}\right]}^{2}_{0}\right)dx\]
 				\[\int^1_0 \left(2x^2+\frac{2^3}{3}\right)dx\]
-				\[\left[\frac{2}{3}x^3+\frac{8}{3}x\right]^1_0\]
+				\[{\left[\frac{2}{3}x^3+\frac{8}{3}x\right]}^1_0\]
 				\[\frac{2}{3}+\frac{8}{3}=\frac{10}{3}\]
 
 		\item $U=\{(x,y):x \geq 0, x \leq 1, y \leq x, y \geq 0\}$
@@ -781,9 +790,9 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 			$a=0,b=1,y_u(x)=0,y_o(x)=x$
 
 			\[\int^1_0 \left(\int^{x}_{0} x\cdot\sin(y)dy\right)dx\]
-			\[\int^1_0 \left(\left[x\cdot-\cos(y)\right]^{x}_{0}\right)dx\]
+			\[\int^1_0 \left({\left[x\cdot-\cos(y)\right]}^{x}_{0}\right)dx\]
 			\[\int^1_0 \left(2x^2+\frac{2^3}{3}\right)dx\]
-			\[\left[\frac{2}{3}x^3+\frac{8}{3}x\right]^1_0\]
+			\[{\left[\frac{2}{3}x^3+\frac{8}{3}x\right]}^1_0\]
 			\[\frac{2}{3}+\frac{8}{3}=\frac{10}{3}\]
 		\end{enumerate}
 	\end{beispiel}
