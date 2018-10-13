@@ -11,6 +11,7 @@
 \usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage{pgfplots}
+\usepackage[autostyle=true,german=quotes]{csquotes}
 \pgfplotsset{compat=1.16}
 
 
@@ -39,7 +40,7 @@
 \begin{defi}
 	$P=(p_1,\ldots,p_n)$ und $Q=(q_1,\ldots,q_n)$ bezeichnen zwei Punkte im n-dimensionalen Raum $\mathbb{R}^n$
 	
-	$\left|P-Q\right|=\sqrt{\left(p_1-q_1\right)^2+ \cdots + \left( p_n+q_n \right)^2}$ heißt Abstand der Punkte P und Q.
+	$\left|P-Q\right|=\sqrt{\left(p_1-q_1\right)^2 + \cdots + \left( p_n+q_n \right)^2}$ heißt Abstand der Punkte P und Q.
 	
 	Die Delta-Umgebung des Punktes P ist eine Teilmenge des $\mathbb{R}^n$ mit der Eigenschaft $U_\delta\left(P\right)=\left\{Q\in\mathbb{R}^n:\left|Q-P\right|<\delta\right\}$.
 	
@@ -188,11 +189,70 @@ Aufgaben:
 	\item Berechnen Sie die Tangentialebene an die Funktion  $f(x_1,x_2)=e^{-2.5x_1^2-(x_2-1)^2}, (x_1,x_2) \in \mathbb{R}$ im Punkt $(0,\frac{3}{2},e^{-\frac{1}{4}})$
 \end{enumerate}
 
+\begin{defi}[k-mal partiell differenzierbar]
+	Es sei $D\subset\mathbb{R}^n,f:D\to\mathbb{R}$ eine partiell differenzierbare Funktion und $x_0 \in D$. Die Funktion f heißt zweimal \underline{partiell differenzierbar} in $x_0$, wenn alle partiellen Ableitungen $\frac{\partial f}{\partial x_i}$ in $x_0$ wieder partiell differenzierbar sind.
+
+	Man schreibt $\frac{\partial^2 f}{\partial x_jx_i}(x_0)=\frac{\partial}{\partial x_j}\left(\frac{\partial f}{\partial x_i}\right)(x_0)=f_{x_jx_i}(x_0)$
+
+	Dieser Ausdruck heißt dann \underline{zweite partielle Ableitung} von f.
+
+	Allgemein heißt f \underline{k-mal partiell differenzierbar}, wennn alle (k-1)ten partiellen Ableitungen von f wieder partiell differenzierbar sind. Man schreibt:
+
+	\[\frac{\partial f}{\partial x_{ik} \partial x_{i(k-1)} \dots \partial x_{i1}}(x_0) = \frac{\partial}{\partial x_{ik}}\left(\frac{\partial^{k-1} f}{\partial x_{i(k-1)} \dots \partial x_{i1}}\right)(x_0)=f_{x_{ik} \dots x_{i1}}\]
+\end{defi}
+
+\begin{aufg}
+	Gegeben sei $f:\mathbb{R}^2\to\mathbb{R}$ durch $f(x_1,x_2)=x_1^2 \cdot x_2 - x_1 \cdot x_2^2$
+
+	Berechnen Sie alle ersten und zweiten Ableitungen von f und $\frac{\partial^3 f}{\partial x_1 \partial x_1 \partial x_2}(x_1,x_2)$.
+
+	\[\frac{\partial f}{\partial x_1}(x_1,x_2)=2x_1 \cdot x_2 - x_2^2 \]
+	\[\frac{\partial f}{\partial x_2}(x_1,x_2)=x_1^2 - x_1 \cdot 2x_2 \]
+
+	\[\frac{\partial^2 f}{\partial x_1^2}(x_1,x_2)=2x_2 ; \frac{\partial^2 f}{\partial x_2^2}(x_1,x_2)=-2x_1 \]
+	\[\frac{\partial^2 f}{\partial x_1x_2}(x_1,x_2)=2x_1-2x_2 ; \frac{\partial^2 f}{\partial x_2x_1}(x_1,x_2)=2x_1-2x_2 \]
+	\[\frac{\partial^3 f}{\partial x_1 \partial x_1 \partial x_2}(x_1,x_2)=+2\]
+\end{aufg}
+
+\begin{defi}[stetig partiell differenzierbar]
+	Es sei $D\subset\mathbb{R}^n,f:D\to\mathbb{R}$. f heißt k-mal \underline{stetig partiell differenzierbar}, falls f k-mal partiell differenzierbar ist und alle partiellen Ableitungen der Ordnung k stetig sind.
+\end{defi}
+
+\begin{satz}[Satz von Schwarz]
+	Es sei $D\subset\mathbb{R}^n,f:D\to\mathbb{R}$ zweimal stetig partiell differenzierbar. Dann ist $\frac{\partial^2 f}{\partial x_i \partial x_j}=\frac{\partial^2 f}{\partial x_j \partial x_i}$ für alle $i,j\in\left\{1,\dots,n\right\}$. Die Reihenfolge der Ableitungsvariablen spielt also keine Rolle,
+\end{satz}
+
+\begin{bemerkung}
+	Es sei $f:D\to\mathbb{R}$ k-mal stetig partiell differenzierbar. Dann spielt die Reihenfolge der Ableitungsvariablen bei der k-ten partiellen Ableitung keine Rolle.
+\end{bemerkung}
+
+\begin{aufg}
+	Berechnen Sie alle ersten und zweiten partiellen Ableitungen der Funktion $f(x_1,x_2,x_3)=x_3 \cdot \sin(x_1^2+x_2)+e^{2x_3}$ $(x_1,x_2,x_3)\in\mathbb{R}^3$
+
+	\(\frac{\partial f}{\partial x_1}(x_1,x_2,x_3) = x_3 \cdot 2x_1 \cdot \cos(x_1^2+x_2)\)
+
+	\(\frac{\partial f}{\partial x_2}(x_1,x_2,x_3) = x_3 \cdot \cos(x_1^2+x_2)\)
+
+	\(\frac{\partial f}{\partial x_3}(x_1,x_2,x_3) = \sin(x_1^2+x_2) + 2e^{2x_3}\)
+
+	\(\frac{\partial^2 f}{\partial x_1^2}(x_1,x_2,x_3) = 2x_3 \left(\cos(x_1^2+x_2) - 2x_1^2\sin(x_1^2+x_2)\right)\)
+
+	\(\frac{\partial^2 f}{\partial x_1 \partial x_2}(x_1,x_2,x_3) = -2x_1x_3 \sin(x_1^2+x_2)\)
+
+	\(\frac{\partial^2 f}{\partial x_2^2}(x_1,x_2,x_3) = -x_3\sin(x_1^2+x_2)\)
+
+	\(\frac{\partial^2 f}{\partial x_1 \partial x_3}(x_1,x_2,x_3) = 2x_1 \cos(x_1^2+x_2)\)
+
+	\(\frac{\partial^2 f}{\partial x_2 \partial x_3}(x_1,x_2,x_3) = \cos(x_1^2+x_2)\)
+
+	\(\frac{\partial^2 f}{\partial x_3^2}(x_1,x_2,x_3) = 4e^{2x_3}\)
+\end{aufg}
+
 \section{Totale Differenzierbarkeit}
 
 \begin{defi}[Betrag eines Vektors]
 	Der Betrag eines Vektors $x=(x_1,\dots,x_n)\in\mathbb{R}^n$ ist definiert als:
-	\[\vert x \vert = \sqrt{x_1^2+\dots+x_n^2}\]
+	\[\vert x \vert = \sqrt{x_1^2+\cdots+x_n^2}\]
 \end{defi}
 
 \begin{defi}[Vektorfunktion]
@@ -298,7 +358,57 @@ Sei $f:\mathbb{R}^2\to\mathbb{R}$ eine total differenzierbare Funktion. Dann kan
 		\frac{\partial f}{\partial x_1}(x_{01},x_{02}) & \frac{\partial f}{\partial x_2}(x_{01},x_{02})\end{pmatrix}\begin{pmatrix}
 			x_1-x_{01} \\ x_2-x_{02}
 		\end{pmatrix}$
+
+\[f(x_1,x_2)-f(x_{01},x_{02})\approx\frac{\partial f}{\partial x_1}(x_{01},x_{02})\cdot\underbrace{(x_1-x_{01})}_{=:\Delta x_1} + \frac{\partial f}{\partial x_2}(x_{01},x_{02})\cdot\underbrace{(x_2-x_{02})}_{=:\Delta x_2}\]
+
+also gilt: $\Delta f\approx \frac{\partial f}{\partial x_1}\cdot\Delta x_1 + \frac{\partial f}{\partial x_2}\cdot\Delta x_2$
+
+Für \enquote{beliebig kleines} $\Delta x_1$ und $\Delta x_2$ schreiben wir \enquote{d} statt \enquote{$\Delta$} und \enquote{=} statt \enquote{$\approx$}.
+
+\[\boxed{df = \frac{\partial f}{\partial x_1}(x_{01},x_{02})\cdot dx_1 + \frac{\partial f}{\partial x_2}(x_{01},x_{02})\cdot dx_2} \]
+Diesen Ausdruck bezeichnet man als \underline{totales Differenzial} der Funktion f.
+
+Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
+\[\boxed{df = \frac{\partial f}{\partial x_1}\cdot dx_1 + \frac{\partial f}{\partial x_2}\cdot dx_2 + \cdots + \frac{\partial f}{\partial x_2}\cdot dx_n}\]
 \end{defi}
+
+\begin{bemerkung}
+	Mit Hilfe des totalen Differentials kann der Einfluss der Änderung der Inputgrößen auf den Funktionswert abgeschätzt werden.
+\end{bemerkung}
+
+\begin{beispiel}
+	Gegeben sei $f:\mathbb{R}^2\to\mathbb{R}$ durch $f(x_1,x_2)=x_1^2+\sin(x_1\cdot x_2)$. Wir betrachten f in der Nähe des Punktes $f(x_{01},x_{02})=(\sqrt{\pi},\sqrt{\pi})$
+
+	Was passiert wenn wir leicht von dem Wert abweichen?
+
+	\[\frac{\partial f}{\partial x_1}=2x_1+\cos(x_1\cdot x_2)x_2\]
+	\[\frac{\partial f}{\partial x_2}=\cos(x_1 \cdot x_2)x_1\]
+
+	\(df=2\sqrt{\pi}+\cos(\pi)\cdot\sqrt{\pi}\cdot(x_1-\sqrt{\pi})+\cos(\pi)\cdot\sqrt{\pi}\cdot(x_2-\sqrt{\pi}) \)
+	\(df=\sqrt{\pi}\cdot dx_1+(-\sqrt{\pi})\cdot dx_2\)
+
+	Veränderung der Inputgrößen z.B. $dx_1=0.1$ $dx_2=-0.1$
+
+	$df=0.2\cdot\sqrt{\pi}$
+\end{beispiel}
+
+\begin{bemerkung}
+	Durch Einsetzen der Maximalen absoluten Fehler und Bilden der Beträge ergibt sich der (lineare) maximale absolute Fehler:
+
+	\[\left|\Delta f\right|\approx \left|\frac{\partial f}{\partial x_1}(x_1,\dots,x_n)\right|\cdot\left|\Delta x_1\right|+\dots+\left|\frac{\partial f}{\partial x_n}(x_1,\dots,x_n)\right|\cdot\left|\Delta x_n\right|\]
+\end{bemerkung}
+
+\begin{aufg}
+	Das Volumen V eines geraden Kreiskegels wird berechnet durch: $V=\frac{\pi}{3}\cdot r^2 \cdot \sqrt{k^2-r^2}$.
+
+	r\dots Radius r=1m und absoluter Fehler von 0.01m
+
+	k\dots Mantellinie k=1.5m und der absolute Fehler: 0.005m
+
+	Berechnen Sie den (linearen) maximalen absoluten Fehler.
+
+	Papula zu Abschnitt 2 S. 332: 12, 13, 15
+\end{aufg}
 
 \section{Extremwerte}
 
@@ -324,7 +434,7 @@ Sei $f:\mathbb{R}^2\to\mathbb{R}$ eine total differenzierbare Funktion. Dann kan
 \begin{satz}
 	Es sei $U \subset \mathbb{R}^n$ eine offene Menge und $f:U\to\mathbb{R}$ differenzierbar. Besitzt f in $x_0\in U$ ein lokales Extremum, so gilt:
 	\[\nabla f(x_0)=0,\]
-	d.h. $\frac{\partial f}{\partial x_1}(x_0)=\dots=\frac{\partial f}{\partial x_n}(x_0)=0$
+	d.h. $\frac{\partial f}{\partial x_1}(x_0)=\cdots=\frac{\partial f}{\partial x_n}(x_0)=0$
 \end{satz}
 
 \begin{beispiel}
@@ -557,7 +667,7 @@ Sei $f:\mathbb{R}^2\to\mathbb{R}$ eine total differenzierbare Funktion. Dann kan
 
 	(a) Stetigkeit in (0,0)
 
-	\[\bar{P} \lim_{P\to\bar{P}}f(x_1,\dots,x_n)=f(\bar{x_1},\dots,\bar{x_n}\]
+	\[\bar{P} \lim_{P\to\bar{P}}f(x_1,\dots,x_n)=f(\bar{x_1},\dots,\bar{x_n})\]
 
 	Es gilt: $\lim_{(x,y)\to(0,0)} f(x,y)=\lim_{(x,y)\to(0,0)} |x\cdot y\cdot\frac{x^2-y^2}{x^2+y^2}|=\lim_{(x,y)\to(0,0)} \underbrace{|x\cdot y|}_{\to 0}\cdot\underbrace{|\frac{x^2-y^2}{x^2+y^2}|}_{\leq 1}$
 \end{beispiel}
