@@ -2,19 +2,23 @@
 % chktex-file 21 chktex-file -2
 \documentclass[12pt,a4paper]{scrreprt}
 \usepackage[utf8]{inputenc}
-\newtheorem{defi}{Definition}[section]
-\newtheorem{bemerkung}[defi]{Bemerkung}
-\newtheorem{beispiel}[defi]{Beispiel}
-\newtheorem{satz}[defi]{Satz}
-\newtheorem{aufg}[defi]{Aufgabe}
+\usepackage{ntheorem}
 \usepackage[ngerman]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{enumitem}
+\usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage[autostyle=true,german=quotes]{csquotes}
 \usepackage[pdftex,pdfa,hidelinks]{hyperref}
+\newtheorem{defi}{Definition}[section]
+\newtheorem{bemerkung}[defi]{Bemerkung}
+\newtheorem{beispiel}[defi]{Beispiel}
+\newtheorem{satz}[defi]{Satz}
+\newtheorem{aufg}[defi]{Aufgabe}
+\newtheorem*{einschub}{Einschub}
+
 \pgfplotsset{compat=1.16}
 
 
@@ -777,6 +781,7 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 
 	\begin{beispiel}
 		\begin{enumerate}
+
 			\item $U=\{(x,y):x \in [0,1], y \in [0,2]\}$ und $f:U\to\mathbb{R}$ mit $f(x,y)=x^2+y^2$
 
 				$a=0,b=1,y_u(x)=0,y_o(x)=2$
@@ -795,10 +800,89 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 
 			\[\int^1_0 \left(\int^{x}_{0} x\cdot\sin(y)dy\right)dx\]
 			\[\int^1_0 \left({\left[x\cdot-\cos(y)\right]}^{x}_{0}\right)dx\]
-			\[\int^1_0 \left(2x^2+\frac{2^3}{3}\right)dx\]
-			\[{\left[\frac{2}{3}x^3+\frac{8}{3}x\right]}^1_0\]
-			\[\frac{2}{3}+\frac{8}{3}=\frac{10}{3}\]
+			\[-\int^1_0 \left(x\cdot\cos(x)+x\right)dx\]
+			\[-{\left[x\cdot\sin(x)+\cos(x)+\frac{x^2}{2}\right]}^1_0\]
+			\[-\left(1\cdot\sin(1)+\cos(1)+\frac{1^2}{2}-\cos(0)\right)=-\sin(1)-\cos(1)+\frac{3}{2}\]
+
+		\item $U=\left\{(x,y):x^2+y^2\le1\right\}$
+		
+		$f:U\to\mathbb{R},f(x,y)=1$
+
+		\begin{tikzpicture}
+			\begin{axis}[
+				ymin=-2,
+				ymax=2,
+				xmin=-2,
+				xlabel=x,
+				ylabel=y,
+				xmax=2,
+				axis lines = middle,
+				axis equal,
+			]
+				\draw (axis cs:0,0) circle [blue, radius=1];
+			\end{axis}
+			
+		\end{tikzpicture}
+
+		\[\iint_U\left(1\right)dxdy=\int_{-1}^1 \left(\int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}}1dy\right)dx\]
+		\[\int_{-1}^1 \left({\left[y\right]}_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}}\right)dx\]
+		\[2\int_{-1}^1 \sqrt{1-x^2}dx\]
+
+		\begin{einschub}
+			Substitution: $f(x)=\sqrt{1-x^2}$
+
+			\(\int f(x(t))\cdot x'(t)dt=\int f(x)dx\)
+			
+			$x(t)=\sin(t) \to t=\arcsin(x)$
+
+			$\int f(x)dx=\int \sqrt{1-x^2}dx=\int f(\sin(t))\cdot x'(t)dt=\int \sqrt{1-\sin^2(t)}\cdot\cos(t)dt$
+
+			$=\int \cos(t)\cdot\cos(t)dt=\cos(t)\cdot\sin(t)+\int \sin(t)\cdot\sin(t)dt=\int \sin^2(t)dt=\int 1-\cos^2(t)dt$
+
+			$=\cos(t)\cdot\sin(t)+t-\int \cos^2(t)dt$
+
+			$\to \int \cos^2(t)dt=\frac{1}{2}\sin(t)\cdot\cos(t)+\frac{t}{2}+C$
+
+			Rücksubstitution
+
+			$\frac{x}{2}\cdot\cos(t)+\frac{t}{2}+C$
+
+			$\cos(t)=\cos(\arcsin(x))=\sqrt{1-\sin^2(\arcsin(x))}=\sqrt{1-x^2}$
+
+			$\frac{x}{2}\cdot\sqrt{1-x^2}+\frac{\arcsin(x)}{2}+C$
+
+			$\int \sqrt{1-x^2}dx=\frac{x}{2}\sqrt{1-x^2}+\frac{\arcsin(x)}{2}$
+		\end{einschub}
+		\[2\int_{-1}^1 \sqrt{1-x^2}dx=\left[x\sqrt{1-x^2}+\arcsin(x)\right]^1_{-1}\]
+		\[\arcsin(1)-\arcsin(-1)=\frac{\pi}{2}+\frac{\pi}{2}=\pi\]
 		\end{enumerate}
+	\end{beispiel}
+
+	\begin{satz}
+		Es sei $U\subset\mathbb{R}^2$ eine beschränkte und konvexe Menge und $f:U\to\mathbb{R}$ eine stetige Funktion. Weiterhin sei a der kleinste in U vorkommende y-Wert und b der größte in U vorkommende y-Wert.
+
+		Für $y\in[a;b]$ bezeichnen wir den kleinsten x-Wert, für den $(x,y)\in U$ gilt als $x_u(y)$ und den größten als $x_o(y)$.
+
+		Dann ist $\iint_U f(x,y)dxdy=\int_a^b \left(\int_{x_u(y)}^{x_o(y)} f(x,y)dx\right)dy$
+	\end{satz}
+
+	\begin{beispiel}
+		\[\iint_U x^2+y^2dxdy\] $U=\left[0,1\right]\times\left[0,2\right]$
+
+		\begin{tikzpicture}
+			\begin{axis}
+				[
+					xlabel=x,
+					ylabel=y,
+					xmin=0,
+					ymin=0,
+					ymax=2.4,
+					xmax=2,
+				]
+				\addplot[mark=none] (0,2) rectangle (1,0);
+				\draw (0,1) -- (1.5,1);
+			\end{axis}
+		\end{tikzpicture}
 	\end{beispiel}
 
 	\begin{aufg}
@@ -806,7 +890,144 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 
 		\begin{enumerate}
 			\item $U=\{(x,y):1 \leq x \leq 2, 2 \leq y \leq 3\}$
+			
+			\begin{tikzpicture}
+				\begin{axis}
+					[
+						xlabel=x,
+						ylabel=y,
+						xmin=0,
+						ymin=0,
+						ymax=3.5,
+						xmax=3,
+						width=5cm,
+					]
+					\addplot[mark=none] (1,3) rectangle (2,2);
+				\end{axis}
+			\end{tikzpicture}
+
+			$\iint_U f(x,y)dxdy=\int_1^2 \left(\int_2^3 (x^2+y) dy\right)dx = \frac{29}{6}$
+
 			\item $U=\{(x,y):0 \leq x \leq 1, x^2 \leq y \leq \sqrt{x}\}$
+			
+			\begin{tikzpicture}
+				\begin{axis}
+					[
+						xlabel=x,
+						ylabel=y,
+						xmin=0,
+						ymin=0,
+						ymax=1,
+						xmax=1,
+						width=5cm,
+					]
+					\addplot[domain=0:1,mark=none,samples=200] {x^2};
+					\addplot[domain=0:1,mark=none,samples=200] {sqrt(x)};
+				\end{axis}
+			\end{tikzpicture}
+
+			$\iint_U f(x,y)dxdy=\int_0^1 \left(\int_{x^2}^{\sqrt{x}} (x^2+y) dy\right)dx = \frac{33}{140}$
 		\end{enumerate}
 	\end{aufg}
+
+	\begin{einschub}[Terassenpunkte]
+		Jeder Punkt $x_0\in D_f$ (Definitionsbereich) einer Funktion $f:D_f\subset\mathbb{R}^n\to\mathbb{R}$ mit $\nabla f(x_0)=0$ heißt \underline{kritischer Punkt} von f.
+
+		Jeder kritische Punkt, von f, der nicht gleichzeitig ein lokales Extremum ist, heißt \underline{Terassenpunkt} von f.
+
+		Beispiel:
+
+		$f(x,y)=x^2-y^2$	$\frac{\partial f}{\partial x}(x,y)=2x$	$\frac{\partial f}{\partial y}(x,y)=-2y$
+
+		$\to (0,0)$ ist Kandidat
+
+		Hessematrix: $H_f(x,y)=\begin{pmatrix}2 & 0 \\ 0 & -2\end{pmatrix}$ $\begin{vmatrix}2 & 0 \\ 0 & -2\end{vmatrix}\underline{\underline{-4<0}}$
+
+		\begin{tikzpicture}
+			\begin{axis}
+				[
+					xlabel=x,
+					ylabel=y,
+					zlabel=z,
+				]
+				\addplot3[surf] {x^2-y^2};
+			\end{axis}
+		\end{tikzpicture}
+	\end{einschub}
+	
+	\begin{aufg}
+		Berechnen Sie den Flächeninhalt des Dreiecks mit den Eckpunkten (2,2),(0,3),(1,0)
+
+		\begin{tikzpicture}
+			\begin{axis}
+				[
+					xlabel=x,
+					ylabel=y,
+				]
+				\addplot coordinates {(2,2) (0,3) (1,0) (2,2)};
+				\draw (1,3) -- (1,0);
+			\end{axis}
+		\end{tikzpicture}
+	\end{aufg}
+
+	\begin{aufg}
+		Berechnen Sie den Inhalt der Fläche, die von den Funktionen $f_1(x)=x^2-1$ und $f_2(x)=3x+3$ begrenzt wird.
+
+		\begin{tikzpicture}
+			\begin{axis}
+				[
+					xlabel=x,
+					ylabel=y,
+					xmin=-2,
+					xmax=5,
+				]
+				\addplot[mark=none,samples=200] {(x^2)-1};
+				\addplot[mark=none,samples=200] {3*x+3};
+			\end{axis}
+		\end{tikzpicture}
+	\end{aufg}
+
+	\begin{aufg}
+		Berechnen Sie $\int_0^\infty x_1 x_2 \cdot e^{-x_1 x_2}dx_1,x_2>0$
+		\[\lim_{c\to\infty} \int_0^C\]
+	\end{aufg}
+
+	\section{Dreidimensionale Integralrechnung}
+
+	\begin{satz}
+		Es seien $U\subset\mathbb{R}^3$ eine beschränkte und konvexe Menge und $f:U\to\mathbb{R}$ eine stetige Funktion. Weiterhin sei a der in U kleinste vorkommende x-Wert und b der größte.
+
+		Für $x\in[a;b]$ bezeichnen wir den kleinsten y-Wert, für den es ein z gibt, sodass $(x,y,z)\in U$ gilt, mit $y_u(x)$, und den größten mit $y_o(x)$.
+
+		Schließlich bezeichnen wir für zulässiges (x,y) mit $z_u(x,y)$ den kleinsten z-Wert, sodass $(x,y,z)\in U$, und mit $z_o(x,y)$ den größten z-Wert. Dann ist
+		\[\iiint_U f(x,y,z)dxdydz=\int_a^b \left(\int_{y_u(x)}^{y_o(x)} \left(\int_{z_u(x,y)}^{z_o(x,y)} f(x,y,z)dz\right)dy\right)dx\]
+	\end{satz}
+
+	\begin{beispiel}
+		\begin{enumerate}
+			\item $U=[-1;1]\times[0,1]\times[0,2]$
+			
+			$f(x,y,z)=x^2+y^2+z^2$
+
+			\item $U=\{(x,y,z):x,y,z \ge 0,x \le 1,y \le x,z \le y\}$
+			
+			$f(x,y,z)=x\cdot y^2 \cdot z$
+			
+			\begin{tikzpicture}
+				\begin{axis}
+					[
+						xlabel=x,
+						ylabel=y,
+						zlabel=z,
+						width=5cm,
+					]
+					\addplot3 coordinates {(0,0,0) (1,1,0) (1,0,0) (0,0,0)};
+					\addplot3 coordinates {(1,0,0) (1,1,0) (1,1,1) (1,0,0)};
+					\addplot3 coordinates {(0,0,0) (1,1,0) (1,1,1) (0,0,0)};
+				\end{axis}
+			\end{tikzpicture}
+		\end{enumerate}
+	\end{beispiel}
+
+
 \end{document}          
