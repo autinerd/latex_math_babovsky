@@ -1111,7 +1111,11 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 	\end{defi}
 
 	\begin{einschub}[Klausurtestaufgabe]
-		Gegeben seien die Funktionen f,g durch $g(x,y)=(x+y,x^2-y,2xy),\ f(x,y,z)=(\sin(x),\sin(y+z))$
+		Gegeben seien die Funktionen f,g durch $g(x,y)=\begin{pmatrix}
+			x+y \\ x^2-y \\ 2xy
+		\end{pmatrix},\ f(x,y,z)=\begin{pmatrix}
+			\sin(x) \\ \sin(y+z)
+		\end{pmatrix}$
 
 		Berechnen Sie die Jacobi-Matrix von $f\circ g$ mit Hilfe der Kettenregel: $D(f\circ g)(x,y)=Df(g(x,y))\cdot Dg(x,y)$.
 
@@ -1127,5 +1131,9 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 			1 & 1 \\
 			2x & -1 \\
 			2y & 2x\end{pmatrix}\]
+		\[D(f\circ g)(x,y)=\begin{pmatrix}
+			\cos(x+y) & \cos(x+y) \\
+			2\cos\alpha(x+y) & \cos\alpha(2x-1) \\
+		\end{pmatrix}\]
 	\end{einschub}
 \end{document}          
