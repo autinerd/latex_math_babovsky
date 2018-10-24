@@ -1090,6 +1090,9 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 		Betrachtet wird eine elastische Feder in Gleichgewichtslage. Wird an den Punkt $P_0$ ein Körper der Masse m angehängt, so hat die Feder zum Zeitpunkt t eine gewisse Auslenkung $y(t)$. Unter Vernachlässigung der Reibung gilt für die Rückstellkraft F der Feder, die auf die Masse m wirkt: $F=-c \cdot y(t)$. Dabei bezeichnet c die Federkonstante.
 
 		Wegen $F=m \cdot y''(t)$ gilt: $m \cdot y''(t)=-c \cdot y(t)$ also $m \cdot y''(t) + c \cdot y(t) = 0$.
+
+		\[\int\frac{dy}{y}=\int xdx \to \ln\left|y\right| = \frac{x^2}{2}+c \]
+		\[\to |y(x)| = e^{\frac{x^2}{2}+c}=e^{\frac{x^2}{2}}\cdot \underbrace{e^c}_{c_1}\ ,c_1\in\mathbb{R}\]
 	\end{beispiel}
 
 	\section{Trennung der Variablen}
@@ -1100,4 +1103,10 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 
 		$y'=\frac{dy}{dx} \to \frac{dx}{dy}=xy \to_{y \ne 0} \frac{dy}{y}=xdx$
 	\end{beispiel}
+
+	\begin{defi}[Differentialgleichungen mit getrennten Variablen]
+		Es seien $\mathcal{I},\mathcal{J}\subset\mathbb{R}$ offene Intervalle, $f:\mathcal{I}\to\mathbb{R}$ und $g:\mathcal{J}\to\mathbb{R}$ stetige Funktionen und $g(y)\ne0$ für alle $y\in\mathcal{J}$. Dann heißt die Differentialgleichung $y'=f(x)\cdot g(y)$ eine Differentialgleichung mit getrennten Variablen.
+
+		Auf diese Differentialgleichung lässt sich das gleiche Verfahren anwenden wie in Beispiel 3.2.1. Es kann eine allgemeine Lösungsformel abgeleitet werden.
+	\end{defi}
 \end{document}          
