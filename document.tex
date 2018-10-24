@@ -1116,5 +1116,16 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 		Berechnen Sie die Jacobi-Matrix von $f\circ g$ mit Hilfe der Kettenregel: $D(f\circ g)(x,y)=Df(g(x,y))\cdot Dg(x,y)$.
 
 		\underline{Hinweis}: Zur Berechnung von $Df(g(x,y))$ berechnen Sie zunächst $Df(x,y,z)$ und setzen Sie anschließend den Ergebnisvektor von g(x,y) ein.
+
+		\[Df(x,y,z)=\begin{pmatrix}
+			\cos(x) & 0 & 0 \\
+			0 & \cos(y+z) & \cos(y+z) \\\end{pmatrix}\]
+		\[Df(x+y,x^2-y,2xy)=\begin{pmatrix}
+				\cos(x+y) & 0 & 0 \\
+				0 & \cos(x^2-y+2xy) & \cos(x^2-y+2xy) \\\end{pmatrix}\]
+		\[Dg(x,y)=\begin{pmatrix}
+			1 & 1 \\
+			2x & -1 \\
+			2y & 2x\end{pmatrix}\]
 	\end{einschub}
 \end{document}          
