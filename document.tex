@@ -965,31 +965,50 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 					ylabel=y,
 				]
 				\addplot coordinates {(2,2) (0,3) (1,0) (2,2)};
-				\draw (1,3) -- (1,0);
+				\draw (1,4) -- (1,-1);
 			\end{axis}
 		\end{tikzpicture}
+
+		$f_1(x) = -3x+3$
+
+		$f_2(x) = 2x-2$
+
+		$f_3(x) = -\frac{1}{2}x+3$
+
+		$U_1=\left\{(x,y): 0 \le x \le 1, f_1(x) \le y \le f_3(x) \right\}$
+
+		$U_2=\left\{(x,y): 1 \le x \le 2, f_2(x) \le y \le f_3(x) \right\}$
+
+		$$\int_0^1\left(\int_{f_1(x)}^{f_3(x)} 1dy\right)dx + \int_1^2\left(\int_{f_2(x)}^{f_3(x)} 1dy\right)dx$$
 	\end{aufg}
 
 	\begin{aufg}
 		Berechnen Sie den Inhalt der Fläche, die von den Funktionen $f_1(x)=x^2-1$ und $f_2(x)=3x+3$ begrenzt wird.
-
+		\\
 		\begin{tikzpicture}
 			\begin{axis}
 				[
 					xlabel=x,
 					ylabel=y,
-					xmin=-2,
-					xmax=5,
+					xmin=-1.5,
+					xmax=4.5,
+					ymax=16,
+					ymin=-2,
 				]
 				\addplot[mark=none,samples=200] {(x^2)-1};
 				\addplot[mark=none,samples=200] {3*x+3};
 			\end{axis}
 		\end{tikzpicture}
+
+		$$\int_{-1}^4 \left(\int_{x^2-1}^{3x+3} 1dy\right)dx$$
 	\end{aufg}
 
 	\begin{aufg}
-		Berechnen Sie $\int_0^\infty x_1 x_2 \cdot e^{-x_1 x_2}dx_1,x_2>0$
-		\[\lim_{c\to\infty} \int_0^C\]
+		Berechnen Sie $\int_0^\infty x_1 x_2 \cdot e^{-x_1 x_2}dx_1,\ x_2>0$
+		\[\lim_{c\to\infty} \int_0^C x_1 x_2 \cdot e^{-x_1 x_2}dx_1\]
+		\[\lim_{c\to\infty} \left(e^{-cx_2}\left(-c-\frac{1}{x_2}\right)+\frac{1}{x_2} \right)\]
+		\[\lim_{c\to\infty} -\frac{c}{e^{cx_2}}=\lim_{c\to\infty} -\frac{1}{x_2e^{cx_2}}=0 \]
+		\[\int_0^\infty x_1 x_2 \cdot e^{-x_1 x_2}dx_1=\frac{1}{x_2}\]
 	\end{aufg}
 
 	\section{Dreidimensionale Integralrechnung}
@@ -1009,6 +1028,8 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 			
 			$f(x,y,z)=x^2+y^2+z^2$
 
+			$$\int_{-1}^1 \left(\int_0^1 \left(\int_0^2 x^2+y^2+z^2dz \right)dy \right)dx$$
+
 			\item $U=\{(x,y,z):x,y,z \ge 0,x \le 1,y \le x,z \le y\}$
 			
 			$f(x,y,z)=x\cdot y^2 \cdot z$
@@ -1019,15 +1040,64 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 						xlabel=x,
 						ylabel=y,
 						zlabel=z,
-						width=5cm,
+						width=10cm,
+						zmin=0,
+						zmax=1,
 					]
-					\addplot3 coordinates {(0,0,0) (1,1,0) (1,0,0) (0,0,0)};
-					\addplot3 coordinates {(1,0,0) (1,1,0) (1,1,1) (1,0,0)};
-					\addplot3 coordinates {(0,0,0) (1,1,0) (1,1,1) (0,0,0)};
+					\addplot3[fill=blue!80,opacity=0.8] coordinates {(0,0,0) (1,1,0) (1,0,0) (0,0,0)};
+					
+					\addplot3[fill=red!80,opacity=0.8] coordinates {(0,0,0) (1,1,0) (1,1,1) (0,0,0)};
+					\addplot3[fill=orange!50!black,opacity=0.7] coordinates {(1,0,0) (1,1,0) (1,1,1) (1,0,0)};
+					\addplot3[fill=red!80,opacity=0.8] coordinates {(0,0,0) (1,1,1) (1,0,0) (0,0,0)};
 				\end{axis}
 			\end{tikzpicture}
+			$$\int_0^1 \left(\int_0^x \left(\int_0^y xy^2zdz \right)dy \right)dx=\frac{1}{70}$$
 		\end{enumerate}
 	\end{beispiel}
+	\begin{einschub}[Geometrische Betrachtungen zur Tangentialebene]
+		Die Rolle, \\
+		die die Kurventangente bei einer Funktion von einer Variablen spielt, übernimmt die sogenannte Tangentialebene bei einer Funktion von zwei Variablen $z=f(x,y)$. Sie enthält sämtliche im Flächenpunkt $P=(x_0,y_0,z_0)$ an die Bildfläche von $z=f(x,y)$ angelegten Tangenten. In der unmittelbaren Umgebung ihres Berührungspunktes P besitzen Fläche und Tangentialebene im Allgemeinen keinen weiteren gemeinsamen Punkt.
 
+		Herleitung der Funktionsgleichung dieser Tangentialebene in der Form: $z=ax+by+c$
 
+		Die unbekannten Koeffizienten $a,b,c$ werden aus den bekannten Eigenschaften der Tangentialebene bestimmt.
+
+		Fläche und Tangentialebene besitzen im Berührungspunkt P die gleiche Steigung. Das bedeutet, dass dort die entsprechenden partiellen Ableitungen erster Ordnung über\-ein\-stimmen müssen. Die partiellen Ableitungen der Tangentialebene sind $z_x(x,y)=a$ und $z_y(x,y)=b$, die der Funktion $z=f(x,y)$ lauten $z_x(x,y)=f_x(x,y)$ und $z_y(x,y)=f_y(x,y)$. An der Berührungsstelle $(x_0,y_0)$ gilt demnach: $a=f_x(x_0,y_o)$ und $b=f_y(x_0,y_0)$.
+
+		Somit sind die Koeffizienten a und b bestimmt.
+
+		Außerdem ist P ein gemeinsamer Punkt von Fläche und Tangentialebene: $z_0=ax_0+by_0+c \to c=z_0-ax_0-by_0$
+
+		Einsetzen in die Gleichung für die Tangentialebene:
+
+		$z=ax+by+z_0-ax_0-by_0 = a(x-x_0)+b(y-y_0)+z_0=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0)+f(x_0,y_0)$
+	\end{einschub}
+
+	\chapter{Differentialgleichungen}
+	\section{Einführung}
+
+	\begin{defi}[Gewöhnliche Differentialgleichungen]
+		Eine Gleichung der
+		\\
+		Form $F(x,y,y',y'',\dots,y^{(n)})=0$ für eine unbekannte Funktion $y=f(x)$ und deren Ableitungen heißt \underline{gewöhnliche Differentialgleichung n-ter Ordnung}.
+	\end{defi}
+
+	\begin{bemerkung}
+		Neben gewöhnlichen Differentialgleichungen gibt es auch partielle Differentialgleichungen, diese werden aber in dieser Vorlesung nicht behandelt.
+	\end{bemerkung}
+
+	\begin{beispiel}
+		Betrachtet wird eine elastische Feder in Gleichgewichtslage. Wird an den Punkt $P_0$ ein Körper der Masse m angehängt, so hat die Feder zum Zeitpunkt t eine gewisse Auslenkung $y(t)$. Unter Vernachlässigung der Reibung gilt für die Rückstellkraft F der Feder, die auf die Masse m wirkt: $F=-c \cdot y(t)$. Dabei bezeichnet c die Federkonstante.
+
+		Wegen $F=m \cdot y''(t)$ gilt: $m \cdot y''(t)=-c \cdot y(t)$ also $m \cdot y''(t) + c \cdot y(t) = 0$.
+	\end{beispiel}
+
+	\section{Trennung der Variablen}
+	\begin{beispiel}
+		Gegeben sei die Gleichung $y'=xy$.
+
+		Gesucht ist die Funktion y(x).
+
+		$y'=\frac{dy}{dx} \to \frac{dx}{dy}=xy \to_{y \ne 0} \frac{dy}{y}=xdx$
+	\end{beispiel}
 \end{document}          
