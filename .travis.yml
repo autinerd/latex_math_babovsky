@@ -2,8 +2,8 @@ sudo: required
 dist: trusty
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended xzdec
-- tlmgr option repository ftp://tug.org/historic/systems/texlive/2017/tlnet-final/
 - tlmgr init-usertree
+- tlmgr option repository ftp://tug.org/historic/systems/texlive/2017/tlnet-final/
 - tlmgr install babel-ngerman
 script:
 - mkdir _build
