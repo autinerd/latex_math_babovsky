@@ -692,7 +692,7 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 \begin{aufg}
 	Papula S.332 zu Abschnitt 2 $\to$ Aufg. 24
 	
-	\begin{enumerate}
+	\begin{enumerate}[label=\emph{(\roman*)}]
 		\item $f(x_1,x_2)=x_1^2(1-x_2)-x_2^3+12x_2+13$
 		\item $f(x_1,x_2)={(x_1-1)}^2(1-x_2)-x_2^3+12x_2+3$
 		\item $f(x_1,x_2)=4(x_1^2-25)(x_2-2)+5x_2^2+12x_2$
@@ -780,7 +780,7 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 	\end{satz}
 
 	\begin{beispiel}
-		\begin{enumerate}
+		\begin{enumerate}[label=\emph{(\roman*)}]
 
 			\item $U=\{(x,y):x \in [0,1], y \in [0,2]\}$ und $f:U\to\mathbb{R}$ mit $f(x,y)=x^2+y^2$
 
@@ -888,7 +888,7 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 	\begin{aufg}
 		$f:U\to\mathbb{R}$ mit $f(x,y)=x^2+y$
 
-		\begin{enumerate}
+		\begin{enumerate}[label=\emph{(\roman*)}]
 			\item $U=\{(x,y):1 \leq x \leq 2, 2 \leq y \leq 3\}$
 			
 			\begin{tikzpicture}
@@ -1023,7 +1023,7 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 	\end{satz}
 
 	\begin{beispiel}
-		\begin{enumerate}
+		\begin{enumerate}[label=\emph{(\roman*)}]
 			\item $U=[-1;1]\times[0,1]\times[0,2]$
 			
 			$f(x,y,z)=x^2+y^2+z^2$
@@ -1138,4 +1138,189 @@ Für eine Funktion $f:\mathbb{R}^n\to\mathbb{R}$ gilt:
 
 		Papula S. 519 zu Abschnitt 1 Aufg. 1; S. 520 zu Abschnitt 2 Aufg. 4a+d,5a+c
 	\end{einschub}
+	\stepcounter{section}
+	\stepcounter{section}
+	\section{Lineare Differentialgleichungen}
+	\begin{defi}[Homogene lineare Differentialgleichungen n-ter Ordnung]
+		Es seien $\mathcal{I} \subset \mathbb{R}$ ein Intervall und $a_0,a_1,\dots,a_{n-1};\mathcal{I} \to \mathbb{R}$ stetige Funktionen. Die Gleichung
+		\[y^{(n)}(x) + a_{n-1}(x) \cdot y^{(n-1)}(x) + \cdots + a_1(x) \cdot y'(x) + a_0(x) \cdot y(x) = 0 \]
+		heißt \underline{homogene lineare Differentialgleichung n-ter Ordnung}.
+
+		Ist weiterhin $b:\mathcal{I}\to\mathbb{R}$ eine stetige Funktion, so heißt die Gleichung
+		\[y^{(n)}(x) + a_{n-1}(x) \cdot y^{(n-1)}(x) + \cdots + a_1(x) \cdot y'(x) + a_0(x) \cdot y(x) = b(x) \]
+		\underline{inhomogene lineare Differentialgleichung n-ter Ordnung}.
+	\end{defi}
+
+	\begin{defi}[linear unabhängig]
+		Eine Menge von Funktionen $\{y_1,\dots,y_n\}$ heißt \underline{linear unabhängig}, wenn man keine Funktion aus den anderen linear kombinieren kann, d.h. für eine beliebige Funktion $y_i$ gibt es keine Kombination der Form $y_i(x)=c_1y_1(x)+\cdots+c_{i-1}y_{i-1}(x)+c_{i+1}y_{i+1}(x)+\cdots+c_ny_n(x)$ mit $c_1,\dots,c_n \in \mathbb{R}$.
+
+		Falls man ein $y_i$ aus den anderen Funktionen linear kombinieren kann, heißt die Menge \underline{linear abhängig}.
+	\end{defi}
+
+	\begin{beispiel}
+		Es sei $n=2,y_1(x)=\sin(x),y_2(x)=17\sin(x)$
+
+		Dann ist $\{y_1,y_2\}$ linear abhängig, da für $c=17$ gilt: $y_2=cy_1$.
+	\end{beispiel}
+
+	\begin{satz}[Wronski-Determinante]
+		Es sei $L_H$ die Lösungsmenge einer linearen homogenen Differentialgleichung n-ter Ordnung. Dann gibt es n linear unabhängige Lösungen $y_1,\dots,y_n$ der Differentialgleichung und es gilt: $L_H=\{c_1y_1(x)+\cdots+c_ny_n(x)\}|c_1,\dots,c_n\in\mathbb{R}$.
+
+		Aus den Grundlösungen $y_1,\dots,y_n$ lässt sich also mit Hilfe von Linearkombinationen die gesamte Lösungsmenge berechnen.
+
+		Weiterhin sind n Lösungen $y_1,y_n \in L_H$ genau dann linear unabhängig, wenn für die \underline{Wronski-Determinante} folgendes gilt:
+		\[W(x)=\det\begin{pmatrix}
+			y_1(x) & \cdots & y_n(x) \\
+			y_1'(x) & \cdots & y_n'(x) \\
+			\vdots & \ddots & \vdots \\
+			y_1^{(n-1)}(x) & \cdots & y_n^{(n-1)}(x)
+		\end{pmatrix} \ne 0 \]
+		Dabei genügt schon $W(x) \ne 0$ für ein x.
+	\end{satz}
+
+	\begin{aufg}
+		Berechnen Sie die Wronski-Determinante
+		\begin{enumerate}[label=\emph{(\roman*)}]
+			\item $n=2,y_1(x)=x,y_2(x)=x^2$
+			\item $n=3,y_1(x)=1,y_2(x)=x,y_3(x)=x^2$
+			\item $n=2,y_1(x)=\sin(x),y_2(x)=17\sin(x)$
+		\end{enumerate}
+	\end{aufg}
+
+	\begin{defi}[Fundamentalsystem]
+		Sind die Funktionen $y_1,\dots,y_n$ linear unabhängige Funktionen einer linearen homogenen Differentialgleichung n-ter Ordnung, dann heißt die Menge $\{y_1,\dots,y_n\}$ ein \underline{Fundamentalsystem} der Differentialgleichung.
+	\end{defi}
+
+	\section{Lineare Differentialgleichungen mit konstanten Koeffizienten}
+
+	\begin{defi}[lineare homogene Differentialgleichung mit konstanten Koeffizienten]
+		Die Gleichung $y^{(n)}(x) + a_{n-1} \cdot y^{(n-1)}(x) + \cdots + a_1 \cdot y'(x) + a_0 \cdot y(x) = 0$ mit $a_0,\dots,a_{n-1} \in \mathbb{R}$ heißt \underline{lineare homogene Differentialgleichung mit konstanten Koeffizienten}.
+	\end{defi}
+
+	\begin{bemerkung}
+		Für die Gleichung
+		\[y^{(n)}(x) + a_{n-1} \cdot y^{(n-1)}(x) + \cdots + a_1 \cdot y'(x) + a_0 \cdot y(x) = 0\]
+		wird ein Ansatz verwendet, der eine e-Funktion enthält.
+
+		\underline{Ansatz:} $y(x)=e^{\lambda x},\lambda\in\mathbb{R}$
+
+		Differenzieren und Einsetzen des Ansatzes führt zu: $e^{\lambda x}\underbrace{(\lambda^n+a_{n-1}\lambda^{n-1}+\cdots+a_1\lambda+a_0)}=0$
+		
+		wird 0, falls $\lambda$ eine Nullstelle des Polynoms $P(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$ ist.
+	\end{bemerkung}
+
+	\begin{defi}[charakteristisches Polynom]
+		Es sei $y^{(n)}(x) + a_{n-1} \cdot y^{(n-1)}(x) + \cdots + a_1 \cdot y'(x) + a_0 \cdot y(x) = 0$ eine homogene lineare Differentialgleichung mit konstanten Koeffizienten.
+
+		Dann heißt das Polynom $P(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$ \underline{charakteristisches Polynom der Differentialgleichung}.
+	\end{defi}
+
+	\begin{satz}
+		Es sei $y^{(n)}(x) + a_{n-1} \cdot y^{(n-1)}(x) + \cdots + a_1 \cdot y'(x) + a_0 \cdot y(x) = 0$ eine homogene lineare Differentialgleichung mit konstanten Koeffizienten und $\lambda \in\mathbb{R}$ eine Nullstelle des charakteristischen Polynoms $P(x)$, dann ist $y(x)=e^{\lambda x}$ eine Lösung der Differentialgleichung.
+	\end{satz}
+
+	\begin{aufg}
+		\begin{enumerate}[label=\emph{(\roman*)}]
+			\item Zu lösen ist: $y''-3y'+2y=0$
+			
+			$P(x)=x^2-3x+2,\lambda_1=1,\lambda_2=2$
+
+			$y_1(x)=e^x,y_2(x)=e^{2x}$
+
+			\item Zu lösen ist $y'''-y''-2y'=0$
+ 		\end{enumerate}
+	\end{aufg}
+
+	\begin{satz}
+		Es sei $y^{(n)}(x) + a_{n-1} y^{(n-1)}(x) + \cdots + a_1 y'(x) + a_0 y(x) = 0$ eine homogene lineare Differentialgleichung mit konstanten Koeffizienten, deren charakteristisches Polynom $P(x)$ n verschiedene reelle Nullstellen $\lambda_1,\dots,\lambda_n$ hat. Dann bilden die Funktionen $y_1(x)=e^{\lambda_1 x},\dots,y_n(x)=e^{\lambda_n x}$ ein Fundamentalsystem der Differentialgleichung. Jede Lösung der Differentialgleichung hat deshalb die Form $y(x)=c_1 \cdot e^{\lambda_1 x} + \cdots + c_n \cdot e^{\lambda_n x}$ mit $c_1,\dots,c_n \in \mathbb{R}$.
+	\end{satz}
+
+	\begin{beispiel}
+		Zu lösen ist $y''-2y'+y=0$
+
+		$P(x)=x^2-2x+1,\lambda_{1,2}=1$
+
+		$y_1(x)=e^x$
+
+		Ansatz für die zweite Lösung: $y_2(x)=x \cdot e^x$
+	\end{beispiel}
+
+	\begin{satz}
+		Es sei $y^{(n)}(x) + a_{n-1} y^{(n-1)}(x) + \cdots + a_1 y'(x) + a_0 y(x) = 0$ eine homogene lineare Differentialgleichung mit konstanten Koeffizienten. Ihr charakteristisches Polynom $P(x)$ habe k reelle Nullstellen $\lambda_1,\dots,\lambda_k$ mit $P(x)={(x-\lambda_1)}^{m_1}{(x-\lambda_2)}^{m_2} \dots {(x-\lambda_k)}^{m_k}$, d.h. $\lambda_j$ ist $m_j$-fache Nullstelle von P. Dann bilden die Funktionen
+		\begin{align*}
+			e^{\lambda_1 x},x \cdot e^{\lambda_1 x},\dots,x^{m_1-1} \cdot e^{\lambda_1 x} \\
+			e^{\lambda_2 x},x \cdot e^{\lambda_2 x},\dots,x^{m_2-1} \cdot e^{\lambda_2 x} \\
+			\vdots \hspace{1cm} \vdots \hspace{1cm} \\
+			e^{\lambda_k x},x \cdot e^{\lambda_k x},\dots,x^{m_k-1} \cdot e^{\lambda_k x}
+		\end{align*}
+		ein Fundamentalsystem der Differentialgleichung.
+	\end{satz}
+
+	\begin{aufg}
+		\begin{enumerate}
+			\begin{enumerate}[label=\emph{(\roman*)}]
+				\item Zu lösen ist $y''''-3y'''+3y''-y'=0$
+				\item Zu lösen ist das folgende Anfangswertproblem:
+				
+				$y''-4y'+4y=0$ mit $y(0)=1,y'(0)=1$
+			\end{enumerate}
+		\end{enumerate}
+	\end{aufg}
+
+	 \begin{bemerkung}
+		 Liegt eine inhomogene Differentialgleichung mit Störfunktion $b(x)$ vor, so kann in einigen Fällen eine geeignete Ansatzfunktion zur Lösung der Differentialgleichung verwendet werden:
+
+		 Liegt zum Beispiel die Störfunktion in der folgenden Form vor
+
+		 $b(x)=a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0$, so kann die folgende Ansatzfunktion verwendet werden:
+
+		 $\alpha_n x^n + \alpha_{n-1} x^{n-1} + \cdots + \alpha_1 x + \alpha_0$
+	 \end{bemerkung}
+
+	 \begin{beispiel}
+		Zu lösen ist $y'''-3y'-2y=4x^2$
+
+		Zunächst homogene Differentialgleichung betrachten: $y'''-3y'-2y=0,P(x)=x^3-3x-2$
+
+		$\lambda_1=-1,\lambda_2=2,\lambda_3=-1$
+
+		Lösung der homogenen Differentialgleichung: $y(x)=c_1xe^{-x}+c_2e^{-x}+c_3e^{2x}$
+
+		Ansatz für die Störfunktion: Da $b(x)=x^2$ ein Polynom 2. Grades ist, wird der Ansatz $\underbrace{\alpha_2x^2+\alpha_1x+\alpha_0}_{y_P}$ verwendet.
+
+		${y_P}'''=0,{y_P}''=2\alpha_2,{y_P}'=2\alpha_2x+\alpha_1$
+
+		$-6\alpha_2x-3\alpha_1-2\alpha_2x^2-\alpha_1x-2\alpha_0=4x^2$
+
+		$x^2\underbrace{(-2\alpha_2)}_4+x\underbrace{(-6\alpha_2-\alpha_1)}_0+\underbrace{(-3\alpha_1-2\alpha_0)}_0=4x^2+0x+0$
+
+		$\alpha_2=-2,\alpha_1=6,\alpha_0=-9$
+
+		Lösung der inhomogenen Differentialgleichung: $y(x)=c_1xe^{-x}+c_2e^{-x}+c_3e^{2x}-2x^2+6x-9,\ x\in\mathbb{R},c_i\in\mathbb{R}$
+	 \end{beispiel}
+
+	 \begin{aufg}
+		 Lösen Sie $y'''-3y'-2y=100\sin(2x)$
+
+		 $b(x)=a \cdot \sin(cx) + b \cdot \sin(cx) \to$ Ansatz: $\alpha \cdot \sin(cx) + \beta \cdot \sin(cx)$
+	 \end{aufg}
+
+	 \section{Differentialgleichungssysteme (DGLS)}
+
+	 \begin{defi}[Differentialgleichungssysteme]
+		 Ein System von m Gleichungen, dass die unbekannten Funktionen $y_1(x),y_2(x),\dots,y_m(x)$ sowie deren Ableitungen ${y_1}'(x),{y_1}''(x),\dots,{y_1}^{(n_1)}(x),\dots,{y_m}'(x),{y_m}''(x),\dots,{y_m}^{(n_m)}(x)$ enthält, heißt \underline{Differentialgleichungssystem}.
+	 \end{defi}
+
+	 \begin{beispiel}
+		 Zu lösen ist das Differentialgleichungssystem
+		 \begin{align*}
+			 {y_1}' &= -2y_1+8y_2\ (*) \\
+			 {y_2}' &= -4y_1+6y_2+10x^2+16x-8\ (**) \\
+		 \end{align*}
+		 Eliminationsmethode:
+
+		 $(*)$ ableiten: ${y_1}'' = -2{y_1}'+8{y_2}'$
+
+		 $(**)$ einsetzen: ${y_1}'' = -2{y_1}'-32y_1+48y_2+80x^2+128x-64$
+	 \end{beispiel}
 \end{document}          
