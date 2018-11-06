@@ -78,17 +78,17 @@
 \begin{bemerkung}
     Die partielle Ableitung der Funktion \(f(x_1,\dots,x_n)\) nach der Komponente \(x_j\) kann wie folgt bezeichnet werden:
     
-    \(f_{x_j}(x_1,\dots,x_n)\) oder \(\frac{\partial f(x_1,\dots,x_n)}{\partial x_j}\)
+    \(f_{x_j}(x_1,\dots,x_n)\) oder \(\pd{f(x_1,\dots,x_n)}{x_j}\)
 \end{bemerkung}
 \begin{beispiel}
     Gesucht sind die partiellen Ableitungen der Funktion
     \(f(x_1,x_2,x_3)=x_3*\sin(x_1^2+x_2)+e^{2x_3}\)
     
-    \[\frac{\partial f}{\partial x_1}(x_1,x_2,x_3)=x_3\cdot\cos(x_1^2+x_2)\cdot2x_1\]
+    \[\dpd{f}{x_1}(x_1,x_2,x_3)=x_3\cdot\cos(x_1^2+x_2)\cdot2x_1\]
     
-    \[\frac{\partial f}{\partial x_2}(x_1,x_2,x_3)=x_3\cdot\cos(x_1^2+x_2)\]
+    \[\dpd{f}{x_2}(x_1,x_2,x_3)=x_3\cdot\cos(x_1^2+x_2)\]
         
-    \[\frac{\partial f}{\partial x_3}(x_1,x_2,x_3)=\sin(x_1^2+x_2)\cdot2e^{2x_3}\]
+    \[\dpd{f}{x_3}(x_1,x_2,x_3)=\sin(x_1^2+x_2)\cdot2e^{2x_3}\]
 \end{beispiel}
 
 \begin{bemerkung}
@@ -98,17 +98,17 @@
 \begin{satz}
 Es seien \(\mathbb{D} \subset \mathbb{R}^2, f:\mathbb{D}->\mathbb{R}\) eine partiell differenzierbare Funktion und \((x_{01},x_{02})\in\mathbb{D}\). Dann lautet die Gleichung der Tangentialebene für den Punkt \((x_{01},x_{02})\):
 
-\[x_3=f(x_{01},x_{02})+\frac{\partial f}{\partial x_1}(x_{01},x_{02})(x_1-x_{01})+\frac{\partial f}{\partial x_2}(x_{01},x_{02})(x_2-x_{02})\]
+\[x_3=f(x_{01},x_{02})+\dpd{f}{x_1}(x_{01},x_{02})(x_1-x_{01})+\dpd{f}{x_2}(x_{01},x_{02})(x_2-x_{02})\]
 
-\[=f(x_{01},x_{02})+\begin{pmatrix} \frac{\partial f}{\partial x_1} (x_{01},x_{02}) & \frac{\partial f}{\partial x_2}(x_{01},x_{02}) \end{pmatrix} \cdot \begin{pmatrix} (x_1-x_{01})\\ (x_2-x_{02}) \end{pmatrix}\]
+\[=f(x_{01},x_{02})+\begin{pmatrix} \dpd{f}{x_1} (x_{01},x_{02}) & \dpd{f}{x_2}(x_{01},x_{02}) \end{pmatrix} \cdot \begin{pmatrix} (x_1-x_{01})\\ (x_2-x_{02}) \end{pmatrix}\]
 \end{satz}
 
 \begin{beispiel}
     Gegeben sei \(f:\mathbb{R}^2\to\mathbb{R}\) durch \(f(x_1,x_2)=\sin(x_1\cdot x_2^2)\)
 
-    \(\frac{\partial f}{\partial x_1}(x_1,x_2)=\cos(x_1\cdot x_2^2)\cdot x_2^2\)
+    \(\pd{f}{x_1}(x_1,x_2)=\cos(x_1\cdot x_2^2)\cdot x_2^2\)
     
-    \(\frac{\partial f}{\partial x_2}(x_1,x_2)=\cos(x_1\cdot x_2^2)\cdot 2x_2 \cdot x_1\)
+    \(\pd{f}{x_2}(x_1,x_2)=\cos(x_1\cdot x_2^2)\cdot 2x_2 \cdot x_1\)
     
     \(\to\) Tangentialebene: \(x_3 = f(x_{01},x_{02}) + \cos(x_1\cdot x_2^2)\cdot x_2^2 \cdot (x_1 - x_{01}) + \cos(x_1\cdot x_2^2)\cdot 2x_2 \cdot x_1 \cdot (x_2 - x_{02})\)
     
@@ -124,9 +124,9 @@ Es seien \(\mathbb{D} \subset \mathbb{R}^2, f:\mathbb{D}->\mathbb{R}\) eine part
     
     \(f(\sqrt[3]{\pi},\sqrt[3]{\pi})=\sin(\sqrt[3]{\pi}\cdot \sqrt[3]{\pi}^2) = 0\)
     
-    \(\frac{\partial f}{\partial x_1}(\sqrt[3]{\pi},\sqrt[3]{\pi})=\cos(\sqrt[3]{\pi}\cdot \sqrt[3]{\pi}^2)\cdot \sqrt[3]{\pi}^2 = -\pi^{\frac{2}{3}}\)
+    \(\pd{f}{x_1}(\sqrt[3]{\pi},\sqrt[3]{\pi})=\cos(\sqrt[3]{\pi}\cdot \sqrt[3]{\pi}^2)\cdot \sqrt[3]{\pi}^2 = -\pi^{\frac{2}{3}}\)
     
-    \(\frac{\partial f}{\partial x_2}(\sqrt[3]{\pi},\sqrt[3]{\pi})=\cos(\sqrt[3]{\pi}\cdot \sqrt[3]{\pi}^2)\cdot 2\sqrt[3]{\pi} \cdot \sqrt[3]{\pi} = -2\pi^{\frac{2}{3}}\)
+    \(\pd{f}{x_2}(\sqrt[3]{\pi},\sqrt[3]{\pi})=\cos(\sqrt[3]{\pi}\cdot \sqrt[3]{\pi}^2)\cdot 2\sqrt[3]{\pi} \cdot \sqrt[3]{\pi} = -2\pi^{\frac{2}{3}}\)
     
     \(x_3 = 0 + \begin{pmatrix}-\pi^{\frac{2}{3}} & -2\pi^{\frac{2}{3}}\end{pmatrix} \begin{pmatrix}x_1 - \sqrt[3]{\pi} \\ x_2 - \sqrt[3]{\pi}\end{pmatrix} = -\pi^{\frac{2}{3}} \cdot (x_1 - \sqrt[3]{\pi}) + -2\pi^{\frac{2}{3}} \cdot (x_2 - \sqrt[3]{\pi})\)
     
@@ -135,16 +135,16 @@ Es seien \(\mathbb{D} \subset \mathbb{R}^2, f:\mathbb{D}->\mathbb{R}\) eine part
 
 \begin{beispiel}
     Gegeben sei \(f:\mathbb{R}^2\to\mathbb{R}\) durch \(f(x_1,x_2)=\left| x_1 \right| + x_2\)
-    \(\frac{\partial f}{\partial x_2}(x_1,x_2)=1\)
+    \(\pd{f}{x_2}(x_1,x_2)=1\)
     \(\left| x_1 \right|\) ist nur für \(x_1 \neq 0\) differenzierbar, d.h. \(f\) ist nicht auf dem gesamten Definitionsbereich partiell differenzierbar.
 \end{beispiel}
 
 \begin{defi}[Gradient]
     Es sei \(\mathbb{D} \subset \mathbb{R}^n\) und \(f:\mathbb{D} \to \mathbb{R}\) partiell differenzierbar. Dann heißt der Vektor \(\mathrm{grad} f(x) = \begin{pmatrix}
-    \frac{\partial f}{\partial x_1}(x) \\
-    \frac{\partial f}{\partial x_2}(x) \\
+    \dpd{f}{x_1}(x) \\
+    \dpd{f}{x_2}(x) \\
     \vdots \\
-    \frac{\partial f}{\partial x_n}(x) \\
+    \dpd{f}{x_n}(x) \\
     \end{pmatrix}\) der Gradient von \(f\) im Punkt \(x\in\mathbb{D}= (x_1,\dots,x_n)\).
 \end{defi}
 
@@ -176,9 +176,9 @@ Es seien \(\mathbb{D} \subset \mathbb{R}^2, f:\mathbb{D}->\mathbb{R}\) eine part
     
     Im Punkt \((0,0)\) existieren die partiellen Ableitungen:
     
-    \[\frac{\partial f}{\partial x_1}(0,0) = \lim_{\Delta x\to0}{\frac{f(0+\Delta x,0)-f(0,0)}{\Delta x}} = 0\]
+    \[\dpd{f}{x_1}(0,0) = \lim_{\Delta x\to0}{\frac{f(0+\Delta x,0)-f(0,0)}{\Delta x}} = 0\]
     
-    \[\frac{\partial f}{\partial x_2}(0,0) = \lim_{\Delta x\to0}{\frac{f(0,0+\Delta x)-f(0,0)}{\Delta x}} = 0\]
+    \[\dpd{f}{x_2}(0,0) = \lim_{\Delta x\to0}{\frac{f(0,0+\Delta x)-f(0,0)}{\Delta x}} = 0\]
     
     Aber \(f\) ist in \((0,0)\) nicht stetig:
     
@@ -206,15 +206,15 @@ Aufgaben:
 \end{enumerate}
 
 \begin{defi}[k-mal partiell differenzierbar]
-    Es sei \(D\subset\mathbb{R}^n,f:D\to\mathbb{R}\) eine partiell differenzierbare Funktion und \(x_0 \in D\). Die Funktion f heißt \\ zweimal \underline{partiell differenzierbar} in \(x_0\), wenn alle partiellen Ableitungen \(\frac{\partial f}{\partial x_i}\) in \(x_0\) wieder partiell differenzierbar sind.
+    Es sei \(D\subset\mathbb{R}^n,f:D\to\mathbb{R}\) eine partiell differenzierbare Funktion und \(x_0 \in D\). Die Funktion f heißt \\ zweimal \underline{partiell differenzierbar} in \(x_0\), wenn alle partiellen Ableitungen \(\pd{f}{x_i}\) in \(x_0\) wieder partiell differenzierbar sind.
 
-    Man schreibt \(\frac{\partial^2 f}{\partial x_j x_i}(x_0)=\frac{\partial}{\partial x_j}\left(\frac{\partial f}{\partial x_i}\right)(x_0)=f_{x_j x_i}(x_0)\)
+    Man schreibt \(\frac{\partial^2 f}{\partial x_j x_i}(x_0)=\pd{}{x_j}\left(\pd{f}{x_i}\right)(x_0)=f_{x_j x_i}(x_0)\)
 
     Dieser Ausdruck heißt dann \underline{zweite partielle Ableitung} von f.
 
     Allgemein heißt f \underline{k-mal partiell differenzierbar}, wennn alle (k-1)-ten partiellen Ableitungen von f wieder partiell differenzierbar sind. Man schreibt:
 
-    \[\frac{\partial f}{\partial x_{ik} \partial x_{i(k-1)} \dots \partial x_{i1}}(x_0) = \frac{\partial}{\partial x_{ik}}\left(\frac{\partial^{k-1} f}{\partial x_{i(k-1)} \dots \partial x_{i1}}\right)(x_0)=f_{x_{ik} \dots x_{i1}}\]
+    \[\dpd{f}{x_{ik} \partial x_{i(k-1)} \dots \partial x_{i1}}(x_0) = \frac{\partial}{\partial x_{ik}}\left(\frac{\partial^{k-1} f}{\partial x_{i(k-1)} \dots \partial x_{i1}}\right)(x_0)=f_{x_{ik} \dots x_{i1}}\]
 \end{defi}
 
 \begin{aufg}
@@ -222,8 +222,8 @@ Aufgaben:
 
     Berechnen Sie alle ersten und zweiten Ableitungen von f und \(\frac{\partial^3 f}{\partial x_1 \partial x_1 \partial x_2}(x_1,x_2)\).
 
-    \[\frac{\partial f}{\partial x_1}(x_1,x_2)=2x_1 \cdot x_2 - x_2^2 \]
-    \[\frac{\partial f}{\partial x_2}(x_1,x_2)=x_1^2 - x_1 \cdot 2x_2 \]
+    \[\dpd{f}{x_1}(x_1,x_2)=2x_1 \cdot x_2 - x_2^2 \]
+    \[\dpd{f}{x_2}(x_1,x_2)=x_1^2 - x_1 \cdot 2x_2 \]
 
     \[\frac{\partial^2 f}{\partial x_1^2}(x_1,x_2)=2x_2 ; \frac{\partial^2 f}{\partial x_2^2}(x_1,x_2)=-2x_1 \]
     \[\frac{\partial^2 f}{\partial x_1x_2}(x_1,x_2)=2x_1-2x_2 ; \frac{\partial^2 f}{\partial x_2x_1}(x_1,x_2)=2x_1-2x_2 \]
@@ -245,11 +245,11 @@ Aufgaben:
 \begin{aufg}
     Berechnen Sie alle ersten und zweiten partiellen Ableitungen der Funktion \(f(x_1,x_2,x_3)=x_3 \cdot \sin(x_1^2+x_2)+e^{2x_3}\) \((x_1,x_2,x_3)\in\mathbb{R}^3\)
 
-    \(\frac{\partial f}{\partial x_1}(x_1,x_2,x_3) = x_3 \cdot 2x_1 \cdot \cos(x_1^2+x_2)\)
+    \(\pd{f}{x_1}(x_1,x_2,x_3) = x_3 \cdot 2x_1 \cdot \cos(x_1^2+x_2)\)
 
-    \(\frac{\partial f}{\partial x_2}(x_1,x_2,x_3) = x_3 \cdot \cos(x_1^2+x_2)\)
+    \(\pd{f}{x_2}(x_1,x_2,x_3) = x_3 \cdot \cos(x_1^2+x_2)\)
 
-    \(\frac{\partial f}{\partial x_3}(x_1,x_2,x_3) = \sin(x_1^2+x_2) + 2e^{2x_3}\)
+    \(\pd{f}{x_3}(x_1,x_2,x_3) = \sin(x_1^2+x_2) + 2e^{2x_3}\)
 
     \(\frac{\partial^2 f}{\partial x_1^2}(x_1,x_2,x_3) = 2x_3 \left(\cos(x_1^2+x_2) - 2x_1^2\sin(x_1^2+x_2)\right)\)
 
@@ -293,13 +293,13 @@ Aufgaben:
 \begin{satz}[Jacobi-Matrix]
     Es sei \(f:\mathbb{D}\to \mathbb{R}^m,\mathbb{D}\subset\mathbb{R}^n\) eine Abbildung und \(x_0\in\mathbb{D}\). Weiterhin sei f in \(x_0\) total differenzierbar mit der Matrix
     \[A=(a_{ij});i=1,\dots,m;j=1,\dots,n \in\mathbb{R}^{m\times n}\]
-    Dann ist f in \(x_0\) stetig und alle Komponentenfunktionen \(f_1,\dots,f_m:\mathbb{R}^n\to\mathbb{R}\) sind in \(x_0\) partiell differenzierbar, wobei gilt: \(a_{ij}=\frac{\partial f_i}{\partial x_j}(x_0)\).
+    Dann ist f in \(x_0\) stetig und alle Komponentenfunktionen \(f_1,\dots,f_m:\mathbb{R}^n\to\mathbb{R}\) sind in \(x_0\) partiell differenzierbar, wobei gilt: \(a_{ij}=\pd{f_i}{x_j}(x_0)\).
     
     \[A=\begin{pmatrix}
-    \frac{\partial f_1}{\partial x_1}(x_0) & \frac{\partial f_1}{\partial x_2}(x_0) & \cdots & \frac{\partial f_1}{\partial x_n}(x_0) \\
-    \frac{\partial f_2}{\partial x_1}(x_0) & \frac{\partial f_2}{\partial x_2}(x_0) & \cdots & \frac{\partial f_2}{\partial x_n}(x_0) \\
+    \dpd{f_1}{x_1}(x_0) & \dpd{f_1}{x_2}(x_0) & \cdots & \dpd{f_1}{x_n}(x_0) \\
+    \dpd{f_2}{x_1}(x_0) & \dpd{f_2}{x_2}(x_0) & \cdots & \dpd{f_2}{x_n}(x_0) \\
     \vdots & \vdots & \ddots & \vdots \\
-    \frac{\partial f_m}{\partial x_1}(x_0) & \frac{\partial f_m}{\partial x_2}(x_0) & \cdots & \frac{\partial f_m}{\partial x_n}(x_0)
+    \dpd{f_m}{x_1}(x_0) & \dpd{f_m}{x_2}(x_0) & \cdots & \dpd{f_m}{x_n}(x_0)
     \end{pmatrix}\]
     
     Die Matrix heißt Funktionalmatrix oder auch Jacobi-Matrix von f und wird mit \(Df(x_0)\) oder \(J_f(x_0)\) bezeichnet.
@@ -377,21 +377,21 @@ Gegeben sei die Funktion \(f:\mathbb{R}^2\to\mathbb{R}^3\) durch
 Sei \(f:\mathbb{R}^2\to\mathbb{R}\) eine total differenzierbare Funktion. Dann kann f in der Nähe eines Punktes \((x_{01},x_{02})\in\mathbb{R}^2\) durch \(f(x_{01},x_{02})+Df(x_{01},x_{02})\begin{pmatrix}x_1-x_{01} \\ x_2-x_{02}\end{pmatrix}\) angenähert werden.
 
     Es gilt also \(f(x_1,x_2)=f(x_{01},x_{02})+\begin{pmatrix}
-        \frac{\partial f}{\partial x_1}(x_{01},x_{02}) & \frac{\partial f}{\partial x_2}(x_{01},x_{02})\end{pmatrix}\begin{pmatrix}
+        \dpd{f}{x_1}(x_{01},x_{02}) & \dpd{f}{x_2}(x_{01},x_{02})\end{pmatrix}\begin{pmatrix}
             x_1-x_{01} \\ x_2-x_{02}
         \end{pmatrix}\)
 
-\[f(x_1,x_2)-f(x_{01},x_{02})\approx\frac{\partial f}{\partial x_1}(x_{01},x_{02})\cdot\underbrace{(x_1-x_{01})}_{=:\Delta x_1} + \frac{\partial f}{\partial x_2}(x_{01},x_{02})\cdot\underbrace{(x_2-x_{02})}_{=:\Delta x_2}\]
+\[f(x_1,x_2)-f(x_{01},x_{02})\approx\dpd{f}{x_1}(x_{01},x_{02})\cdot\underbrace{(x_1-x_{01})}_{=:\Delta x_1} + \dpd{f}{x_2}(x_{01},x_{02})\cdot\underbrace{(x_2-x_{02})}_{=:\Delta x_2}\]
 
-also gilt: \(\Delta f\approx \frac{\partial f}{\partial x_1}\cdot\Delta x_1 + \frac{\partial f}{\partial x_2}\cdot\Delta x_2\)
+also gilt: \(\Delta f\approx \pd{f}{x_1}\cdot\Delta x_1 + \pd{f}{x_2}\cdot\Delta x_2\)
 
 Für \enquote{beliebig kleines} \(\Delta x_1\) und \(\Delta x_2\) schreiben wir \enquote{d} statt \enquote{\(\Delta\)} und \enquote{=} statt \enquote{\(\approx\)}.
 
-\[\boxed{df = \frac{\partial f}{\partial x_1}(x_{01},x_{02})\cdot dx_1 + \frac{\partial f}{\partial x_2}(x_{01},x_{02})\cdot dx_2} \]
+\[\boxed{df = \dpd{f}{x_1}(x_{01},x_{02})\cdot dx_1 + \dpd{f}{x_2}(x_{01},x_{02})\cdot dx_2} \]
 Diesen Ausdruck bezeichnet man als \underline{totales Differenzial} der Funktion f.
 
 Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
-\[\boxed{df = \frac{\partial f}{\partial x_1}\cdot dx_1 + \frac{\partial f}{\partial x_2}\cdot dx_2 + \cdots + \frac{\partial f}{\partial x_2}\cdot dx_n}\]
+\[\boxed{df = \dpd{f}{x_1}\cdot dx_1 + \dpd{f}{x_2}\cdot dx_2 + \cdots + \dpd{f}{x_2}\cdot dx_n}\]
 \end{defi}
 
 \begin{bemerkung}
@@ -403,8 +403,8 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
 
     Was passiert wenn wir leicht von dem Wert abweichen?
 
-    \[\frac{\partial f}{\partial x_1}=2x_1+\cos(x_1\cdot x_2)x_2\]
-    \[\frac{\partial f}{\partial x_2}=\cos(x_1 \cdot x_2)x_1\]
+    \[\dpd{f}{x_1}=2x_1+\cos(x_1\cdot x_2)x_2\]
+    \[\dpd{f}{x_2}=\cos(x_1 \cdot x_2)x_1\]
 
     \(df=2\sqrt{\pi}+\cos(\pi)\cdot\sqrt{\pi}\cdot(x_1-\sqrt{\pi})+\cos(\pi)\cdot\sqrt{\pi}\cdot(x_2-\sqrt{\pi}) \)
     \(df=\sqrt{\pi}\cdot dx_1+(-\sqrt{\pi})\cdot dx_2\)
@@ -417,7 +417,7 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
 \begin{bemerkung}
     Durch Einsetzen der Maximalen absoluten Fehler und Bilden der Beträge ergibt sich der (lineare) maximale absolute Fehler:
 
-    \[\left|\Delta f\right|\approx \left|\frac{\partial f}{\partial x_1}(x_1,\dots,x_n)\right|\cdot\left|\Delta x_1\right|+\cdots+\left|\frac{\partial f}{\partial x_n}(x_1,\dots,x_n)\right|\cdot\left|\Delta x_n\right|\]
+    \[\left|\Delta f\right|\approx \left|\dpd{f}{x_1}(x_1,\dots,x_n)\right|\cdot\left|\Delta x_1\right|+\cdots+\left|\dpd{f}{x_n}(x_1,\dots,x_n)\right|\cdot\left|\Delta x_n\right|\]
 \end{bemerkung}
 
 \begin{aufg}
@@ -456,13 +456,13 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
 \begin{satz}
     Es sei \(U \subset \mathbb{R}^n\) eine offene Menge und \(f:U\to\mathbb{R}\) differenzierbar. Besitzt f in \(x_0\in U\) ein lokales Extremum, so gilt:
     \[\nabla f(x_0)=0,\]
-    d.h. \(\frac{\partial f}{\partial x_1}(x_0)=\cdots=\frac{\partial f}{\partial x_n}(x_0)=0\)
+    d.h. \(\pd{f}{x_1}(x_0)=\cdots=\pd{f}{x_n}(x_0)=0\)
 \end{satz}
 
 \begin{beispiel}
     \(f:\mathbb{R}^2\to\mathbb{R}\)\hspace{1cm}\(f(x_1,x_2)=1-x_1^2-x_2^2\)
     
-    \[\frac{\partial f}{\partial x_1}(x_1,x_2)=-2x_1\hspace{1cm}\frac{\partial f}{\partial x_2}(x_1,x_2)=-2x_2\]
+    \[\dpd{f}{x_1}(x_1,x_2)=-2x_1\hspace{1cm}\dpd{f}{x_2}(x_1,x_2)=-2x_2\]
     
     \(\to x_1=x_2=0\)
     
@@ -946,7 +946,7 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
 
         Beispiel:
 
-        \(f(x,y)=x^2-y^2\)	\(\frac{\partial f}{\partial x}(x,y)=2x\)	\(\frac{\partial f}{\partial y}(x,y)=-2y\)
+        \(f(x,y)=x^2-y^2\)	\(\pd{f}{x}(x,y)=2x\)	\(\pd{f}{y}(x,y)=-2y\)
 
         \(\to (0,0)\) ist Kandidat
 
