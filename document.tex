@@ -1411,5 +1411,11 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
 \section{Polygonzugverfahren von Euler}
 Wenn äquidistante Stützstellen $x_i=x_0+i\cdot h (i=1,...,n)$ verwendet werden, wird die beschriebene Methode $y_{i+1}=y_i+hf(x_i,y_i)$ das Polygonzugverfahren von Euler genannt.
 \\ Algorithmus: (Polygonzugverfahren von Euler) \\
-Gegeben: Schrittweite von $h=\frac{b-a}{n}$ mit $n\in\mathbb{N}$.
+Gegeben: Schrittweite von $h=\frac{b-a}{n}$ mit $n\in\mathbb{N}$.\\
+Berechne für $i=0,...,n-1$\\ $x_{i+1}=x_i+h$ \\$y_{i+1}=y_i+h\cdot f(x_i,y_i)$\\
+\begin{beispiel}
+	Gegeben sei $y'=x\cdot y$ mit $y(0)=1$. \\
+	Exakte Lösung: $y=e^{\frac{1}{2}x^2}$ ($\Delta$).
+	$x_0=0 $
+\end{beispiel}
 \end{document}          
