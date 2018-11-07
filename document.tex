@@ -1271,7 +1271,10 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
                 \item Zu lösen ist \(y''''-3y'''+3y''-y'=0\)
                 \\ Lösung:
                 \(\lambda_1=0  \lambda_2=1 \) (3-fache NST)
-                \(\)
+                \\ \(y_1(x)=e^{0x}=1 \) \\
+                \(y_2(x)=e^{x} \) \\
+                \(y_3(x)=x\cdot e^{x} \) \\
+                 \(y_3(x)=x^2\cdot e^{x} \) \\
                 \item Zu lösen ist das folgende Anfangswertproblem:
                 
                 \(y''-4y'+4y=0\) mit \(y(0)=1,y'(0)=1\)
@@ -1360,7 +1363,18 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
          \(\lambda_{1,2}=2\pm4i \) \\
          \(y_1=\cos(4x)\cdot e^{2x} \) \\
          \(y_2=\sin(4x)\cdot e^{2x} \) (Eulersche Form)\\
-         
+         \(e^{\lambda x}=e^{(2+4i)x}=e^{2x}(\cos(4x)+i\sin(4x)) \) \\
+         Ansatz für die inhomogene Lösung: \\
+         \(y_p=\alpha_2x^2+\alpha_1x+\alpha_0 \) \\
+         \(y_p'=2\alpha_2x+\alpha_1, y_p''=2\alpha_2, y_p'''(x)=0 \) \\
+         Einsetzen in (***) für \(y_1, y_1', y_1''\) \\
+         \( 2\alpha_2-4(2\alpha_2x+\alpha_1)+20(\alpha_2x^2+\alpha_1x+\alpha_0) = 80x^2+128x-64 \) \\
+         Sortieren: \(x^2(20\alpha_2)+x(-8\alpha_2+20\alpha_1)+(2\alpha_2-4\alpha_1+20\alpha_0)\)
+         \\ Koeffizientenvergleich \(20\alpha_2 = 80 \) usw. \\
+         \(\alpha_0=-2 \)\\
+         \(\alpha_1=8 \)\\
+         \(\alpha_2=4 \)\\
+         \( y_1(x)=c_1\cdot\cos(4x)e^{2x}+c_2\cdot\sin(4x)e^{2x}+4x^2+8x-2\) \\ \(x\in\mathbb{R}\) \\ \(c_1,c_2\in\mathbb{R}\)
          
          
      \end{beispiel}
