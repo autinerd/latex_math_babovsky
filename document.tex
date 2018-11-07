@@ -1449,4 +1449,8 @@ Skizzieren sie den Vergleich zwischen $y(x)$ und $y_i (h=0,1)$ \\
 $h=0,05$
 \end{beispiel}
 \section{Runge-Kutta-Verfahren}
+Mit der am linken Randpunkt $P_0$ des betreffenden Intervalls berechneten Steigung $f(x_i,y_i)$ wird bis zur Mitte $y_i+\frac{h}{2}$ des Intervalls gegangen. \\
+Dort wird die Steigung im Punkt $P_1(x_i+\frac{h}{2}, y_i+\frac{h}{2}\cdot f(x_i,y_i))$ berechnet, die in der folgenden Form dargestellt werden kann: \\
+$\frac{k_2}{2}=f(x_i+\frac{h}{2}, y_i+\frac{k_1}{2})$ mit $k_1=h\cdot f(x_i,y_i)$. \\
+Nun wurd erneut vom linken Randpunkt $P_0$ aus mit der neuen Richtung bis zum Punkt $P_2$ in der Mitte des Intervalls gegangen, dessen Koordinaten $(x_i+\frac{h}{2},y_i+\frac{k_2}{2})$ sind. \\ Mit der in $P_2$ berechneten Steigung $f(x_i+\frac{h}{2},y_i+\frac{k_2}{2})=\frac{k3}{h}$ wird vom linken Randpunkt aus bis zum Punkt $P_3(x_i+h,y_i+k3)$ gegangen, in dem ebenfalls die Steigung $f(x_i+h,y_i+k_3)=\frac{k_4}{h}$ berechnet wird.
 \end{document}          
