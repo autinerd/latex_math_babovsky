@@ -1374,7 +1374,20 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
          \(\alpha_0=-2 \)\\
          \(\alpha_1=8 \)\\
          \(\alpha_2=4 \)\\
-         \( y_1(x)=c_1\cdot\cos(4x)e^{2x}+c_2\cdot\sin(4x)e^{2x}+4x^2+8x-2\) \\ \(x\in\mathbb{R}\) \\ \(c_1,c_2\in\mathbb{R}\)
+         \( y_1(x)=\underbrace{c_1\cdot\cos(4x)e^{2x}+c_2\cdot\sin(4x)e^{2x}}_{\text{Homogone LSG}}+\underbrace{4x^2+8x-2}_{\text{Partikuläre LSG}}\)  (****) \\ \(x\in\mathbb{R}\) \\ \(c_1,c_2\in\mathbb{R}\) \\
+         \(y_2=\frac{1}{8}y_1'+\frac{1}{4}y_1\)\\
+         \(y_1'(x)=-4c_1\cdot\sin(4x)e^{2x}+2c_1\cdot\cos(4x)e^{2x}+4c_2\cdot\cos(4x)e^{2x}+2c_2\cdot\sin(4x)e^{2x}+8x+8 \) \\
+         \(=e^{2x}\cdot\cos(4x)(
+         \frac{1}{2}c_1+\frac{1}{2}c_2
+         )+e^{2x}\cdot\sin(4x)(
+         -\frac{1}{2}c_1+\frac{1}{2}c_2
+         )+x^2+3x+\frac{1}{2} \) \\
+         Vektorschreibweise: \\
+         \(c_1=2D_1\) \\
+         \(c_2=2D_2\) \\
+         \( \vec{y}(x)=\begin{pmatrix}
+         y_1(x) \\ y_2(x)
+         \end{pmatrix}=\begin{pmatrix}2D_1 \\ D_1+D_2 \end{pmatrix}\cdot e^{2x}\cdot\cos(4x) \)\\
          
          
      \end{beispiel}
