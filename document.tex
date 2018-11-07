@@ -1391,6 +1391,7 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
          
          
      \end{beispiel}
+\chapter{Numerische Methoden}
  \section{Numerische Methoden}
  \begin{beispiel}
  	Gegeben ist die DGL mit Anfangsbedingung  \\
@@ -1404,6 +1405,8 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
  	Mit Hilfe der Tangente in $P_0$, die diese Steigung $y_0'$ hat, kann der Punkt $P_1(x_1,y_1)$ bestimmt werden. \\
  	ToDo: Skizze \\
  	Dieser Punkt wird im allgemeinen nicht auf der unbekannten exakten Lösungskurve $y=y(x)$ liegen. Der Näherungswert $y_1$ wird von dem exakten Wert verschieden sein, und zwar im allgemeinen umso mehr, je größer die Schrittweite $h$ gewählt wurde. \\
- 	Da $y'(x)=f(x,y(x))$ gilt und damit $f(x,y(x))$ tenau die Steigung $y'(x)$ der gesuchten exakten Lösung $y(x)$ ist, gilt näherungsweise für $h\neq0$: $\frac{y(x+h)-y(x)}{h}\approx f(x,y(x))$ \\ oder $y(x+h)\approx y(x)+h\cdot f(x,y(x))$. \\ Es gilt also $y_1=y_0+h\cdot y_0'$.
+ 	Da $y'(x)=f(x,y(x))$ gilt und damit $f(x,y(x))$ tenau die Steigung $y'(x)$ der gesuchten exakten Lösung $y(x)$ ist, gilt näherungsweise für $h\neq0$: $\frac{y(x+h)-y(x)}{h}\approx f(x,y(x))$ \\ oder $y(x+h)\approx y(x)+h\cdot f(x,y(x))$. \\ Es gilt also $y_1=y_0+h\cdot y_0'$. \\
+ 	Die Schrittweite $h$ muss nicht fest gewählt werden, es können auch verschiedene Schrittweiten $h_i$ gewählt werden mit $x_{i+1}=x_i+h_i (i=0,...,n-1)$
  \end{beispiel}
+\section{Polygonzugverfahren von Euler}
 \end{document}          
