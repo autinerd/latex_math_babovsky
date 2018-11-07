@@ -1,6 +1,6 @@
 % !TeX encoding = UTF-8
 % chktex-file 21 chktex-file -2 chktex-file 23
-\documentclass[12pt,a4paper]{scrreprt}
+\documentclass[fontset=ubuntu,12pt,a4paper]{scrreprt}
 \usepackage[UTF8]{ctex}
 \usepackage[utf8]{inputenc}
 \usepackage{ntheorem}
@@ -1269,6 +1269,9 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
         \begin{enumerate}
             \begin{enumerate}[label=\emph{(\roman*)}]
                 \item Zu lösen ist \(y''''-3y'''+3y''-y'=0\)
+                \\ Lösung:
+                \(\lambda_1=0  \lambda_2=1 \) (3-fache NST)
+                \(\)
                 \item Zu lösen ist das folgende Anfangswertproblem:
                 
                 \(y''-4y'+4y=0\) mit \(y(0)=1,y'(0)=1\)
@@ -1311,7 +1314,17 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
      \begin{aufg}
          Lösen Sie \(y'''-3y'-2y=100\sin(2x)\)
 
-         \(b(x)=a \cdot \sin(cx) + b \cdot \sin(cx) \to\) Ansatz: \(\alpha \cdot \sin(cx) + \beta \cdot \sin(cx)\)
+         \(b(x)=a \cdot \sin(cx) + b \cdot \sin(cx) \to\) Ansatz: \(\alpha \cdot \sin(cx) + \beta \cdot \sin(cx)\) \\
+         Lösung: \\
+         \( y_p(x)=\alpha\cdot\sin(cx)+\beta\cdot\cos(cx); cx=2 \)
+         \\ Koeffizientenvergleich: \\
+         \(\alpha=-1, \beta=7\) \\
+         \( y(x)=c_1\cdot e^{2x} + c_2\cdot e^{-x} +
+          c_3 \cdot e^{-x} - \sin(2x) + 7\cos(2x); x\in \mathbb{R}, c_i\in \mathbb{R} \) \\
+          \(y(0)=1 \rightarrow 1=c_1\cdot1+0 \rightarrow c_1=1 \) \\
+          \( y'(0)=1 \rightarrow y'(x)=2c_1e^{2x}+c_2e^{2x}+2c_2\cdot x \cdot e^{2x} = 1 \) \\
+          \(c_2\cdot xe^{2x}\) \\
+          \(c_2(1e^{2x}+x\cdot 2e^{2x})\)
      \end{aufg}
 
      \section{Differentialgleichungssysteme (DGLS)}
@@ -1331,6 +1344,24 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
 
          \((*)\) ableiten: \({y_1}'' = -2{y_1}'+8{y_2}'\)
 
-         \((**)\) einsetzen: \({y_1}'' = -2{y_1}'-32y_1+48y_2+80x^2+128x-64\)
+         \((**)\) einsetzen: \({y_1}'' = -2{y_1}'-32y_1+48y_2+80x^2+128x-64\) \\
+         \( y_1'=-2y_1+8y_2 (*) \) \\
+         \(y_2')-4y_1+6y_2+10x^2+16x-8 (**) \) \\
+         \( y_1''=-2y_1+8(-4y_1+6y_2+10x^2+16x-8) \) \\
+         \( =-2y_1'-32y_1+48y_2+80x^2+128x-64  \overline{(*)}' \) \\
+         \( (*) \) umstellen nach \( y_2 \) \\ 
+         \( y_2=\frac{1}{8}y_1'+\frac{1}{4}y_1 \) \\
+         Einsetzen in \( \overline{(*)}' \) \\
+         \( \rightarrow y_1''=-2y_1'=-32y_1+48(\frac{1}{8}y_1'+\frac{1}{4}y_1) + 80x^2+128x-64 \) \\
+         \(y_1'(-2+6)+y_1(-32+12)+89x^2+128x-64 \) \\
+         \(\rightarrow y_1'''-4y_1'+20y_1=80x^2+128x-64 (***) \) \\
+         \(\rightarrow \) homogene DGL \(\rightarrow \) charakteristisches Polynom: \(P(x)=x^2-4x+20 \) \\
+         \(a=0; b=-4;c=20\) \\
+         \(\lambda_{1,2}=2\pm4i \) \\
+         \(y_1=\cos(4x)\cdot e^{2x} \) \\
+         \(y_2=\sin(4x)\cdot e^{2x} \) (Eulersche Form)\\
+         
+         
+         
      \end{beispiel}
 \end{document}          
