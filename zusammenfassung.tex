@@ -214,20 +214,67 @@ a_{21} & \cdots & a_{2k} \\
 a_{k1} & \cdots & a_{kk}
 \end{pmatrix} > 0\) für alle \(k=1,\dots,n\).
 
-A heißt \textbf{negativ definit}, falls -A positiv definit ist.
-\\\\
+A heißt \textbf{negativ definit}, falls -A positiv definit ist.\\
+\textbf{Berechnung der Determinante einer 2x2 Matrix:} \\
 
-\textbf{Berechnung der Determinante einer 2x2 Matrix:} 
 \(\det\begin{pmatrix}
 a & b  \\ c & d
 \end{pmatrix}
-=  a\cdot b - c\cdot b\)
-
+=  (a\cdot d) - (c\cdot b)\)
+\\\\
 \textbf{Berechnung der Determinante einer 3x3 Matrix:} 
-\(\det\begin{pmatrix}
+\begin{align*}
+\det\begin{pmatrix}
 a & b & c  \\ d & e & f \\ g & h & i
-\end{pmatrix}
-=  a \cdot e \cdot i + b \cdot f \cdot g + c \cdot d \cdot h - g\cdot e\cdot c\cdot - h\cdot f\cdot a - i\cdot d\cdot b\)
+\end{pmatrix}=&(a \cdot e \cdot i) + (b \cdot f \cdot g) + (c \cdot d \cdot h)\\
+& - (g \cdot e \cdot c) - (h \cdot f \cdot a) - (i \cdot d \cdot b)
+\end{align*}
+\end{multicols}
+}
+\textbf{Hesse Matrix:}
+Es seien \(U\subset\mathbb{R}^n\) eine offene Menge, \(f:U\to\mathbb{R}\) eine zweimal stetig partiell differenzierbare Funktion und \(x_0\in U\). Unter der \underline{Hesse-Matrix} von f in \(x_0\) versteht man die Matrix: \[H_f(x_0)=\begin{pmatrix}
+\frac{\partial^2 f}{\partial x_1^2}(x_0) & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n}(x_0) \\
+\frac{\partial^2 f}{\partial x_2 \partial x_1}(x_0) & \cdots & \frac{\partial^2 f}{\partial x_2 \partial x_n}(x_0) \\
+\vdots & \ddots & \vdots \\
+\frac{\partial^2 f}{\partial x_n \partial x_1}(x_0) & \cdots & \frac{\partial^2 f}{\partial x_n^2}(x_0) \\
+\end{pmatrix}\]
+
+\textbf{Aussagen über Extremstellen:}
+Es sei \(U\subset\mathbb{R}^n\) eine offene Menge, \(f:U\to\mathbb{R}\) zweimal stetig differenzierbar und \(x_0\in U\) ein Punkt mit \(\nabla f(x_0)=0\).
+\begin{enumerate}
+	\item Ist \(H_f(x_0)\) positiv definit, so hat f in \(x_0\) ein lokales Minimum.
+	\item Ist \(H_f(x_0)\) negativ definit, so hat f in \(x_0\) ein lokales Maximum.
+	\item Ist \(\underline{U\subset\mathbb{R}^2}\) und gilt \(\det H_f(x_0) < 0\), so liegt kein Extremwert vor.
+\end{enumerate}
+
+\textbf{Beispiel:}
+Gegeben sei die Funktion \(f:\mathbb{R}^2\to\mathbb{R}\) durch \(f(x_1,x_2)=\cos(x_1)+\cos(x_2)\)
+
+Gradient: \(\nabla f(x_1,x_2)=\begin{pmatrix}
+-\sin x_1 \\ -\sin x_2
+\end{pmatrix} := \begin{pmatrix}
+0 \\ 0
+\end{pmatrix} \to -\sin x_1 = -\sin x_2 = 0\)
+
+\((k_1\pi,k_2\pi), k_1,k_2\in\mathbb{Z}\)
+{\fontsize{9}{10}\begin{multicols}{2}
+Hesse-Matrix
+
+\(H_f(x_1,x_2)=\begin{pmatrix}
+-\cos x_1 & 0 \\ 0 & -\cos x_2
+\end{pmatrix}\)
+
+\(H_f(k_1\pi,k_2\pi)=\begin{pmatrix}
+-{(-1)}^{k_1} & 0 \\ 0 & -{(-1)}^{k_2} 
+\end{pmatrix}\)
+
+\vspace{1cm}
+\def\arraystretch{1.25}	
+\begin{tabular}{ c | c | c }
+	& \(k_1\) gerade & \(k_1\) ungerade \\ \hline
+	\(k_2\) gerade & lokales Maximum & kein Extremwert \\ \hline
+	\(k_2\) ungerade & kein Extremwert & lokales Minimum \\ 
+\end{tabular}
 \end{multicols}}
 
 
