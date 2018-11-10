@@ -9,6 +9,8 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{commath}
+\usepackage{helvet}
+\usepackage[T1]{fontenc}
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{helvet}
@@ -63,7 +65,12 @@ y=a(b(c(x))) \Rightarrow y'= a'(x) \cdot b'(x) \cdot c'(x)
 
 \textbf{Wichtige Rechnungen:}
 \begin{align*}
-	\ln(1) &=0
+	\ln(1) &=0\\
+	\sin^2(x)+\cos^2(x)&=1\\
+	\sin\left(\frac{\pi}{2}\right) = \sin\left(\frac{3\pi}{2}\right) &=0\\
+	\cos(0) = \cos(\pi) = \cos(2\pi)&=0\\
+	\sin(0) = \sin(\pi) = \sin(2\pi)&=1\\
+	\cos\left(\frac{\pi}{2}\right) = \cos\left(\frac{3\pi}{2}\right) &=1\\
 \end{align*}
 \newpage
 \end{multicols}
@@ -126,7 +133,7 @@ Es sei \(D\subset\mathbb{R}^n,f:D\to\mathbb{R}\) zweimal stetig partiell differe
 
 {\Large\textbf{Totale Differenzierbarkeit}\par}
 \textbf{Vektorfunktion:}
-Eine eindeutige Abbildung \(f:\mathbb{D}\to W,\mathbb{D}\subset\mathbb{R}^n,W\subset\mathbb{R}^m,m>1\) mit mehrdimensionalem Wertebereich heißt \underline{Vektorfunktion}.
+Eine eindeutige Abbildung \(f:\mathbb{D}\to W,\mathbb{D}\subset\mathbb{R}^n,W\subset\mathbb{R}^m,m>1\) mit mehrdimensionalem Wertebereich heißt \textbf{Vektorfunktion}.
      
 \begin{multicols}{2}
 \textbf{Beispiel:}
@@ -152,7 +159,7 @@ Die Matrix heißt Funktionalmatrix oder auch Jacobi-Matrix von f und wird mit \(
 \dpd{f_m}{x_1}(x_0) & \dpd{f_m}{x_2}(x_0) & \cdots & \dpd{f_m}{x_n}(x_0)
 \end{pmatrix}\]
 \end{multicols}
-\textbf{Totale Differenzierbarkeit}
+\textbf{Totale Differenzierbarkeit:}
 Sei \(f:\mathbb{R}^2\to\mathbb{R}\) eine total differenzierbare Funktion. Dann kann f in der Nähe eines Punktes \((x_{01},x_{02})\in\mathbb{R}^2\) durch \(f(x_{01},x_{02})+Df(x_{01},x_{02})\begin{pmatrix}x_1-x_{01} \\ x_2-x_{02}\end{pmatrix}\) angenähert werden.
 
 Es gilt also \(f(x_1,x_2)=f(x_{01},x_{02})+\begin{pmatrix}
@@ -167,10 +174,61 @@ also gilt: \(\Delta f\approx \pd{f}{x_1}\cdot\Delta x_1 + \pd{f}{x_2}\cdot\Delta
 Für \enquote{beliebig kleines} \(\Delta x_1\) und \(\Delta x_2\) schreiben wir \enquote{d} statt \enquote{\(\Delta\)} und \enquote{=} statt \enquote{\(\approx\)}.
 
 \[\boxed{df = \dpd{f}{x_1}(x_{01},x_{02})\cdot dx_1 + \dpd{f}{x_2}(x_{01},x_{02})\cdot dx_2} \]
-Diesen Ausdruck bezeichnet man als \underline{totales Differenzial} der Funktion f.
+Diesen Ausdruck bezeichnet man als \textbf{totales Differenzial} der Funktion f.
 
 Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
 \[\boxed{df = \dpd{f}{x_1}\cdot dx_1 + \dpd{f}{x_2}\cdot dx_2 + \cdots + \dpd{f}{x_2}\cdot dx_n}\]
+
+\textbf{Berechnung linearer maximaler absoluter Fehler:} 
+\[\left|\Delta f\right|\approx \left|\dpd{f}{x_1}(x_1,\dots,x_n)\right|\cdot\left|\Delta x_1\right|+\cdots+\left|\dpd{f}{x_n}(x_1,\dots,x_n)\right|\cdot\left|\Delta x_n\right|\]
+\newpage
+
+
+
+
+
+
+
+{\Large\textbf{Extremwerte}\par}
+
+\textbf{Bestimmung lokales Extremum:} Es sei \(U \subset \mathbb{R}^n\) eine offene Menge und \(f:U\to\mathbb{R}\) differenzierbar. Besitzt f in \(x_0\in U\) ein lokales Extremum, so gilt:
+\(\boxed{\nabla f(x_0)=0}\) d.h. \(\boxed{\pd{f}{x_1}(x_0)=\cdots=\pd{f}{x_n}(x_0)=0}\)\\
+
+\textbf{Definitheit einer Matrix:} 
+Eine Matrix \(A=(a_{ij}), i,j=1,\dots,n \in \mathbb{R}^{n\times n}\) heißt \textbf{positiv definit}, falls gilt:
+{\fontsize{9}{10}
+\begin{multicols}{2}
+\(a_{11}>0,\det\begin{pmatrix}
+a_{11} & a_{12} \\ a_{21} & a_{22}
+\end{pmatrix} > 0, \dots, \det\begin{pmatrix}
+a_{11} & \cdots & a_{1n} \\
+a_{21} & \cdots & a_{2n} \\
+\vdots & \ddots & \vdots \\
+a_{n1} & \cdots & a_{nn}
+\end{pmatrix} > 0\), 
+
+also \(\det\begin{pmatrix}
+a_{11} & \cdots & a_{1k} \\
+a_{21} & \cdots & a_{2k} \\
+\vdots & \ddots & \vdots \\
+a_{k1} & \cdots & a_{kk}
+\end{pmatrix} > 0\) für alle \(k=1,\dots,n\).
+
+A heißt \textbf{negativ definit}, falls -A positiv definit ist.
+\\\\
+
+\textbf{Berechnung der Determinante einer 2x2 Matrix:} 
+\(\det\begin{pmatrix}
+a & b  \\ c & d
+\end{pmatrix}
+=  a\cdot b - c\cdot b\)
+
+\textbf{Berechnung der Determinante einer 3x3 Matrix:} 
+\(\det\begin{pmatrix}
+a & b & c  \\ d & e & f \\ g & h & i
+\end{pmatrix}
+=  a \cdot e \cdot i + b \cdot f \cdot g + c \cdot d \cdot h - g\cdot e\cdot c\cdot - h\cdot f\cdot a - i\cdot d\cdot b\)
+\end{multicols}}
 
 
 
