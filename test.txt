@@ -1,0 +1,20 @@
+        \vspace{2.5em}
+        
+        \begin{tikzpicture}
+            \begin{axis}
+                [
+                    xlabel=x,
+                    ylabel=y,
+                    xmin=2,
+                    ymin=0,
+                    xmax=4,
+                ]
+                \addplot[mark=none,samples=256,domain=2:4] {x^2+0.002*x^6};
+                \addplot[mark=none,samples=256,domain=2:4] {6.17188*x-8.69141};
+                \draw[dashed] (2.5,0) -- (2.5,6.738);
+                \draw[dashed] (3.5,0) -- (3.5,15.927);
+                \draw[dashed] (2,6.738) -- node[above] {\(y_1\)} (2.5,6.738);
+                \draw[dashed] (2,15.927) -- node[above] {\(y_2\)} (3.5,15.927);
+                \draw[<->,color=red] (2.5,2) -- node[above] {\(h\)} (3.5,2);
+            \end{axis}
+        \end{tikzpicture}

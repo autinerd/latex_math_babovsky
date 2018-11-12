@@ -1049,7 +1049,7 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
                         xlabel=x,
                         ylabel=y,
                         zlabel=z,
-                        width=10cm,
+                        width=9.5cm,
                         zmin=0,
                         zmax=1,
                     ]
@@ -1269,12 +1269,19 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
         \begin{enumerate}
             \begin{enumerate}[label=\emph{(\roman*)}]
                 \item Zu lösen ist \(y''''-3y'''+3y''-y'=0\)
-                \\ Lösung:
-                \(\lambda_1=0  \lambda_2=1 \) (3-fache NST)
-                \\ \(y_1(x)=e^{0x}=1 \) \\
-                \(y_2(x)=e^{x} \) \\
-                \(y_3(x)=x\cdot e^{x} \) \\
-                 \(y_3(x)=x^2\cdot e^{x} \) \\
+                
+                Lösung:
+                
+                \(\lambda_1=0, \lambda_2=1 \) (3-fache NST)
+                
+                \(y_1(x)=e^{0x}=1 \)
+
+                \(y_2(x)=e^{x} \)
+                
+                \(y_3(x)=x\cdot e^{x} \)
+                
+                \(y_3(x)=x^2\cdot e^{x} \)
+
                 \item Zu lösen ist das folgende Anfangswertproblem:
                 
                 \(y''-4y'+4y=0\) mit \(y(0)=1,y'(0)=1\)
@@ -1315,142 +1322,212 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
      \end{beispiel}
 
      \begin{aufg}
-         Lösen Sie \(y'''-3y'-2y=100\sin(2x)\)
+        Lösen Sie \(y'''-3y'-2y=100\sin(2x)\)
 
-         \(b(x)=a \cdot \sin(cx) + b \cdot \sin(cx) \to\) Ansatz: \(\alpha \cdot \sin(cx) + \beta \cdot \sin(cx)\) \\
-         Lösung: \\
-         \( y_p(x)=\alpha\cdot\sin(cx)+\beta\cdot\cos(cx); cx=2 \)
-         \\ Koeffizientenvergleich: \\
-         \(\alpha=-1, \beta=7\) \\
-         \( y(x)=c_1\cdot e^{2x} + c_2\cdot e^{-x} +
-          c_3 \cdot e^{-x} - \sin(2x) + 7\cos(2x); x\in \mathbb{R}, c_i\in \mathbb{R} \) \\
-          \(y(0)=1 \rightarrow 1=c_1\cdot1+0 \rightarrow c_1=1 \) \\
-          \( y'(0)=1 \rightarrow y'(x)=2c_1e^{2x}+c_2e^{2x}+2c_2\cdot x \cdot e^{2x} = 1 \) \\
-          \(c_2\cdot xe^{2x}\) \\
-          \(c_2(1e^{2x}+x\cdot 2e^{2x})\)
+        \(b(x)=a \cdot \sin(cx) + b \cdot \sin(cx) \to\) Ansatz: \(\alpha \cdot \sin(cx) + \beta \cdot \sin(cx)\)
+
+        Lösung:
+
+        \( y_p(x)=\alpha \cdot \sin(cx)+\beta \cdot \cos(cx); cx=2 \)
+        
+        Koeffizientenvergleich:
+
+        \(\alpha=-1, \beta=7\)
+
+        \(y(x)=c_1 \cdot e^{2x} + c_2 \cdot e^{-x} + c_3 \cdot e^{-x} - \sin(2x) + 7\cos(2x); x \in \mathbb{R}, c_i \in \mathbb{R} \)
+
+        \(y(0)=1 \to 1=c_1\cdot1+0 \to c_1=1 \)
+
+        \( y'(0)=1 \to y'(x)=2c_1e^{2x}+c_2e^{2x}+2c_2\cdot x \cdot e^{2x} = 1 \)
+
+        \(c_2\cdot xe^{2x}\)
+
+        \(c_2(1e^{2x}+x\cdot 2e^{2x})\)
      \end{aufg}
 
      \section{Differentialgleichungssysteme (DGLS)}
 
      \begin{defi}[Differentialgleichungssysteme]
-         Ein System von m Gleichungen, dass die unbekannten Funktionen \(y_1(x),y_2(x),\dots,y_m(x)\) sowie deren Ableitungen \\
-         \({y_1}'(x),{y_1}''(x),\dots,{y_1}^{(n_1)}(x),\dots,{y_m}'(x),{y_m}''(x),\dots,{y_m}^{(n_m)}(x)\) enthält, heißt \\ \underline{Differentialgleichungssystem}.
+        Ein System von m Gleichungen, dass die unbekannten Funktionen \(y_1(x),y_2(x),\dots,y_m(x)\) sowie deren Ableitungen
+
+        \({y_1}'(x),{y_1}''(x),\dots,{y_1}^{(n_1)}(x),\dots,{y_m}'(x),{y_m}''(x),\dots,{y_m}^{(n_m)}(x)\) enthält, heißt
+        
+        \underline{Differentialgleichungssystem}.
      \end{defi}
 
      \begin{beispiel}
-         Zu lösen ist das Differentialgleichungssystem
-         \begin{align*}
-             {y_1}' &= -2y_1+8y_2\ (*) \\
-             {y_2}' &= -4y_1+6y_2+10x^2+16x-8\ (**) \\
-         \end{align*}
-         Eliminationsmethode:
+        Zu lösen ist das Differentialgleichungssystem
+        \begin{align*}
+            {y_1}' &= -2y_1+8y_2\ (*) \\
+            {y_2}' &= -4y_1+6y_2+10x^2+16x-8\ (**) \\
+        \end{align*}
+        Eliminationsmethode:
 
-         \((*)\) ableiten: \({y_1}'' = -2{y_1}'+8{y_2}'\)
+        \((*)\) ableiten: \({y_1}'' = -2{y_1}'+8{y_2}'\)
 
-         \((**)\) einsetzen: \({y_1}'' = -2{y_1}'-32y_1+48y_2+80x^2+128x-64\) \\
-         \( y_1'=-2y_1+8y_2 (*) \) \\
-         \(y_2')-4y_1+6y_2+10x^2+16x-8 (**) \) \\
-         \( y_1''=-2y_1+8(-4y_1+6y_2+10x^2+16x-8) \) \\
-         \( =-2y_1'-32y_1+48y_2+80x^2+128x-64  \overline{(*)}' \) \\
-         \( (*) \) umstellen nach \( y_2 \) \\ 
-         \( y_2=\frac{1}{8}y_1'+\frac{1}{4}y_1 \) \\
-         Einsetzen in \( \overline{(*)}' \) \\
-         \( \rightarrow y_1''=-2y_1'=-32y_1+48(\frac{1}{8}y_1'+\frac{1}{4}y_1) + 80x^2+128x-64 \) \\
-         \(y_1'(-2+6)+y_1(-32+12)+89x^2+128x-64 \) \\
-         \(\rightarrow y_1'''-4y_1'+20y_1=80x^2+128x-64 (***) \) \\
-         \(\rightarrow \) homogene DGL \(\rightarrow \) charakteristisches Polynom: \(P(x)=x^2-4x+20 \) \\
-         \(a=0; b=-4;c=20\) \\
-         \(\lambda_{1,2}=2\pm4i \) \\
-         \(y_1=\cos(4x)\cdot e^{2x} \) \\
-         \(y_2=\sin(4x)\cdot e^{2x} \) (Eulersche Form)\\
-         \(e^{\lambda x}=e^{(2+4i)x}=e^{2x}(\cos(4x)+i\sin(4x)) \) \\
-         Ansatz für die inhomogene Lösung: \\
-         \(y_p=\alpha_2x^2+\alpha_1x+\alpha_0 \) \\
-         \(y_p'=2\alpha_2x+\alpha_1, y_p''=2\alpha_2, y_p'''(x)=0 \) \\
-         Einsetzen in (***) für \(y_1, y_1', y_1''\) \\
-         \( 2\alpha_2-4(2\alpha_2x+\alpha_1)+20(\alpha_2x^2+\alpha_1x+\alpha_0) = 80x^2+128x-64 \) \\
-         Sortieren: \(x^2(20\alpha_2)+x(-8\alpha_2+20\alpha_1)+(2\alpha_2-4\alpha_1+20\alpha_0)\)
-         \\ Koeffizientenvergleich \(20\alpha_2 = 80 \) usw. \\
-         \(\alpha_0=-2 \)\\
-         \(\alpha_1=8 \)\\
-         \(\alpha_2=4 \)\\
-         \( y_1(x)=\underbrace{c_1\cdot\cos(4x)e^{2x}+c_2\cdot\sin(4x)e^{2x}}_{\text{Homogone LSG}}+\underbrace{4x^2+8x-2}_{\text{Partikuläre LSG}}\)  (****) \\ \(x\in\mathbb{R}\) \\ \(c_1,c_2\in\mathbb{R}\) \\
-         \(y_2=\frac{1}{8}y_1'+\frac{1}{4}y_1\)\\
-         \(y_1'(x)=-4c_1\cdot\sin(4x)e^{2x}+2c_1\cdot\cos(4x)e^{2x}+4c_2\cdot\cos(4x)e^{2x}+2c_2\cdot\sin(4x)e^{2x}+8x+8 \) \\
-         \(=e^{2x}\cdot\cos(4x)(
-         \frac{1}{2}c_1+\frac{1}{2}c_2
-         )+e^{2x}\cdot\sin(4x)(
-         -\frac{1}{2}c_1+\frac{1}{2}c_2
-         )+x^2+3x+\frac{1}{2} \) \\
-         Vektorschreibweise: \\
-         \(c_1=2D_1\) \\
-         \(c_2=2D_2\) \\
-         \( \vec{y}(x)=\begin{pmatrix}
-         y_1(x) \\ y_2(x)
-         \end{pmatrix}=\begin{pmatrix}2D_1 \\ D_1+D_2 \end{pmatrix} e^{2x}\cdot\cos(4x)+\begin{pmatrix}2D_2 \\ -D_1+D_2 \end{pmatrix}e^{2x}\cdot\sin(4x) + \begin{pmatrix}4x^2+8x-2 \\ x^2+3x +\frac{1}{2} \end{pmatrix} \)\\\(x\in\mathbb{R} D_i\in\mathbb{R}\)
-         
-         
+        \((**)\) einsetzen: \({y_1}'' = -2{y_1}'-32y_1+48y_2+80x^2+128x-64\)
+
+        \(y_1'=-2y_1+8y_2\ (*)\)
+
+        \(y_2'-4y_1+6y_2+10x^2+16x-8\ (**)\)
+
+        \( y_1''=-2y_1+8(-4y_1+6y_2+10x^2+16x-8) \)
+
+        \( =-2y_1'-32y_1+48y_2+80x^2+128x-64\ \ \overline{(*)}' \)
+
+        \((*)\) umstellen nach \(y_2\)
+
+        \(y_2=\frac{1}{8}y_1'+\frac{1}{4}y_1\)
+
+        Einsetzen in \( \overline{(*)}' \)
+
+        \( \rightarrow y_1''=-2y_1'=-32y_1+48(\frac{1}{8}y_1'+\frac{1}{4}y_1) + 80x^2+128x-64 \)
+
+        \(y_1'(-2+6)+y_1(-32+12)+89x^2+128x-64 \)
+
+        \(\rightarrow y_1'''-4y_1'+20y_1=80x^2+128x-64\ (***) \)
+
+        \(\to\) homogene DGL \(\to\) charakteristisches Polynom: \(P(x)=x^2-4x+20\)
+
+        \(a=0; b=-4;c=20\)
+
+        \(\lambda_{1,2}=2\pm4i\)
+
+        \(y_1=\cos(4x)\cdot e^{2x}\)
+
+        \(y_2=\sin(4x)\cdot e^{2x}\) (Eulersche Form)
+
+        \(e^{\lambda x}=e^{(2+4i)x}=e^{2x}(\cos(4x)+i\sin(4x)) \)
+
+        Ansatz für die inhomogene Lösung:
+
+        \(y_p=\alpha_2x^2+\alpha_1x+\alpha_0 \)
+
+        \(y_p'=2\alpha_2x+\alpha_1, y_p''=2\alpha_2, y_p'''(x)=0 \)
+
+        Einsetzen in \((***)\) für \(y_1, y_1', y_1''\)
+        
+        \(2\alpha_2-4(2\alpha_2x+\alpha_1)+20(\alpha_2x^2+\alpha_1x+\alpha_0) = 80x^2+128x-64\)
+
+        Sortieren: \(x^2(20\alpha_2)+x(-8\alpha_2+20\alpha_1)+(2\alpha_2-4\alpha_1+20\alpha_0)\)
+
+        Koeffizientenvergleich \(20\alpha_2 = 80 \) usw.
+
+        \(\alpha_0=-2, \alpha_1=8, \alpha_2=4  \)
+        
+        \( y_1(x)=\underbrace{c_1\cdot\cos(4x)e^{2x}+c_2\cdot\sin(4x)e^{2x}}_{\text{Homogone LSG}}+\underbrace{4x^2+8x-2}_{\text{Partikuläre LSG}}\ (****) \)
+        
+        \(x,c_1,c_2\in\mathbb{R}\)
+
+        \(y_2=\frac{1}{8}y_1'+\frac{1}{4}y_1\)
+
+        \(y_1'(x)=-4c_1\cdot\sin(4x)e^{2x}+2c_1\cdot\cos(4x)e^{2x}+4c_2\cdot\cos(4x)e^{2x}+2c_2\cdot\sin(4x)e^{2x}+8x+8 \)
+
+        \(=e^{2x}\cdot\cos(4x)(\frac{1}{2}c_1+\frac{1}{2}c_2)+e^{2x}\cdot\sin(4x)(-\frac{1}{2}c_1+\frac{1}{2}c_2)+x^2+3x+\frac{1}{2} \)
+
+        Vektorschreibweise: \\
+        \(c_1=2D_1\) \\
+        \(c_2=2D_2\) \\
+        \( \vec{y}(x)=\begin{pmatrix}y_1(x) \\ y_2(x)\end{pmatrix} = \begin{pmatrix}2D_1 \\ D_1+D_2\end{pmatrix} e^{2x}\cdot\cos(4x)+\begin{pmatrix}2D_2 \\ -D_1+D_2\end{pmatrix}e^{2x}\cdot\sin(4x) + \begin{pmatrix}4x^2+8x-2 \\ x^2+3x +\frac{1}{2} \end{pmatrix} \)
+        
+        \(x\in\mathbb{R} D_i\in\mathbb{R}\)
      \end{beispiel}
 \chapter{Numerische Methoden}
- \section{Numerische Methoden}
- \begin{beispiel}
- 	Gegeben ist die DGL mit Anfangsbedingung  \\
- 	\(y'=f(x,y), y(x_0)=y_0\) \\
- 	Gesucht ist die Lösung $y(x)$ im Bereich von $x=x_0=a$ bis $x=x_n=b$ die durch den Punkt $P_0(x_0,y_0)$ geht. \\
- 	Das Intervall $\left[a,b\right]$ wird in $n$ Teilintervalle $\left[x_i,x_{i+1}\right]$ unterteilt mit $x_{i+1}=x_i+h, (i=0,1,...,n-1), h=\frac{b-a}{n}$.
- 	\\ ToDo: Grafik \\
- 	Da die Schrittweite $h$ hier immer gleich groß ist, wird von äquidistanten Stützstellen gesprochen. \\
- 	Zunächst wird das Intervall $\left[x_0,x_1\right]$ betrachtet. Die gesuchte Funktion $y(x)$ verläuft durch den Punkt $P_0$. \\
- 	In diesem Punkt hat sie die Steigung $y_0'=f(x_0,y_0)$.\\
- 	Mit Hilfe der Tangente in $P_0$, die diese Steigung $y_0'$ hat, kann der Punkt $P_1(x_1,y_1)$ bestimmt werden. \\
- 	ToDo: Skizze \\
- 	Dieser Punkt wird im allgemeinen nicht auf der unbekannten exakten Lösungskurve $y=y(x)$ liegen. Der Näherungswert $y_1$ wird von dem exakten Wert verschieden sein, und zwar im allgemeinen umso mehr, je größer die Schrittweite $h$ gewählt wurde. \\
- 	Da $y'(x)=f(x,y(x))$ gilt und damit $f(x,y(x))$ tenau die Steigung $y'(x)$ der gesuchten exakten Lösung $y(x)$ ist, gilt näherungsweise für $h\neq0$: $\frac{y(x+h)-y(x)}{h}\approx f(x,y(x))$ \\ oder $y(x+h)\approx y(x)+h\cdot f(x,y(x))$. \\ Es gilt also $y_1=y_0+h\cdot y_0'$. \\
- 	Die Schrittweite $h$ muss nicht fest gewählt werden, es können auch verschiedene Schrittweiten $h_i$ gewählt werden mit $x_{i+1}=x_i+h_i (i=0,...,n-1)$
- \end{beispiel}
+    \section{Numerische Methoden}
+    \begin{beispiel}
+        Gegeben ist die DGL mit Anfangsbedingung \(y'=f(x,y), y(x_0)=y_0\)
+     
+        Gesucht ist die Lösung \(y(x)\) im Bereich von \(x=x_0=a\) bis \(x=x_n=b\) die durch den Punkt \(P_0(x_0,y_0)\) geht.
+
+        Das Intervall \(\left[a,b\right]\) wird in \(n\) Teilintervalle \(\left[x_i,x_{i+1}\right]\) unterteilt mit \(x_{i+1}=x_i+h, (i=0,1,\dots,n-1), h=\frac{b-a}{n}\).
+        
+        %ToDo: Grafik
+
+        Da die Schrittweite \(h\) hier immer gleich groß ist, wird von äquidistanten Stützstellen gesprochen.
+
+        Zunächst wird das Intervall \(\left[x_0,x_1\right]\) betrachtet. Die gesuchte Funktion \(y(x)\) verläuft durch den Punkt \(P_0\).
+
+        In diesem Punkt hat sie die Steigung \(y_0'=f(x_0,y_0)\).
+
+        Mit Hilfe der Tangente in \(P_0\), die diese Steigung \(y_0'\) hat, kann der Punkt \(P_1(x_1,y_1)\) bestimmt werden.
+
+        %ToDo: Skizze
+
+        Dieser Punkt wird im allgemeinen nicht auf der unbekannten exakten Lösungskurve \(y=y(x)\) liegen. Der Näherungswert \(y_1\) wird von dem exakten Wert verschieden sein, und zwar im allgemeinen umso mehr, je größer die Schrittweite \(h\) gewählt wurde.
+
+        Da \(y'(x)=f(x,y(x))\) gilt und damit \(f(x,y(x))\) genau die Steigung \(y'(x)\) der gesuchten exakten Lösung \(y(x)\) ist, gilt näherungsweise für \(h\neq0\): \(\frac{y(x+h)-y(x)}{h}\approx f(x,y(x))\)
+        
+        oder \(y(x+h)\approx y(x)+h\cdot f(x,y(x))\).
+        
+        Es gilt also \(y_1=y_0+h\cdot y_0'\).
+        
+        Die Schrittweite \(h\) muss nicht fest gewählt werden, es können auch verschiedene Schrittweiten \(h_i\) gewählt werden mit \(x_{i+1}=x_i+h_i (i=0,\dots,n-1)\).
+    \end{beispiel}
+
 \section{Polygonzugverfahren von Euler}
-Wenn äquidistante Stützstellen $x_i=x_0+i\cdot h (i=1,...,n)$ verwendet werden, wird die beschriebene Methode $y_{i+1}=y_i+hf(x_i,y_i)$ das Polygonzugverfahren von Euler genannt.
-\\ Algorithmus: (Polygonzugverfahren von Euler) \\
-Gegeben: Schrittweite von $h=\frac{b-a}{n}$ mit $n\in\mathbb{N}$.\\
-Berechne für $i=0,...,n-1$\\ $x_{i+1}=x_i+h$ \\$y_{i+1}=y_i+h\cdot f(x_i,y_i)$\\
+
+Wenn äquidistante Stützstellen \(x_i=x_0+i\cdot h (i=1,\dots,n)\) verwendet werden, wird die beschriebene Methode \(y_{i+1}=y_i+hf(x_i,y_i)\) das Polygonzugverfahren von Euler genannt.
+
+Algorithmus: (Polygonzugverfahren von Euler)
+
+Gegeben: Schrittweite von \(h=\frac{b-a}{n}\) mit \(n\in\mathbb{N}\).
+
+Berechne für \(i=0,\dots,n-1\)
+
+\(x_{i+1}=x_i+h\)
+
+\(y_{i+1}=y_i+h\cdot f(x_i,y_i)\)
+
 \begin{beispiel}
-	Gegeben sei $y'=x\cdot y$ mit $y(0)=1$. \\
-	Exakte Lösung: $y=e^{\frac{1}{2}x^2}$ ($\Delta$).\\
-	$x_0=0 \\ y_0=1 \\ h=0,1$ \\
-	$x_1=x_0+h=0,1 \\ y_1=y_0+h\cdot \underbrace{f(x_0,y_0)}_{x_0\cdot y_0}=1+0,1\cdot 0\cdot 1 = 1$ \\
-	$x_2=x_1+h=0,2 \\ y_2=y_1+h\cdot \underbrace{f(x_1,y_1)}_{x_1\cdot y_1}=1+0,1\cdot 0,1\cdot 1 = 1,01$ \\ \\ $h=0,1$ \\
-	\begin{tabular}{| l | l | l |}
-		$x$ & $y(x)$ & $y_i$ \\
-		\hline
-		$0,0$ & & \\
-		\hline
-		$0,1$ & & \\
-		\hline
-		$0,2$ & & \\
-		\hline
-		$0,3$ & & \\
-		\hline
-		$0,4$ & & \\
-		\hline
-		$0,5$ & & \\
-		\hline
-		$0,6$ & & \\
-		\hline
-		$0,7$ & & \\
-		\hline
-		$0,8$ & & \\
-		\hline
-		$0,9$ & & \\
-		\hline
-		$1,0$ & & \\
-		\hline
-	\end{tabular} \\
-Skizzieren sie den Vergleich zwischen $y(x)$ und $y_i (h=0,1)$ \\
-$h=0,05$
+    Gegeben sei \(y'=x\cdot y\) mit \(y(0)=1\).
+    
+    Exakte Lösung: \(y=e^{\frac{1}{2}x^2}\) (\(\Delta\)).
+
+    \(x_0=0,y_0=1,h=0.1\)
+
+    \(x_1=x_0+h=0.1\)
+    
+    \(y_1=y_0+h\cdot \underbrace{f(x_0,y_0)}_{x_0\cdot y_0}=1+0.1\cdot 0\cdot 1 = 1\)
+
+    \(x_2=x_1+h=0,2\)
+    
+    \(y_2=y_1+h\cdot \underbrace{f(x_1,y_1)}_{x_1\cdot y_1}=1+0.1\cdot 0.1\cdot 1 = 1.01\)
+    
+    \(h=0.1\)
+
+    \begin{tabular}{| l | l | l |}
+        \(x\) & \(y(x)\) & \(y_i\) \\
+        \hline
+        \(0.0\) & & \\
+        \hline
+        \(0.1\) & & \\
+        \hline
+        \(0.2\) & & \\
+        \hline
+        \(0.3\) & & \\
+        \hline
+        \(0.4\) & & \\
+        \hline
+        \(0.5\) & & \\
+        \hline
+        \(0.6\) & & \\
+        \hline
+        \(0.7\) & & \\
+        \hline
+        \(0.8\) & & \\
+        \hline
+        \(0.9\) & & \\
+        \hline
+        \(1.0\) & & \\
+        \hline
+    \end{tabular} \\
+Skizzieren sie den Vergleich zwischen \(y(x)\) und \(y_i (h=0.1)\) \\
+\(h=0.05\)
 \end{beispiel}
+
 \section{Runge-Kutta-Verfahren}
-Mit der am linken Randpunkt $P_0$ des betreffenden Intervalls berechneten Steigung $f(x_i,y_i)$ wird bis zur Mitte $y_i+\frac{h}{2}$ des Intervalls gegangen. \\
-Dort wird die Steigung im Punkt $P_1(x_i+\frac{h}{2}, y_i+\frac{h}{2}\cdot f(x_i,y_i))$ berechnet, die in der folgenden Form dargestellt werden kann: \\
-$\frac{k_2}{2}=f(x_i+\frac{h}{2}, y_i+\frac{k_1}{2})$ mit $k_1=h\cdot f(x_i,y_i)$. \\
-Nun wurd erneut vom linken Randpunkt $P_0$ aus mit der neuen Richtung bis zum Punkt $P_2$ in der Mitte des Intervalls gegangen, dessen Koordinaten $(x_i+\frac{h}{2},y_i+\frac{k_2}{2})$ sind. \\ Mit der in $P_2$ berechneten Steigung $f(x_i+\frac{h}{2},y_i+\frac{k_2}{2})=\frac{k3}{h}$ wird vom linken Randpunkt aus bis zum Punkt $P_3(x_i+h,y_i+k3)$ gegangen, in dem ebenfalls die Steigung $f(x_i+h,y_i+k_3)=\frac{k_4}{h}$ berechnet wird.
+Mit der am linken Randpunkt \(P_0\) des betreffenden Intervalls berechneten Steigung \(f(x_i,y_i)\) wird bis zur Mitte \(y_i+\frac{h}{2}\) des Intervalls gegangen. \\
+Dort wird die Steigung im Punkt \(P_1(x_i+\frac{h}{2}, y_i+\frac{h}{2}\cdot f(x_i,y_i))\) berechnet, die in der folgenden Form dargestellt werden kann: \\
+\(\frac{k_2}{2}=f(x_i+\frac{h}{2}, y_i+\frac{k_1}{2})\) mit \(k_1=h\cdot f(x_i,y_i)\). \\
+Nun wurd erneut vom linken Randpunkt \(P_0\) aus mit der neuen Richtung bis zum Punkt \(P_2\) in der Mitte des Intervalls gegangen, dessen Koordinaten \((x_i+\frac{h}{2},y_i+\frac{k_2}{2})\) sind. \\ Mit der in \(P_2\) berechneten Steigung \(f(x_i+\frac{h}{2},y_i+\frac{k_2}{2})=\frac{k3}{h}\) wird vom linken Randpunkt aus bis zum Punkt \(P_3(x_i+h,y_i+k3)\) gegangen, in dem ebenfalls die Steigung \(f(x_i+h,y_i+k_3)=\frac{k_4}{h}\) berechnet wird.
 \end{document}          
