@@ -1551,7 +1551,7 @@ Skizzieren sie den Vergleich zwischen \(y(x)\) und \(y_i (h=0.1)\)
 Mit der am linken Randpunkt \(P_0\) des betreffenden Intervalls berechneten Steigung \(f(x_i,y_i)\) wird bis zur Mitte \(y_i+\frac{h}{2}\) des Intervalls gegangen. \\
 Dort wird die Steigung im Punkt \(P_1(x_i+\frac{h}{2}, y_i+\frac{h}{2}\cdot f(x_i,y_i))\) berechnet, die in der folgenden Form dargestellt werden kann: \\
 \(\frac{k_2}{2}=f(x_i+\frac{h}{2}, y_i+\frac{k_1}{2})\) mit \(k_1=h\cdot f(x_i,y_i)\). \\
-Nun wurd erneut vom linken Randpunkt \(P_0\) aus mit der neuen Richtung bis zum Punkt \(P_2\) in der Mitte des Intervalls gegangen, dessen Koordinaten \((x_i+\frac{h}{2},y_i+\frac{k_2}{2})\) sind. \\ Mit der in \(P_2\) berechneten Steigung \(f(x_i+\frac{h}{2},y_i+\frac{k_2}{2})=\frac{k3}{h}\) wird vom linken Randpunkt aus bis zum Punkt \(P_3(x_i+h,y_i+k3)\) gegangen, in dem ebenfalls die Steigung \(f(x_i+h,y_i+k_3)=\frac{k_4}{h}\) berechnet wird. \\ Auch mit dieser Steigung wird vpn $P_0$ aus das Intervall mit der Breite $h$ überbrückt bis zum Punkt $P_4$ mit den Koordinaten $(x_i+h,y_i+k_4)$. \\ Damit gibt es vier Richtungen, in denen das Intervall überbrückt werden kann. Die beiden in der Intervallmitte berechneten Steigungen werden bei der Mittelwertbildung mit dem Gewichtsfaktor $2$ berücksichtigt.
+Nun wurd erneut vom linken Randpunkt \(P_0\) aus mit der neuen Richtung bis zum Punkt \(P_2\) in der Mitte des Intervalls gegangen, dessen Koordinaten \((x_i+\frac{h}{2},y_i+\frac{k_2}{2})\) sind. \\ Mit der in \(P_2\) berechneten Steigung \(f(x_i+\frac{h}{2},y_i+\frac{k_2}{2})=\frac{k3}{h}\) wird vom linken Randpunkt aus bis zum Punkt \(P_3(x_i+h,y_i+k3)\) gegangen, in dem ebenfalls die Steigung \(f(x_i+h,y_i+k_3)=\frac{k_4}{h}\) berechnet wird. \\ Auch mit dieser Steigung wird vpn $P_0$ aus das Intervall mit der Breite $h$ überbrückt bis zum Punkt $P_4$ mit den Koordinaten $(x_i+h,y_i+k_4)$. \\ Damit gibt es vier Richtungen, in denen das Intervall überbrückt werden kann. Die beiden in der Intervallmitte berechneten Steigungen werden bei der Mittelwertbildung mit dem Gewichtsfaktor $2$ berücksichtigt. \\ 
 
 \vspace{2.5em}
         
@@ -1598,4 +1598,11 @@ Nun wurd erneut vom linken Randpunkt \(P_0\) aus mit der neuen Richtung bis zum 
         \draw[fill=black] (3.5,22.9643) ellipse[x radius=0.0125,y radius=0.25] node[above left] {$P_4$};
     \end{axis}
 \end{tikzpicture}
+
+\\$$\frac{k_2}{h}=f\left(x_i+\frac{h}{2},y_i+\frac{k_1}{2}\right)$$ (Steigung in $P_1$)
+$$\frac{k_3}{h}=f\left(x_i+\frac{h}{2},y_i+\frac{k_1}{2}\right)$$
+$$k_1=h\cdot f(x_i,y_i)$$ \\ Gesuchter Punkt: $f\left(x_0+\frac{h}{2},y\left(x_0+\frac{h}{2}\right)\right)$
+$$P_3(x_0+h,y_0+k_3)$$
+$$\frac{k_4}{h}=f(x_1,y_0+k_3)$$ 
+Also wird $k=\frac{1}{6}(k_1+2k_2+2k_3+k_4)$
 \end{document}          
