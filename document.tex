@@ -1551,7 +1551,51 @@ Skizzieren sie den Vergleich zwischen \(y(x)\) und \(y_i (h=0.1)\)
 Mit der am linken Randpunkt \(P_0\) des betreffenden Intervalls berechneten Steigung \(f(x_i,y_i)\) wird bis zur Mitte \(y_i+\frac{h}{2}\) des Intervalls gegangen. \\
 Dort wird die Steigung im Punkt \(P_1(x_i+\frac{h}{2}, y_i+\frac{h}{2}\cdot f(x_i,y_i))\) berechnet, die in der folgenden Form dargestellt werden kann: \\
 \(\frac{k_2}{2}=f(x_i+\frac{h}{2}, y_i+\frac{k_1}{2})\) mit \(k_1=h\cdot f(x_i,y_i)\). \\
-Nun wurd erneut vom linken Randpunkt \(P_0\) aus mit der neuen Richtung bis zum Punkt \(P_2\) in der Mitte des Intervalls gegangen, dessen Koordinaten \((x_i+\frac{h}{2},y_i+\frac{k_2}{2})\) sind. \\ Mit der in \(P_2\) berechneten Steigung \(f(x_i+\frac{h}{2},y_i+\frac{k_2}{2})=\frac{k3}{h}\) wird vom linken Randpunkt aus bis zum Punkt \(P_3(x_i+h,y_i+k3)\) gegangen, in dem ebenfalls die Steigung \(f(x_i+h,y_i+k_3)=\frac{k_4}{h}\) berechnet wird.
+Nun wurd erneut vom linken Randpunkt \(P_0\) aus mit der neuen Richtung bis zum Punkt \(P_2\) in der Mitte des Intervalls gegangen, dessen Koordinaten \((x_i+\frac{h}{2},y_i+\frac{k_2}{2})\) sind. \\ Mit der in \(P_2\) berechneten Steigung \(f(x_i+\frac{h}{2},y_i+\frac{k_2}{2})=\frac{k3}{h}\) wird vom linken Randpunkt aus bis zum Punkt \(P_3(x_i+h,y_i+k3)\) gegangen, in dem ebenfalls die Steigung \(f(x_i+h,y_i+k_3)=\frac{k_4}{h}\) berechnet wird. \\ Auch mit dieser Steigung wird vpn $P_0$ aus das Intervall mit der Breite $h$ überbrückt bis zum Punkt $P_4$ mit den Koordinaten $(x_i+h,y_i+k_4)$. \\ Damit gibt es vier Richtungen, in denen das Intervall überbrückt werden kann. Die beiden in der Intervallmitte berechneten Steigungen werden bei der Mittelwertbildung mit dem Gewichtsfaktor $2$ berücksichtigt.
 
+\vspace{2.5em}
+        
+\begin{tikzpicture}
+    \begin{axis}
+        [
+            xlabel=\(x\),
+            ylabel=\(y\),
+            xmin=2,
+            ymin=0,
+            xmax=4,
+            width=13cm,
+        ]
+        \addplot[mark=none,samples=256,domain=2:4] {0.5*e^(x)};
+        \addplot[mark=none,samples=256,domain=2:4] {6.09125*x-9.13687};
+        \addplot[mark=none,samples=256,domain=2:4] {10.0428*x-19.0855};
+        \addplot[mark=none,samples=256,domain=2:4] {13.0428*x-26.3855};
+        \addplot[mark=none,samples=256,domain=2:4] {17.0428*x-36.6855};
+        \addplot[mark=none,samples=256,domain=2:4,color=blue] {6.09125*2.5-9.13687};
+        \draw[dashed] (2.5,0) -- node[right] {\(x_0\)} (2.5,2);
+        \draw[dashed] (3.5,0) -- node[right] {\(x_1\)} (3.5,2);
+        \draw[dashed] (3,0) -- node[right] {\(x_0+\frac{h}{2}\)} (3,2);
+        \draw[dashed,color=blue,opacity=0.6] (3,0) -- (3,9.13688);
+        \draw[dashed] (2,6.091255) -- node[above] {\(y_0\)} (2.5,6.091255);
+        \draw[<->,color=red] (2.5,2) -- node[above] {\(h\)} (3.5,2);
+        \draw[<->] (3.5,6.091255) -- node[right] {\(k_1\)} (3.5,12.182505);
+        
+        \draw[<->] (3.6,6.091255) -- node[right] {\(k_2\)} (3.6,16.0643);
+        \draw (3.5,6.091255) -- (3.61,6.091255);
+        \draw (3.5,16.0643) -- (3.61,16.0643);
 
+        \draw[<->] (3.7,6.091255) -- node[right] {\(k_3\)} (3.7,19.2643);
+        \draw (3.5,6.091255) -- (3.71,6.091255);
+        \draw (3.5,19.2643) -- (3.71,19.2643);
+
+        \draw[<->] (3.8,6.091255) -- node[right] {\(k_4\)} (3.8,22.9643);
+        \draw (3.5,6.091255) -- (3.81,6.091255);
+        \draw (3.5,22.9643) -- (3.81,22.9643);
+
+        \draw[fill=black] (2.5,6.091255) ellipse[x radius=0.0125,y radius=0.25] node[below right] {$P_0$};
+        \draw[fill=black] (3,9.13688) ellipse[x radius=0.0125,y radius=0.25] node[below right] {$P_1$};
+        \draw[fill=black] (3,11.0429) ellipse[x radius=0.0125,y radius=0.25] node[above left] {$P_2$};
+        \draw[fill=black] (3.5,19.2643) ellipse[x radius=0.0125,y radius=0.25] node[above left] {$P_3$};
+        \draw[fill=black] (3.5,22.9643) ellipse[x radius=0.0125,y radius=0.25] node[above left] {$P_4$};
+    \end{axis}
+\end{tikzpicture}
 \end{document}          
