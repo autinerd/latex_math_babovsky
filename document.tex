@@ -1324,7 +1324,7 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
      \begin{aufg}
         Lösen Sie \(y'''-3y'-2y=100\sin(2x)\)
 
-        \(b(x)=a \cdot \sin(cx) + b \cdot \sin(cx) \to\) Ansatz: \(\alpha \cdot \sin(cx) + \beta \cdot \sin(cx)\)
+        \(b(x)=a \cdot \sin(cx) + b \cdot \cos(cx) \to\) Ansatz: \(\alpha \cdot \sin(cx) + \beta \cdot \cos(cx)\)
 
         Lösung:
 
@@ -1451,7 +1451,26 @@ Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
 
         Mit Hilfe der Tangente in \(P_0\), die diese Steigung \(y_0'\) hat, kann der Punkt \(P_1(x_1,y_1)\) bestimmt werden.
 
-        %ToDo: Skizze
+        \vspace{2.5em}
+        
+        \begin{tikzpicture}
+            \begin{axis}
+                [
+                    xlabel=x,
+                    ylabel=y,
+                    xmin=2,
+                    ymin=0,
+                    xmax=4,
+                ]
+                \addplot[mark=none,samples=256,domain=2:4] {x^2+0.002*x^6};
+                \addplot[mark=none,samples=256,domain=2:4] {6.17188*x-8.69141};
+                \draw[dashed] (2.5,0) -- (2.5,6.738);
+                \draw[dashed] (3.5,0) -- (3.5,15.927);
+                \draw[dashed] (2,6.738) -- node[above] {\(y_1\)} (2.5,6.738);
+                \draw[dashed] (2,15.927) -- node[above] {\(y_2\)} (3.5,15.927);
+                \draw[<->,color=red] (2.5,2) -- node[above] {\(h\)} (3.5,2);
+            \end{axis}
+        \end{tikzpicture}
 
         Dieser Punkt wird im allgemeinen nicht auf der unbekannten exakten Lösungskurve \(y=y(x)\) liegen. Der Näherungswert \(y_1\) wird von dem exakten Wert verschieden sein, und zwar im allgemeinen umso mehr, je größer die Schrittweite \(h\) gewählt wurde.
 
@@ -1489,13 +1508,14 @@ Berechne für \(i=0,\dots,n-1\)
     
     \(y_1=y_0+h\cdot \underbrace{f(x_0,y_0)}_{x_0\cdot y_0}=1+0.1\cdot 0\cdot 1 = 1\)
 
-    \(x_2=x_1+h=0,2\)
+    \(x_2=x_1+h=0.2\)
     
     \(y_2=y_1+h\cdot \underbrace{f(x_1,y_1)}_{x_1\cdot y_1}=1+0.1\cdot 0.1\cdot 1 = 1.01\)
     
     \(h=0.1\)
 
     \begin{tabular}{| l | l | l |}
+        \hline
         \(x\) & \(y(x)\) & \(y_i\) \\
         \hline
         \(0.0\) & & \\
@@ -1520,8 +1540,10 @@ Berechne für \(i=0,\dots,n-1\)
         \hline
         \(1.0\) & & \\
         \hline
-    \end{tabular} \\
-Skizzieren sie den Vergleich zwischen \(y(x)\) und \(y_i (h=0.1)\) \\
+    \end{tabular}
+
+Skizzieren sie den Vergleich zwischen \(y(x)\) und \(y_i (h=0.1)\)
+
 \(h=0.05\)
 \end{beispiel}
 
@@ -1530,4 +1552,6 @@ Mit der am linken Randpunkt \(P_0\) des betreffenden Intervalls berechneten Stei
 Dort wird die Steigung im Punkt \(P_1(x_i+\frac{h}{2}, y_i+\frac{h}{2}\cdot f(x_i,y_i))\) berechnet, die in der folgenden Form dargestellt werden kann: \\
 \(\frac{k_2}{2}=f(x_i+\frac{h}{2}, y_i+\frac{k_1}{2})\) mit \(k_1=h\cdot f(x_i,y_i)\). \\
 Nun wurd erneut vom linken Randpunkt \(P_0\) aus mit der neuen Richtung bis zum Punkt \(P_2\) in der Mitte des Intervalls gegangen, dessen Koordinaten \((x_i+\frac{h}{2},y_i+\frac{k_2}{2})\) sind. \\ Mit der in \(P_2\) berechneten Steigung \(f(x_i+\frac{h}{2},y_i+\frac{k_2}{2})=\frac{k3}{h}\) wird vom linken Randpunkt aus bis zum Punkt \(P_3(x_i+h,y_i+k3)\) gegangen, in dem ebenfalls die Steigung \(f(x_i+h,y_i+k_3)=\frac{k_4}{h}\) berechnet wird.
+
+
 \end{document}          
