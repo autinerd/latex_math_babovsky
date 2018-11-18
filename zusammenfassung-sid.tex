@@ -1,0 +1,975 @@
+% !TeX encoding = UTF-8
+% chktex-file 21 chktex-file -2 chktex-file 23 chktex-file 1 chktex-file 6
+\documentclass[fontset=ubuntu,11pt,a4paper,fleqn,headsepline]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage{ntheorem}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{geometry}
+\usepackage{indentfirst}
+\usepackage{commath}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage[autostyle=true,german=quotes]{csquotes}
+\usepackage[pdftex,pdfa,hidelinks]{hyperref}
+\makeatletter
+\renewtheoremstyle{plain}% Adds automatic line break, if heading is too long
+  {\item{\theorem@headerfont ##1\ \theorem@separator}~}
+  {\item{\theorem@headerfont ##1\ (##3)\theorem@separator}~}
+\makeatother
+{
+    \theoremheaderfont{\upshape\bfseries}
+\theorembodyfont{\normalfont\slshape}
+\newtheorem{defi}{Definition}[section]
+\newtheorem{bemerkung}[defi]{Bemerkung}
+\newtheorem{beispiel}[defi]{Beispiel}
+\newtheorem{satz}[defi]{Satz}
+\newtheorem{aufg}[defi]{Aufgabe}
+\newtheorem*{einschub}{Einschub}
+}
+\pgfplotsset{compat=1.16}
+\geometry{left=2cm,top=1.5cm,bottom=1cm,right=1.5cm}
+
+\begin{document}
+    \begin{multicols}{2}
+
+\renewcommand{\cleardoublepage}{}
+\renewcommand{\clearpage}{}
+
+        \chapter*{Grundlagen der Differentialrechnung reeller Funktionen mit mehreren Variablen}
+    
+        \section*{Partielle Ableitungen}
+        
+        \begin{defi}[reelle Funktionen mit n Variablen]
+            Eine Funktion \(y = f(x_1, \dots, x_n)\) mit \(\left(x_1, \dots, x_n\right) \mathbb{D} \subset \mathbb{R}^n\) und \(y \in \mathbb{R}\) heißt reelle Funktion mit mehreren Variablen.
+    
+            \(\mathbb{D}\) beschreibt den Definitionsbereich und wir schreiben \(f:\mathbb{D} \to \mathbb{R}\)
+        \end{defi}
+    
+    \begin{bemerkung}
+        Definition für Differenzierbarkeit im eindimensionalen Fall:
+        Es sei \(f:\mathbb{D} \to \mathbb{R}\) eine Funktion mit \(\mathbb{D} \subset \mathbb{R}\) und \(x_0 \in \mathbb{R}\)
+        $f$ ist differenzierbar in \(x_0\), falls der Grenzwert \(\lim_{x\to x_0} {\frac{f\left(x\right) - f\left(x_0\right)}{x-x_0}} \in \mathbb{R}\) existiert.
+        In diesem Fall heißt \(f'\left(x_0\right) = \lim_{x\to x_0}{\frac{f\left(x\right) - f\left(x_0\right)}{x-x_0}}\) die Ableitung von f in \(x_0\)
+
+        Man bezeichnet \(f'\left(x_0\right)\) als den Differentialquotienten von f im Punkt \(x_0\).
+        
+        \(f'\left(x_0\right) = \lim_{\Delta x\to0}{\frac{f\left(x_0 + \Delta x\right) - f\left(x_0\right)}{\Delta x}}\)
+        
+    \end{bemerkung}
+    
+    \begin{defi}
+        \(P=(p_1,\ldots,p_n)\) und \(Q=(q_1,\ldots,q_n)\) bezeichnen zwei Punkte im n-dimensionalen Raum \(\mathbb{R}^n\)
+        
+        \(\left|P-Q\right|=\sqrt{{\left(p_1-q_1\right)}^2 + \cdots + {\left(p_n+q_n\right)}^2}\) heißt Abstand der Punkte P und Q.
+        
+        Die Delta-Umgebung des Punktes P ist eine Teilmenge des \(\mathbb{R}^n\) mit der Eigenschaft \(U_\delta\left(P\right)=\left\{Q\in\mathbb{R}^n:\left|Q-P\right|<\delta\right\}\).
+        
+    \end{defi}
+
+        \begin{defi}
+            Der Punkt P heißt innerer Punkt der Menge M \((M \subset R^n)\), wenn eine Umgebung des Punktes P existiert, für die \(U_\delta \subset M\) gilt.
+        \end{defi}
+    
+    \begin{bemerkung}
+        Eine Menge heißt \underline{offene Menge}, wenn sie nur aus inneren Punkten besteht.
+    \end{bemerkung}
+    
+    \begin{defi}
+        Wenn \((x_{0n},\dots,x_{0n})\) ein innerer Punkt der Menge D ist und wenn der Grenzwert existiert, dann heißt die Funktion \(f(x_1,\dots,x_n)\) an der Stelle \((x_{01},\dots,x_{0n})\in D\) nach \(x_i\) partiell differenzierbar. Den Grenzwert bezeichnet man als partielle Ableitung der Funktion f nach \(x_i\) an der Stelle \((x_{01},\dots,x_{0n}) \in D\)
+        
+        Die Funktion f heißt in \((x_{01},\dots,x_{0n}) \in D\) partiell differenzierbar, wenn die partiellen Ableitungen nach allen Komponenten \(x_j\ (j=1,\dots,n)\) existieren.
+        
+        Die Funktion heißt in \(\mathbb{D}\) partiell differenzierbar, wenn \(f\) in allen inneren Punkten aus \(\mathbb{D}\) partiell differenzierbar ist.
+    \end{defi}
+    
+    \begin{bemerkung}
+        Die partielle Ableitung der Funktion \(f(x_1,\dots,x_n)\) nach der Komponente \(x_j\) kann wie folgt bezeichnet werden: \(\pd{f(x_1,\dots,x_n)}{x_j}\)
+    \end{bemerkung}
+    
+    \begin{bemerkung}
+        Die Tangentialebene an die Funktion \(f(x_1,x_2)\) berührt die Funktion \(f(x_1,x_2)\) im Punkt \(\bar{P}=(\bar{x_1},\bar{x_2},f(\bar{x_1},\bar{x_2}))\) und enthält alle Tangenten an die Funktion \(f(x_1,x_2)\) im Punkt \(\bar{P}\).
+    \end{bemerkung}
+    
+    \begin{satz}
+    Es seien \(\mathbb{D} \subset \mathbb{R}^2, f:\mathbb{D}\to\mathbb{R}\) eine partiell differenzierbare Funktion und \((x_{01},x_{02})\in\mathbb{D}\). Dann lautet die Gleichung der Tangentialebene für den Punkt \((x_{01},x_{02})\):
+    
+    \(x_3=f(x_{01},x_{02})+\pd{f}{x_1}(x_{01},x_{02})(x_1-x_{01})+\pd{f}{x_2}(x_{01},x_{02})(x_2-x_{02})\)
+
+    \(=f(x_{01},x_{02})+\begin{pmatrix} \pd{f}{x_1} (x_{01},x_{02}) & \pd{f}{x_2}(x_{01},x_{02}) \end{pmatrix}\cdot \begin{pmatrix} (x_1-x_{01})\\ (x_2-x_{02}) \end{pmatrix}\)
+    \end{satz}
+    
+    \begin{beispiel}
+        \((x_{01},x_{02}) = (\sqrt[3]{\pi},\sqrt[3]{\pi})\)
+        
+        \(f(\sqrt[3]{\pi},\sqrt[3]{\pi})=\sin(\sqrt[3]{\pi}\cdot \sqrt[3]{\pi}^2) = 0\)
+        
+        \(\pd{f}{x_1}(\sqrt[3]{\pi},\sqrt[3]{\pi})=\cos(\sqrt[3]{\pi}\cdot \sqrt[3]{\pi}^2)\cdot \sqrt[3]{\pi}^2 = -\pi^{\frac{2}{3}}\)
+        
+        \(\pd{f}{x_2}(\sqrt[3]{\pi},\sqrt[3]{\pi})=\cos(\sqrt[3]{\pi}\cdot \sqrt[3]{\pi}^2)\cdot 2\sqrt[3]{\pi} \cdot \sqrt[3]{\pi} = -2\pi^{\frac{2}{3}}\)
+        
+        \(x_3 = 0 + \begin{pmatrix}-\pi^{\frac{2}{3}} & -2\pi^{\frac{2}{3}}\end{pmatrix} \begin{pmatrix}x_1 - \sqrt[3]{\pi} \\ x_2 - \sqrt[3]{\pi}\end{pmatrix} = -\pi^{\frac{2}{3}} \cdot (x_1 - \sqrt[3]{\pi}) + -2\pi^{\frac{2}{3}} \cdot (x_2 - \sqrt[3]{\pi})\)
+        
+        \(x_3 = -\pi^{\frac{2}{3}}x_1 - 2\pi^{\frac{2}{3}}x_2 + 3\pi\)
+    \end{beispiel}
+    
+    \begin{beispiel}
+        Gegeben sei \(f:\mathbb{R}^2\to\mathbb{R}\) durch \(f(x_1,x_2)=\left| x_1 \right| + x_2\)
+
+        \(\pd{f}{x_2}(x_1,x_2)=1\)
+        
+        \(\left| x_1 \right|\) ist nur für \(x_1 \neq 0\) differenzierbar, d.h. \(f\) ist nicht auf dem gesamten Definitionsbereich partiell differenzierbar.
+    \end{beispiel}
+    
+    \begin{defi}[Gradient]
+        Es sei \(\mathbb{D} \subset \mathbb{R}^n\) und \(f:\mathbb{D} \to \mathbb{R}\) partiell differenzierbar. Dann heißt der Vektor \(\nabla f(x) = \begin{pmatrix}
+        \pd{f}{x_1}(x) \\
+        \pd{f}{x_2}(x) \\
+        \vdots \\
+        \pd{f}{x_n}(x) \\
+        \end{pmatrix}\) der Gradient von \(f\) im Punkt \(x\in\mathbb{D}= (x_1,\dots,x_n)\).
+    \end{defi}
+    
+    \begin{beispiel}
+        Partielle Differenzierbarkeit impliziert nicht Stetigkeit.
+        
+        Betrachtet wird die Funktion \(f:\mathbb{R}^2\to\mathbb{R}\) mit
+        
+        \(f(x_1,x_2) = \begin{cases}
+        \frac{x_1\cdot x_2}{x_1^2 + x_2^2} & (x_1,x_2) \ne (0,0) \\
+        0 & (x_1,x_2) = (0,0)
+        \end{cases}\)
+        
+        Im Punkt \((0,0)\) existieren die partiellen Ableitungen:
+        
+        \(\pd{f}{x_1}(0,0) = \lim_{\Delta x\to0}{\frac{f(0+\Delta x,0)-f(0,0)}{\Delta x}} = 0\)
+        
+        \(\pd{f}{x_2}(0,0) = \lim_{\Delta x\to0}{\frac{f(0,0+\Delta x)-f(0,0)}{\Delta x}} = 0\)
+        
+        Aber \(f\) ist in \((0,0)\) nicht stetig:
+        
+        Es gilt \(f(x_1,0) = 0; x_1 \in \mathbb{R}\), \(f(0,x_2) = 0; x_2 \in \mathbb{R}\)
+        
+        Für \(x := x_1 = x_2\):
+        
+        \(f(x,x)=\begin{cases}\frac{x^2}{2x^2}=\frac{1}{2} & (x,x) \ne (0,0) \\ 0 & (x,x) = (0,0)\end{cases}\)
+    \end{beispiel}
+    
+    \begin{defi}[Stetigkeit]
+        Die Funktion \(y=f(x_1,\dots,x_n)\), \((x_1,\dots,x_n)\in\mathbb{D}\) ist an der Stelle \(\bar{P}=(\bar{x_1},\dots,\bar{x_n}) \in \mathbb{D}\) stetig, wenn für den Funktionsgrenzwert \(\lim_{P\to\bar{P}}{f(x_1,\dots,x_n)} = f(\bar{x_1},\dots,\bar{x_n})\) gilt.
+    \end{defi}
+    
+    \begin{defi}[k-mal partiell differenzierbar]
+        Es sei \(D\subset\mathbb{R}^n,f:D\to\mathbb{R}\) eine partiell differenzierbare Funktion und \(x_0 \in D\). Die Funktion f heißt \\ zweimal \underline{partiell differenzierbar} in \(x_0\), wenn alle partiellen Ableitungen \(\pd{f}{x_i}\) in \(x_0\) wieder partiell differenzierbar sind.
+    
+        Man schreibt \(\frac{\partial^2 f}{\partial x_j x_i}(x_0)=\pd{}{x_j}\left(\pd{f}{x_i}\right)(x_0)=f_{x_j x_i}(x_0)\)
+    
+        Dieser Ausdruck heißt dann zweite partielle Ableitung von $f$.
+    
+        Allgemein heißt f \underline{k-mal partiell differenzierbar}, wennn alle (k-1)-ten partiellen Ableitungen von f wieder partiell differenzierbar sind. Man schreibt:
+            \(\pd{f}{x_{ik} \partial x_{i(k-1)} \dots \partial x_{i1}}(x_0) = \frac{\partial}{\partial x_{ik}}\left(\frac{\partial^{k-1} f}{\partial x_{i(k-1)} \dots \partial x_{i1}}\right)(x_0) = f_{x_{ik} \dots x_{i1}}\)
+    \end{defi}
+    
+    \begin{defi}[stetig partiell differenzierbar]
+        Es sei \(D\subset\mathbb{R}^n,f:D\to\mathbb{R}\). \(f\) heißt k-mal \underline{stetig partiell differenzierbar}, falls f k-mal partiell differenzierbar ist und alle partiellen Ableitungen der Ordnung k stetig sind.
+    \end{defi}
+    
+    \begin{satz}[Satz von Schwarz]
+        Es sei \(D\subset\mathbb{R}^n,f:D\to\mathbb{R}\) zweimal stetig partiell differenzierbar. Dann ist \(\frac{\partial^2 f}{\partial x_i \partial x_j}=\frac{\partial^2 f}{\partial x_j \partial x_i}\) für alle \(i,j\in\left\{1,\dots,n\right\}\). Die Reihenfolge der Ableitungsvariablen spielt also keine Rolle.
+    \end{satz}
+    
+    \begin{bemerkung}
+        Es sei \(f:D\to\mathbb{R}\) k-mal stetig partiell differenzierbar. Dann spielt die Reihenfolge der Ableitungsvariablen bei der k-ten partiellen Ableitung keine Rolle.
+    \end{bemerkung}
+    
+    \section*{Totale Differenzierbarkeit}
+    
+    \begin{defi}[Betrag eines Vektors]
+        Der Betrag eines Vektors \(x=(x_1,\dots,x_n)\in\mathbb{R}^n\) ist definiert als
+        \(\vert x \vert = \sqrt{x_1^2+\cdots+x_n^2}\)
+    \end{defi}
+    
+    \begin{defi}[Vektorfunktion]
+        Eine eindeutige Abbildung \(f:\mathbb{D}\to W,\mathbb{D}\subset\mathbb{R}^n,W\subset\mathbb{R}^m,m>1\) mit mehrdimensionalem Wertebereich heißt \underline{Vektorfunktion}.
+    \end{defi}
+    
+    \begin{beispiel}
+        Es sei \(\mathbb{D}\subset\mathbb{R}^3\to\mathbb{R}^2\) gegeben durch \(f(x_1,x_2,x_3)=\begin{pmatrix}
+        x_1+x_3 \\ x_2+x_3
+        \end{pmatrix}\)
+        
+        f hat 2 Ergebniskomponenten: \(f_1(x_1,x_2,x_3)=x_1+x_2,f_2(x_1,x_2,x_3)=x_2+x_3\)
+    \end{beispiel}
+    
+    \begin{defi}[total differenzierbar]
+        Es sei \(f:\mathbb{D}\to \mathbb{R}^m,\mathbb{D}\subset\mathbb{R}^n\) eine Abbildung und \(x_0\in\mathbb{D}\). Die Funktion f heißt total differenzierbar in \(x_0\), falls es eine Matrix \(A\in\mathbb{R}^{m\times n}\) und eine Restfunktion \(R:\mathbb{D}\to\mathbb{R}^m\) gibt, für die gilt: \(f(x)=f(x_0)+A(x-x_0)+\vert x-x_0 \vert\cdot R(x)\) und \(\lim_{x\to x_0} R(x)=0\)
+    \end{defi}
+    
+    \begin{satz}[Jacobi-Matrix]
+        Es sei \(f:\mathbb{D}\to \mathbb{R}^m,\mathbb{D}\subset\mathbb{R}^n\) eine Abbildung und \(x_0\in\mathbb{D}\). Weiterhin sei f in \(x_0\) total differenzierbar mit der Matrix
+        \(A=(a_{ij});i=1,\dots,m;j=1,\dots,n \in\mathbb{R}^{m\times n}\)
+        Dann ist f in \(x_0\) stetig und alle Komponentenfunktionen \(f_1,\dots,f_m:\mathbb{R}^n\to\mathbb{R}\) sind in \(x_0\) partiell differenzierbar, wobei gilt: \(a_{ij}=\pd{f_i}{x_j}(x_0)\).
+        
+        \(A=\begin{pmatrix}
+        \pd{f_1}{x_1}(x_0) & \pd{f_1}{x_2}(x_0) & \cdots & \pd{f_1}{x_n}(x_0) \\
+        \pd{f_2}{x_1}(x_0) & \pd{f_2}{x_2}(x_0) & \cdots & \pd{f_2}{x_n}(x_0) \\
+        \vdots & \vdots & \ddots & \vdots \\
+        \pd{f_m}{x_1}(x_0) & \pd{f_m}{x_2}(x_0) & \cdots & \pd{f_m}{x_n}(x_0)
+        \end{pmatrix}\)
+        
+        Die Matrix heißt Funktionalmatrix oder auch Jacobi-Matrix von f und wird mit \(Df(x_0)\) oder \(J_f(x_0)\) bezeichnet.
+    \end{satz}
+    
+    \begin{bemerkung}
+        Nach Definition 1.2.4 kann eine Funktion \(f(x)\), die total differenzierbar ist, in der Nähe von \(x_0\) durch \(f(x_0)+D_f(x_0)(x-x_0)\) angenähert werden. Da die Annäherungsfunktion linear ist, spricht man auch von Linearisierung. Hierfür muss aber klar sein, dass f auch wirklich total differenzierbar ist.
+    \end{bemerkung}
+    
+    \begin{satz}
+        Es sei \(f:\mathbb{D}\to \mathbb{R}^m,\mathbb{D}\subset\mathbb{R}^n\) eine Abbildung, deren Komponentenfunktionen \(f_1,\dots,f_m\) alle stetig partiell differenzierbar sind. Dann ist f total differenzierbar.
+    \end{satz}
+    
+    \begin{defi}[totale Differenzierbarkeit]
+    Sei \(f:\mathbb{R}^2\to\mathbb{R}\) eine total differenzierbare Funktion. Dann kann f in der Nähe eines Punktes \((x_{01},x_{02})\in\mathbb{R}^2\) durch \(f(x_{01},x_{02})+Df(x_{01},x_{02})\begin{pmatrix}x_1-x_{01} \\ x_2-x_{02}\end{pmatrix}\) angenähert werden.
+    
+        Es gilt also \(f(x_1,x_2)=f(x_{01},x_{02})+\begin{pmatrix}
+            \dpd{f}{x_1}(x_{01},x_{02}) & \dpd{f}{x_2}(x_{01},x_{02})\end{pmatrix}\begin{pmatrix}
+                x_1-x_{01} \\ x_2-x_{02}
+            \end{pmatrix}\)
+    
+    \(f(x_1,x_2)-f(x_{01},x_{02})\approx\pd{f}{x_1}(x_{01},x_{02})\cdot\underbrace{(x_1-x_{01})}_{=:\Delta x_1} + \pd{f}{x_2}(x_{01},x_{02})\cdot\underbrace{(x_2-x_{02})}_{=:\Delta x_2}\)
+    
+    also gilt: \(\Delta f\approx \pd{f}{x_1}\cdot\Delta x_1 + \pd{f}{x_2}\cdot\Delta x_2\)
+    
+    Für eine Funktion \(f:\mathbb{R}^n\to\mathbb{R}\) gilt:
+    \[\boxed{df = \dpd{f}{x_1}\cdot dx_1 + \dpd{f}{x_2}\cdot dx_2 + \cdots + \dpd{f}{x_2}\cdot dx_n}\]
+    
+    Dieser Ausdruck wird als \underline{totales Differenzial} der Funktion f bezeichnet.
+    \end{defi}
+    
+    \begin{bemerkung}
+        Mit Hilfe des totalen Differentials kann der Einfluss der Änderung der Inputgrößen auf den Funktionswert abgeschätzt werden.
+    \end{bemerkung}
+    
+    \begin{beispiel}
+        Gegeben sei \(f:\mathbb{R}^2\to\mathbb{R}\) durch \(f(x_1,x_2)=x_1^2+\sin(x_1\cdot x_2)\). Wir betrachten f in der Nähe des Punktes \(f(x_{01},x_{02})=(\sqrt{\pi},\sqrt{\pi})\)
+    
+        Was passiert wenn wir leicht von dem Wert abweichen?
+    
+        \(\pd{f}{x_1}=2x_1+\cos(x_1\cdot x_2)x_2\)
+
+        \(\pd{f}{x_2}=\cos(x_1 \cdot x_2)x_1\)
+    
+        \(df=2\sqrt{\pi}+\cos(\pi)\cdot\sqrt{\pi}\cdot(x_1-\sqrt{\pi})+\cos(\pi)\cdot\sqrt{\pi}\cdot(x_2-\sqrt{\pi}) \)
+        \(df=\sqrt{\pi}\cdot dx_1+(-\sqrt{\pi})\cdot dx_2\)
+    
+        Veränderung der Inputgrößen z.B. \(dx_1=0.1\) \(dx_2=-0.1\)
+    
+        \(df=0.2\cdot\sqrt{\pi}\)
+    \end{beispiel}
+    
+    \begin{bemerkung}
+        Durch Einsetzen der Maximalen absoluten Fehler und Bilden der Beträge ergibt sich der (lineare) maximale absolute Fehler:
+    
+        \(\left|\Delta f\right|\approx \left|\pd{f}{x_1}(x_1,\dots,x_n)\right|\cdot\left|\Delta x_1\right|+\cdots+\left|\pd{f}{x_n}(x_1,\dots,x_n)\right|\cdot\left|\Delta x_n\right|\)
+    \end{bemerkung}
+    
+    \section*{Extremwerte}
+    
+    \begin{defi}[Lokales Extremum]
+        Es seien \(U\subset\mathbb{R}^n\) eine offene Menge und \(f:U\to\mathbb{R}\) eine Abbildung.
+        \begin{enumerate}[label=\emph{(\roman*)}]
+            \item Ein Punkt \(x_0\in U\) heißt \underline{lokales Maximum} von \(f\), falls \(f\) in der Nähe von \(x_0\) nicht größer wird als bei \(x_0\), das heißt:
+            \(f(x)\le f(x_0)\) für alle \(x\) in der Nähe von \(x_0\).
+            \item Ein Punkt \(x_0\in U\) heißt \underline{lokales Minimum} von \(f\), falls \(f\) in der Nähe von \(x_0\) nicht kleiner wird als bei \(x_0\), das heißt:
+            \(f(x)\ge f(x_0) \) für alle \(x\) in der Nähe von \(x_0\).
+        \end{enumerate}
+        Ein \underline{lokales Extremum} ist ein lokales Minimum oder ein lokales Maximum.
+    \end{defi}
+    
+    \begin{bemerkung}
+        Es sei \(f:(a,b)\to\mathbb{R}\) differenzierbar in \(x_0\in (a,b)\) mit einem lokalen Extremum in \(x_0\). Dann ist \(f'(x_0)=0\).
+    \end{bemerkung}
+    
+    \begin{satz}
+        Es sei \(U \subset \mathbb{R}^n\) eine offene Menge und \(f:U\to\mathbb{R}\) differenzierbar. Besitzt f in \(x_0\in U\) ein lokales Extremum, so gilt
+        \underline{\(\nabla f(x_0)=0\)}
+
+        d.h. \(\pd{f}{x_1}(x_0)=\cdots=\pd{f}{x_n}(x_0)=0\)
+    \end{satz}
+    
+    \begin{aufg}
+        \(f(x_1,x_2)=\sin(x_1)\cdot\sin(x_2)\)
+    
+        \(\nabla f(x_1,x_2)=\begin{pmatrix}
+            \cos(x_1)\cdot\sin(x_2) \\
+            \sin(x_1)\cdot\cos(x_2)
+        \end{pmatrix} =: \begin{pmatrix}0 \\ 0\end{pmatrix}\)
+    
+            \(\cos(x_1)\cdot\sin(x_2)=0\)
+    
+            \((x_1=\pi)\) od. \(\sin(x_2)=0\)
+    \end{aufg}
+    
+    \begin{bemerkung}
+        Es sei \(f:(a,b)\to\mathbb{R}\) zweimal differenzierbar und \(f'(x_0)=0\).
+        \begin{enumerate}[label=\emph{(\roman*)}]
+            \item Ist \(f''(x_0)>0\), so hat f in \(x_0\) ein lokales Minimum.
+            \item Ist \(f''(x_0)<0\), so hat f in \(x_0\) ein lokales Maximum.
+        \end{enumerate}
+    \end{bemerkung}
+    
+    \begin{defi}
+        Eine Matrix \(A=(a_{ij}), i,j=1,\dots,n \in \mathbb{R}^{n\times n}\) heißt \underline{positiv definit}, falls gilt:
+    
+    
+        \(a_{11}>0,\det\begin{pmatrix}
+        a_{11} & a_{12} \\ a_{21} & a_{22}
+        \end{pmatrix} > 0, \dots\)
+        
+        \(\det\begin{pmatrix}
+        a_{11} & \cdots & a_{1n} \\
+        \vdots & \ddots & \vdots \\
+        a_{n1} & \cdots & a_{nn}
+        \end{pmatrix} > 0\), 
+        
+        also \(\det\begin{pmatrix}
+        a_{11} & \cdots & a_{1k} \\
+        a_{21} & \cdots & a_{2k} \\
+        \vdots & \ddots & \vdots \\
+        a_{k1} & \cdots & a_{kk}
+        \end{pmatrix} > 0\) für alle \(k=1,\dots,n\).
+        
+        A heißt \underline{negativ definit}, falls \(-A\) positiv definit ist.
+    \end{defi}
+    
+    \begin{beispiel}
+        Es sei \(A=\begin{pmatrix}
+        1 & 1 \\ 1 & 4
+        \end{pmatrix} \in \mathbb{R}^{2\times 2}\)
+        
+        \(\underline{k=1}:1>0\)
+        
+        \(\underline{k=2}: \det\begin{pmatrix}
+        1 & 1 \\ 1 & 4
+        \end{pmatrix} = 1\cdot4-1\cdot1=3>0\)
+        
+        \(\to\) A ist positiv definit.
+    \end{beispiel}
+    
+    \begin{aufg}
+        \(B=\begin{pmatrix}
+        -6 & 2 \\ 2 & -1
+        \end{pmatrix} \in \mathbb{R}^{2\times 2}\)
+        
+        \(-6<0 \to\) B nicht positiv definit
+        
+        \(-B=\begin{pmatrix}
+        6 & -2 \\ -2 & 1
+        \end{pmatrix}\)
+        
+        \(\underline{k=1}:6>0\)
+        
+        \(\underline{k=2}: \det\begin{pmatrix}
+        6 & -2 \\ -2 & 1
+        \end{pmatrix} = 6\cdot1 - (-2)\cdot(-2)=2>0\)
+        
+        \(\to\) B ist negativ definit.
+    \end{aufg}
+    
+    \begin{bemerkung}
+        \(D=\begin{pmatrix}
+        0 & 1 \\ 1 & 4
+        \end{pmatrix} \in \mathbb{D}^{2\times2}\) ist weder positiv noch negativ definit: \(d_{11}\not>0\to\) nicht positiv definit
+        
+        \(-d_{11}\not>0\to\) nicht negativ definit
+    \end{bemerkung}
+    
+    \begin{defi}
+        Es seien \(U\subset\mathbb{R}^n\) eine offene Menge, \(f:U\to\mathbb{R}\) eine zweimal stetig partiell differenzierbare Funktion und \(x_0\in U\). Unter der \underline{Hesse-Matrix} von f in \(x_0\) versteht man die Matrix: 
+        
+        \(H_f(x_0)=\begin{pmatrix}
+        \frac{\partial^2 f}{\partial x_1^2}(x_0) & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n}(x_0) \\
+        \frac{\partial^2 f}{\partial x_2 \partial x_1}(x_0) & \cdots & \frac{\partial^2 f}{\partial x_2 \partial x_n}(x_0) \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial^2 f}{\partial x_n \partial x_1}(x_0) & \cdots & \frac{\partial^2 f}{\partial x_n^2}(x_0) \\
+        \end{pmatrix}\)
+    \end{defi}
+    
+    \begin{beispiel}
+        Gegeben sei \(f:\mathbb{R}^2\to\mathbb{R}\) durch \(f(x_1,x_2)=x_1^2+x_2^2\). Gesucht ist die Hesse-Matrix.
+        
+        \(H_f(x_1,x_2)=\begin{pmatrix}
+        \frac{\partial^2 f}{\partial x_1^2}(x_1,x_2)  & \frac{\partial^2 f}{\partial x_1 \partial x_2}(x_1,x_2) \\
+        \frac{\partial^2 f}{\partial x_2 \partial x_1}(x_1,x_2) & \frac{\partial^2 f}{\partial x_2^2}(x_1,x_2)
+        \end{pmatrix}=\begin{pmatrix}
+        2 & 0 \\ 0 & 2
+        \end{pmatrix}\)
+    \end{beispiel}
+    
+    \begin{satz}
+        Es sei \(U\subset\mathbb{R}^n\) eine offene Menge, \(f:U\to\mathbb{R}\) zweimal stetig differenzierbar und \(x_0\in U\) ein Punkt mit \(\nabla f(x_0)=0\).
+        \begin{enumerate}[label=\emph{(\roman*)}]
+            \item Ist \(H_f(x_0)\) positiv definit, so hat f in \(x_0\) ein lokales Minimum.
+            \item Ist \(H_f(x_0)\) negativ definit, so hat f in \(x_0\) ein lokales Maximum.
+            \item Ist \(\underline{U\subset\mathbb{R}^2}\) und gilt \(\det H_f(x_0) < 0\), so liegt kein Extremwert vor.
+        \end{enumerate}
+    \end{satz}
+    
+    \chapter*{Grundlagen der Integralrechnung reeller Funktionen mit mehreren Variablen}
+    
+        \section*{Zweidimensionale Integralrechnung}
+    
+        \begin{defi}[beschränkt]
+            Eine Menge \(U\subset\mathbb{R}^2\) heißt \underline{beschränkt}, wenn es ein Rechteck R gibt, sodass \(U\subset R\) gilt.
+        \end{defi}
+        
+        \begin{bemerkung}
+            Es sei \(U\subset \mathbb{R}^2\) eine beschränkte Menge und \(f:U\to \mathbb{R}\) eine stetige Funktion. Da ein Volumen betrachtet wird, werden die alten Näherungsrechtecke durch Näherungsquader ersetzt und deren Volumen zusammengezählt.
+    
+            U wird also in n kleine Teilbereiche \(u_1,\dots,u_n\) zerlegt. Die Fläche dieser Teilbereiche wird mit \(\Delta u_1,\dots,\Delta u_n\) bezeichnet.
+    
+            Zur Berechnung des Rauminhalts des Quaders wird weiterhin die Quaderhöhe benötigt. Dazu wird ein Punkt \((x_i,y_i)\in U_i\) gewählt und sein Funktionswert \(f(x_i,y_i)\) als Höhe des Quaders betrachtet. Das Teilvolumen beträgt dann \(f(x_i,y_i)\cdot\Delta u_i\)
+    
+            Falls \(U_i\) ein Rechteck ist mit den Seiten \(\Delta x_i\) und \(\Delta y_i\), so ergibt sich das Teilvolumen
+            
+            \(\Delta V_i = f(x_i,y_i)\cdot \Delta U_i=f(x_i,y_i)\cdot \Delta x_i\cdot \Delta y_i\)
+    
+            Als Näherung für das Gesamtvolumen eribt sich also
+    
+            \(V_n(f)=\sum^{n}_{i=1} f(x_i,y_i)\cdot\Delta U_i\)
+    
+            Hier wurde der gesamte Definitionsbereich U in die n Teilbereiche \(U_1,\dots,U_n\) zerlegt.
+    
+            Der genaue Wert für das Volumen kann berechnet werden, indem n gegen \(\infty\) geht.
+    
+            Deshalb wird definiert:
+    
+            \(\int_{U} f(x,y)dU=\int_{U} f(x,y)dxdy\)
+    
+            \(= \lim_{n\to\infty} \sum^{n}_{i=1} f(x_i,y_i)\cdot\Delta U_i\)
+    
+            Um klarzustellen, dass es sich um ein zweidimensionales Integral handelt, werden oft die zwei Integralsymbole verwendet:
+    
+            \(\iint_{U} f(x,y)dU=\iint_{U} f(x,y)dxdy\)
+        \end{bemerkung}
+    
+        \begin{defi}[konvex]
+            Eine Menge \(U\subset\mathbb{R}^2\) oder \(U\subset\mathbb{R}^3\) heißt \underline{konvex}, falls für alle Punkte \(x,y\in U\) auch die gesamte Verbindungsstrecke von x nach y in U liegt.
+        \end{defi}
+    
+        \begin{bemerkung}
+            Es sei \(U\subset\mathbb{R}^2\) eine beschränkte und konvexe Menge und \(f:U\to\mathbb{R}\) eine stetige Funktion. Da U beschränkt ist, gibt es einen kleinsten vorkommenden x-Wert a und einen größten vorkommenden x-Wert b.
+    
+            Der Flächeninhalt der Schnittfläche des Körpers bei einem beliebigen x-Wert zwischen a und b wird mit \(I(x)\) bezeichnet.
+    
+            Der Körper, dessen Volumen wir ausrechnen, setzt sich aus all diesen Schnittflächen zusammen. Für jedes \(x\in [a,b]\) existiert eine Schnittfläche mit Flächeninhalt \(I(x)\), das heißt durch Aufsummieren dieser unendlich vielen Flächeninhalte ergibt sich das Volumen des Körpers.
+    
+            \(\iint_U f(x,y)dxdy = \int^a_b I(x)dx\)
+    
+            Der Flächeninhalt von \(I(x)\) kann einfach mit einem eindimensionalen Integral berechnet werden.
+    
+            \(I(x) = \int^{y_o(x)}_{y_u(x)} f(x,y)dy\)
+    
+            Insgesamt ergibt sich also:
+    
+            \(\iint_U f(x,y)dxdy = \int^b_a \left(\int^{y_o(x)}_{y_u(x)} f(x,y)dy\right)dx\)
+        \end{bemerkung}
+    
+        \begin{satz}
+            Es sei \(U\subset\mathbb{R}^2\) eine beschränkte und konvexe Menge und \(f:U\to\mathbb{R}\) eine stetige Funktion. Weiterhin sei a der kleinste in U vorkommende x-Wert und b der größete in U vorkommende x-Wert. Für \(x\in [a,b]\) bezeichnen wir den kleinsten y-Wert für den \((x,y) \in U\) gilt, als \(y_u(x)\) und den größten y-Wert als \(y_o(x)\).
+    
+            Dann ist \(\iint_U f(x,y)dxdy = \int^b_a \left(\int^{y_o(x)}_{y_u(x)} f(x,y)dy\right)dx\)
+        \end{satz}
+    
+        \begin{beispiel}
+            \begin{enumerate}[label=\emph{(\roman*)}]
+    
+                \item \(U=\{(x,y):x \in [0,1], y \in [0,2]\}\) und \(f:U\to\mathbb{R}\) mit \(f(x,y)=x^2+y^2\)
+    
+                    \(a=0,b=1,y_u(x)=0,y_o(x)=2\)
+                   
+                    \(\int^1_0 \left(\int^{2}_{0} (x^2+y^2)dy\right)dx\)
+                    \(=\int^1_0 \left({\left[x^2y+\frac{y^3}{3}\right]}^{2}_{0}\right)dx\)
+
+                    \(=\int^1_0 \left(2x^2+\frac{2^3}{3}\right)dx\)
+                    \(={\left[\frac{2}{3}x^3+\frac{8}{3}x\right]}^1_0\)
+
+                    \(\frac{2}{3}+\frac{8}{3}=\frac{10}{3}\)
+            \end{enumerate}
+        \end{beispiel}
+        \begin{einschub}
+            Substitution: \(f(x)=\sqrt{1-x^2}\)
+
+            \(\int f(x(t))\cdot x'(t)dt=\int f(x)dx\)
+            
+            \(x(t)=\sin(t) \to t=\arcsin(x)\)
+
+            \(\int f(x)dx=\int \sqrt{1-x^2}dx=\int f(\sin(t))\cdot x'(t)dt=\int \sqrt{1-\sin^2(t)}\cdot\cos(t)dt\)
+
+            \(=\int \cos(t)\cdot\cos(t)dt=\cos(t)\cdot\sin(t)+\int \sin(t)\cdot\sin(t)dt=\int \sin^2(t)dt=\int 1-\cos^2(t)dt\)
+
+            \(=\cos(t)\cdot\sin(t)+t-\int \cos^2(t)dt\)
+
+            \(\to \int \cos^2(t)dt=\frac{1}{2}\sin(t)\cdot\cos(t)+\frac{t}{2}+C\)
+
+            Rücksubstitution
+
+            \(\frac{x}{2}\cdot\cos(t)+\frac{t}{2}+C\)
+
+            \(\cos(t)=\cos(\arcsin(x))=\sqrt{1-\sin^2(\arcsin(x))}=\sqrt{1-x^2}\)
+
+            \(\frac{x}{2}\cdot\sqrt{1-x^2}+\frac{\arcsin(x)}{2}+C\)
+
+            \(\int \sqrt{1-x^2}dx=\frac{x}{2}\sqrt{1-x^2}+\frac{\arcsin(x)}{2}\)
+        \end{einschub}
+    
+        \begin{satz}
+            Es sei \(U\subset\mathbb{R}^2\) eine beschränkte und konvexe Menge und \(f:U\to\mathbb{R}\) eine stetige Funktion. Weiterhin sei a der kleinste in U vorkommende y-Wert und b der größte in U vorkommende y-Wert.
+    
+            Für \(y\in[a;b]\) bezeichnen wir den kleinsten x-Wert, für den \((x,y)\in U\) gilt als \(x_u(y)\) und den größten als \(x_o(y)\).
+    
+            Dann ist \(\iint_U f(x,y)dxdy=\int_a^b \left(\int_{x_u(y)}^{x_o(y)} f(x,y)dx\right)dy\)
+        \end{satz}
+    
+        \begin{einschub}[Terassen-/Sattelpunkte]
+            Jeder Punkt \(x_0\in D_f\) (Definitionsbereich) einer Funktion \(f:D_f\subset\mathbb{R}^n\to\mathbb{R}\) mit \(\nabla f(x_0)=0\) heißt \underline{kritischer Punkt} von f.
+    
+            Jeder kritische Punkt, von f, der nicht gleichzeitig ein lokales Extremum ist, heißt \underline{Terassen-/Sattelpunkt} von f.
+        \end{einschub}
+    
+        \section*{Dreidimensionale Integralrechnung}
+    
+        \begin{satz}
+            Es seien \(U\subset\mathbb{R}^3\) eine beschränkte und konvexe Menge und \(f:U\to\mathbb{R}\) eine stetige Funktion. Weiterhin sei a der in U kleinste vorkommende x-Wert und b der größte.
+    
+            Für \(x\in[a;b]\) bezeichnen wir den kleinsten y-Wert, für den es ein z gibt, sodass \((x,y,z)\in U\) gilt, mit \(y_u(x)\), und den größten mit \(y_o(x)\).
+    
+            Schließlich bezeichnen wir für zulässiges (x,y) mit \(z_u(x,y)\) den kleinsten z-Wert, sodass \((x,y,z)\in U\), und mit \(z_o(x,y)\) den größten z-Wert. Dann ist \(\iiint_U f(x,y,z)dxdydz=\int_a^b \left(\int_{y_u(x)}^{y_o(x)} \left(\int_{z_u(x,y)}^{z_o(x,y)} f(x,y,z)dz\right)dy\right)dx\)
+        \end{satz}
+
+        \begin{einschub}[Betrachtungen zur Tangentialebene]
+            Die Rolle, die die Kurventangente bei einer Funktion von einer Variablen spielt, übernimmt die sogenannte Tangentialebene bei einer Funktion von zwei Variablen \(z=f(x,y)\). Sie enthält sämtliche im Flächenpunkt \(P=(x_0,y_0,z_0)\) an die Bildfläche von \(z=f(x,y)\) angelegten Tangenten. In der unmittelbaren Umgebung ihres Berührungspunktes P besitzen Fläche und Tangentialebene im Allgemeinen keinen weiteren gemeinsamen Punkt.
+    
+            Herleitung der Funktionsgleichung dieser Tangentialebene in der Form: \(z=ax+by+c\)
+    
+            Die unbekannten Koeffizienten \(a,b,c\) werden aus den bekannten Eigenschaften der Tangentialebene bestimmt.
+    
+            Fläche und Tangentialebene besitzen im Berührungspunkt P die gleiche Steigung. Das bedeutet, dass dort die entsprechenden partiellen Ableitungen erster Ordnung über\-ein\-stimmen müssen. Die partiellen Ableitungen der Tangentialebene sind \(z_x(x,y)=a\) und \(z_y(x,y)=b\), die der Funktion \(z=f(x,y)\) lauten \(z_x(x,y)=f_x(x,y)\) und \(z_y(x,y)=f_y(x,y)\). An der Berührungsstelle \((x_0,y_0)\) gilt demnach: \(a=f_x(x_0,y_o)\) und \(b=f_y(x_0,y_0)\).
+    
+            Somit sind die Koeffizienten a und b bestimmt.
+    
+            Außerdem ist P ein gemeinsamer Punkt von Fläche und Tangentialebene: \(z_0=ax_0+by_0+c \to c=z_0-ax_0-by_0\)
+    
+            Einsetzen in die Gleichung für die Tangentialebene:
+    
+            \(z=ax+by+z_0-ax_0-by_0 = a(x-x_0)+b(y-y_0)+z_0=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0)+f(x_0,y_0)\)
+        \end{einschub}
+    
+        \chapter*{Differentialgleichungen}
+        \section*{Einführung}
+    
+        \begin{defi}[Gewöhnliche Differentialgleichungen]
+            Eine Gleichung der Form \(F(x,y,y',y'',\dots,y^{(n)})=0\) für eine unbekannte Funktion \(y=f(x)\) und deren Ableitungen heißt \underline{gewöhnliche Differentialgleichung n-ter Ordnung}.
+        \end{defi}
+    
+        \begin{bemerkung}
+            Neben gewöhnlichen Differentialgleichungen gibt es auch partielle Differentialgleichungen, diese werden aber in dieser Vorlesung nicht behandelt.
+        \end{bemerkung}
+    
+        \begin{beispiel}
+            Betrachtet wird eine elastische Feder in Gleichgewichtslage. Wird an den Punkt \(P_0\) ein Körper der Masse m angehängt, so hat die Feder zum Zeitpunkt t eine gewisse Auslenkung \(y(t)\). Unter Vernachlässigung der Reibung gilt für die Rückstellkraft F der Feder, die auf die Masse m wirkt: \(F=-c \cdot y(t)\). Dabei bezeichnet c die Federkonstante.
+    
+            Wegen \(F=m \cdot y''(t)\) gilt: \(m \cdot y''(t)=-c \cdot y(t)\) also \(m \cdot y''(t) + c \cdot y(t) = 0\).
+    
+            \(\int\frac{dy}{y}=\int xdx \to \ln\left|y\right| = \frac{x^2}{2}+c \)
+
+            \(\to |y(x)| = e^{\frac{x^2}{2}+c}=e^{\frac{x^2}{2}}\cdot \underbrace{e^c}_{c_1}\ ,c_1\in\mathbb{R}\)
+        \end{beispiel}
+    
+        \section*{Trennung der Variablen}
+        \begin{beispiel}
+            Gegeben sei die Gleichung \(y'=xy\).
+    
+            Gesucht ist die Funktion \(y(x)\).
+    
+            \(y'=\frac{dy}{dx} \to \frac{dx}{dy}=xy \to_{y \ne 0} \frac{dy}{y}=xdx\)
+        \end{beispiel}
+    
+        \begin{defi}[Differentialgleichungen mit getrennten Variablen]
+            Es seien \\ \(\mathcal{I},\mathcal{J}\subset\mathbb{R}\) offene Intervalle, \(f:\mathcal{I}\to\mathbb{R}\) und \(g:\mathcal{J}\to\mathbb{R}\) stetige Funktionen und \(g(y)\ne0\) für alle \(y\in\mathcal{J}\). Dann heißt die Differentialgleichung \(y'=f(x)\cdot g(y)\) eine Differentialgleichung mit getrennten Variablen.
+    
+            Auf diese Differentialgleichung lässt sich das gleiche Verfahren anwenden wie in Beispiel 3.2.1. Es kann eine allgemeine Lösungsformel abgeleitet werden.
+        \end{defi}
+        
+        \section*{Lineare Differentialgleichungen}
+        \begin{defi}[Homogene lineare Differentialgleichungen n-ter Ordnung]
+            Es seien \(\mathcal{I} \subset \mathbb{R}\) ein Intervall und \(a_0,a_1,\dots,a_{n-1};\mathcal{I} \to \mathbb{R}\) stetige Funktionen. Die Gleichung
+
+            \(y^{(n)}(x) + a_{n-1}(x) \cdot y^{(n-1)}(x) + \cdots + a_1(x) \cdot y'(x) + a_0(x) \cdot y(x) = 0 \)
+            
+            heißt \underline{homogene lineare Differentialgleichung} 
+            
+            \underline{n-ter Ordnung}.
+    
+            Ist weiterhin \(b:\mathcal{I}\to\mathbb{R}\) eine stetige Funktion, so heißt die Gleichung
+
+            \(y^{(n)}(x) + a_{n-1}(x) \cdot y^{(n-1)}(x) + \cdots + a_1(x) \cdot y'(x) + a_0(x) \cdot y(x) = b(x) \)
+
+            \underline{inhomogene lineare Differentialgleichung} 
+            
+            \underline{n-ter Ordnung}.
+        \end{defi}
+    
+        \begin{defi}[linear unabhängig]
+            Eine Menge von Funktionen \(\{y_1,\dots,y_n\}\) heißt \underline{linear unabhängig}, wenn man keine Funktion aus den anderen linear kombinieren kann, d.h.\ für eine beliebige Funktion \(y_i\) gibt es keine Kombination der Form \(y_i(x)=c_1y_1(x)+\cdots+c_{i-1}y_{i-1}(x)+c_{i+1}y_{i+1}(x)+\cdots+c_n y_n(x)\) mit \(c_1,\dots,c_n \in \mathbb{R}\).
+    
+            Falls man ein \(y_i\) aus den anderen Funktionen linear kombinieren kann, heißt die Menge \underline{linear abhängig}.
+        \end{defi}
+    
+        \begin{satz}[Wronski-Determinante]
+            Es sei \(L_H\) die Lösungsmenge einer linearen homogenen Differentialgleichung n-ter Ordnung. Dann gibt es n linear unabhängige Lösungen \(y_1,\dots,y_n\) der Differentialgleichung und es gilt: \(L_H=\{c_1y_1(x)+\cdots+c_n y_n(x)\}|c_1,\dots,c_n\in\mathbb{R}\).
+    
+            Aus den Grundlösungen \(y_1,\dots,y_n\) lässt sich also mit Hilfe von Linearkombinationen die gesamte Lösungsmenge berechnen.
+    
+            Weiterhin sind n Lösungen \(y_1,y_n \in L_H\) genau dann linear unabhängig, wenn für die \underline{Wronski-Determinante} folgendes gilt:
+
+            \(W(x)=\det\begin{pmatrix}
+                y_1(x) & \cdots & y_n(x) \\
+                y_1'(x) & \cdots & y_n'(x) \\
+                \vdots & \ddots & \vdots \\
+                y_1^{(n-1)}(x) & \cdots & y_n^{(n-1)}(x)
+            \end{pmatrix} \ne 0 \)
+
+            Dabei genügt schon \(W(x) \ne 0\) für ein x.
+        \end{satz}
+    
+        \begin{defi}[Fundamentalsystem]
+            Sind die Funktionen \(y_1,\dots,y_n\) linear unabhängige Funktionen einer linearen homogenen Differentialgleichung n-ter Ordnung, dann heißt die Menge \(\{y_1,\dots,y_n\}\) ein \underline{Fundamentalsystem} der Differentialgleichung.
+        \end{defi}
+    
+        \section*{Lineare Differentialgleichungen mit konstanten Koeffizienten}
+    
+        \begin{defi}[lineare homogene Differentialgleichung mit konstanten Koeffizienten]
+            Die Gleichung \(y^{(n)}(x) + a_{n-1} \cdot y^{(n-1)}(x) + \cdots + a_1 \cdot y'(x) + a_0 \cdot y(x) = 0\) mit \(a_0,\dots,a_{n-1} \in \mathbb{R}\) heißt \underline{lineare homogene Differentialgleichung} \underline{mit konstanten Koeffizienten}.
+        \end{defi}
+    
+        \begin{bemerkung}
+            Für die Gleichung
+            \(y^{(n)}(x) + a_{n-1} \cdot y^{(n-1)}(x) + \cdots + a_1 \cdot y'(x) + a_0 \cdot y(x) = 0\)
+            wird ein Ansatz verwendet, der eine e-Funktion enthält.
+    
+            \underline{Ansatz:} \(y(x)=e^{\lambda x},\lambda\in\mathbb{R}\)
+    
+            Differenzieren und Einsetzen des Ansatzes führt zu: 
+            
+            \(e^{\lambda x}\underbrace{(\lambda^n+a_{n-1}\lambda^{n-1}+\cdots+a_1\lambda+a_0)}=0\)
+            
+            wird 0, falls \(\lambda\) eine Nullstelle des Polynoms \(P(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\) ist.
+        \end{bemerkung}
+    
+        \begin{defi}[charakteristisches Polynom]
+            Es sei \(y^{(n)}(x) + a_{n-1} \cdot y^{(n-1)}(x) + \cdots + a_1 \cdot y'(x) + a_0 \cdot y(x) = 0\) eine homogene lineare Differentialgleichung mit konstanten Koeffizienten.
+    
+            Dann heißt das Polynom \(P(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\)
+            
+            \underline{charakteristisches Polynom der}
+            
+            \underline{Differentialgleichung}.
+        \end{defi}
+    
+        \begin{satz}
+            Es sei \(y^{(n)}(x) + a_{n-1} \cdot y^{(n-1)}(x) + \cdots + a_1 \cdot y'(x) + a_0 \cdot y(x) = 0\) eine homogene lineare Differentialgleichung mit konstanten Koeffizienten und \(\lambda \in\mathbb{R}\) eine Nullstelle des charakteristischen Polynoms \(P(x)\), dann ist \(y(x)=e^{\lambda x}\) eine Lösung der Differentialgleichung.
+        \end{satz}
+    
+        \begin{satz}
+            Es sei \(y^{(n)}(x) + a_{n-1} y^{(n-1)}(x) + \cdots + a_1 y'(x) + a_0 y(x) = 0\) eine homogene lineare Differentialgleichung mit konstanten Koeffizienten, deren charakteristisches Polynom \(P(x)\) n verschiedene reelle Nullstellen \(\lambda_1,\dots,\lambda_n\) hat. Dann bilden die Funktionen \(y_1(x)=e^{\lambda_1 x},\dots,y_n(x)=e^{\lambda_n x}\) ein Fundamentalsystem der Differentialgleichung. Jede Lösung der Differentialgleichung hat deshalb die Form \(y(x)=c_1 \cdot e^{\lambda_1 x} + \cdots + c_n \cdot e^{\lambda_n x}\) mit \(c_1,\dots,c_n \in \mathbb{R}\).
+        \end{satz}
+    
+        \begin{satz}
+            Es sei \(y^{(n)}(x) + a_{n-1} y^{(n-1)}(x) + \cdots + a_1 y'(x) + a_0 y(x) = 0\) eine homogene lineare Differentialgleichung mit konstanten Koeffizienten. Ihr charakteristisches Polynom \(P(x)\) habe k reelle Nullstellen \(\lambda_1,\dots,\lambda_k\) mit \(P(x)={(x-\lambda_1)}^{m_1}{(x-\lambda_2)}^{m_2} \dots {(x-\lambda_k)}^{m_k}\), d.h. \(\lambda_j\) ist \(m_j\)-fache Nullstelle von P. Dann bilden die Funktionen
+            \begin{align*}
+                e^{\lambda_1 x},x \cdot e^{\lambda_1 x},\dots,x^{m_1-1} \cdot e^{\lambda_1 x} \\
+                e^{\lambda_2 x},x \cdot e^{\lambda_2 x},\dots,x^{m_2-1} \cdot e^{\lambda_2 x} \\
+                \vdots \hspace{1cm} \vdots \hspace{1cm} \\
+                e^{\lambda_k x},x \cdot e^{\lambda_k x},\dots,x^{m_k-1} \cdot e^{\lambda_k x}
+            \end{align*}
+            ein Fundamentalsystem der Differentialgleichung.
+        \end{satz}
+    
+         \begin{bemerkung}
+             Liegt eine inhomogene Differentialgleichung mit Störfunktion \(b(x)\) vor, so kann in einigen Fällen eine geeignete Ansatzfunktion zur Lösung der Differentialgleichung verwendet werden:
+    
+             Liegt zum Beispiel die Störfunktion in der folgenden Form vor
+    
+             \(b(x)=a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0\), so kann die folgende Ansatzfunktion verwendet werden:
+    
+             \(\alpha_n x^n + \alpha_{n-1} x^{n-1} + \cdots + \alpha_1 x + \alpha_0\)
+         \end{bemerkung}
+    
+         \begin{beispiel}
+            Zu lösen ist \(y'''-3y'-2y=4x^2\)
+    
+            Zunächst homogene Differentialgleichung betrachten: \(y'''-3y'-2y=0,P(x)=x^3-3x-2\)
+    
+            \(\lambda_1=-1,\lambda_2=2,\lambda_3=-1\)
+    
+            Lösung der homogenen Differentialgleichung: \(y(x)=c_1xe^{-x}+c_2e^{-x}+c_3e^{2x}\)
+    
+            Ansatz für die Störfunktion: Da \(b(x)=x^2\) ein Polynom 2. Grades ist, wird der Ansatz \(\underbrace{\alpha_2x^2+\alpha_1x+\alpha_0}_{y_P}\) verwendet.
+    
+            \({y_P}'''=0,{y_P}''=2\alpha_2,{y_P}'=2\alpha_2x+\alpha_1\)
+    
+            \(-6\alpha_2x-3\alpha_1-2\alpha_2x^2-\alpha_1x-2\alpha_0=4x^2\)
+    
+            \(x^2\underbrace{(-2\alpha_2)}_4+x\underbrace{(-6\alpha_2-\alpha_1)}_0+\underbrace{(-3\alpha_1-2\alpha_0)}_0=4x^2+0x+0\)
+    
+            \(\alpha_2=-2,\alpha_1=6,\alpha_0=-9\)
+    
+            Lösung der inhomogenen Differentialgleichung: \(y(x)=c_1xe^{-x}+c_2e^{-x}+c_3e^{2x}-2x^2+6x-9,\ x\in\mathbb{R},c_i\in\mathbb{R}\)
+         \end{beispiel}
+    
+         \section*{Differentialgleichungssysteme (DGLS)}
+    
+         \begin{defi}[Differential\-gleichungs\-systeme]
+            Ein System von m Gleichungen, dass die unbekannten Funktionen \(y_1(x),y_2(x),\dots,y_m(x)\) sowie deren Ableitungen
+    
+            \({y_1}'(x),{y_1}''(x),\dots,{y_1}^{(n_1)}(x),\dots\),
+            
+            \({y_m}'(x),{y_m}''(x),\dots,{y_m}^{(n_m)}(x)\) enthält, heißt
+            
+            \underline{Differentialgleichungssystem}.
+         \end{defi}
+    
+         \begin{beispiel}
+            Zu lösen ist das Differentialgleichungssystem
+            \begin{align*}
+                {y_1}' &= -2y_1+8y_2\ (*) \\
+                {y_2}' &= -4y_1+6y_2+10x^2+16x-8\ (**)
+            \end{align*}
+            Eliminationsmethode:
+    
+            \((*)\) ableiten: \({y_1}'' = -2{y_1}'+8{y_2}'\)
+    
+            \((**)\) einsetzen: \({y_1}'' = -2{y_1}'-32y_1+48y_2+80x^2+128x-64\)
+    
+            \(y_1'=-2y_1+8y_2\ (*)\)
+    
+            \(y_2'-4y_1+6y_2+10x^2+16x-8\ (**)\)
+    
+            \( y_1''=-2y_1+8(-4y_1+6y_2+10x^2+16x-8) \)
+    
+            \( =-2y_1'-32y_1+48y_2+80x^2+128x-64\ \ \overline{(*)}' \)
+    
+            \((*)\) umstellen nach \(y_2\)
+    
+            \(y_2=\frac{1}{8}y_1'+\frac{1}{4}y_1\)
+    
+            Einsetzen in \( \overline{(*)}' \)
+    
+            \( \rightarrow y_1''=-2y_1'=-32y_1+48(\frac{1}{8}y_1'+\frac{1}{4}y_1) + 80x^2+128x-64 \)
+    
+            \(y_1'(-2+6)+y_1(-32+12)+89x^2+128x-64 \)
+    
+            \(\rightarrow y_1'''-4y_1'+20y_1=80x^2+128x-64\ (***) \)
+    
+            \(\to\) homogene DGL \(\to\) charakteristisches Polynom: \(P(x)=x^2-4x+20\)
+    
+            \(a=0; b=-4;c=20\)
+    
+            \(\lambda_{1,2}=2\pm4i\)
+    
+            \(y_1=\cos(4x)\cdot e^{2x}\)
+    
+            \(y_2=\sin(4x)\cdot e^{2x}\) (Eulersche Form)
+    
+            \(e^{\lambda x}=e^{(2+4i)x}=e^{2x}(\cos(4x)+i\sin(4x)) \)
+    
+            Ansatz für die inhomogene Lösung:
+    
+            \(y_p=\alpha_2x^2+\alpha_1x+\alpha_0 \)
+    
+            \(y_p'=2\alpha_2x+\alpha_1, y_p''=2\alpha_2, y_p'''(x)=0 \)
+    
+            Einsetzen in \((***)\) für \(y_1, y_1', y_1''\)
+            
+            \(2\alpha_2-4(2\alpha_2x+\alpha_1)+20(\alpha_2x^2+\alpha_1x+\alpha_0) = 80x^2+128x-64\)
+    
+            Sortieren: \(x^2(20\alpha_2)+x(-8\alpha_2+20\alpha_1)+(2\alpha_2-4\alpha_1+20\alpha_0)\)
+    
+            Koeffizientenvergleich \(20\alpha_2 = 80 \) usw.
+    
+            \(\alpha_0=-2, \alpha_1=8, \alpha_2=4  \)
+            
+            \( y_1(x)=\underbrace{c_1\cdot\cos(4x)e^{2x}+c_2\cdot\sin(4x)e^{2x}}_{\text{Homogone LSG}}+\underbrace{4x^2+8x-2}_{\text{Partikuläre LSG}}\ (****) \)
+            
+            \(x,c_1,c_2\in\mathbb{R}\)
+    
+            \(y_2=\frac{1}{8}y_1'+\frac{1}{4}y_1\)
+    
+            \(y_1'(x)=-4c_1\cdot\sin(4x)e^{2x}+2c_1\cdot\cos(4x)e^{2x}+4c_2\cdot\cos(4x)e^{2x}+2c_2\cdot\sin(4x)e^{2x}+8x+8 \)
+    
+            \(=e^{2x}\cdot\cos(4x)(\frac{1}{2}c_1+\frac{1}{2}c_2)+e^{2x}\cdot\sin(4x)(-\frac{1}{2}c_1+\frac{1}{2}c_2)+x^2+3x+\frac{1}{2} \)
+    
+            Vektorschreibweise: \\
+            \(c_1=2D_1\) \\
+            \(c_2=2D_2\) \\
+            \( \vec{y}(x)=\begin{pmatrix}y_1(x) \\ y_2(x)\end{pmatrix} = \begin{pmatrix}2D_1 \\ D_1+D_2\end{pmatrix} e^{2x}\cdot\cos(4x)+\begin{pmatrix}2D_2 \\ -D_1+D_2\end{pmatrix}e^{2x}\cdot\sin(4x) + \begin{pmatrix}4x^2+8x-2 \\ x^2+3x +\frac{1}{2} \end{pmatrix} \)
+            
+            \(x\in\mathbb{R} D_i\in\mathbb{R}\)
+         \end{beispiel}
+    \chapter*{Numerische Methoden}
+        \section*{Numerische Methoden}
+        \begin{beispiel}
+            Gegeben ist die DGL mit Anfangsbedingung \(y'=f(x,y), y(x_0)=y_0\)
+         
+            Gesucht ist die Lösung \(y(x)\) im Bereich von \(x=x_0=a\) bis \(x=x_n=b\) die durch den Punkt \(P_0(x_0,y_0)\) geht.
+    
+            Das Intervall \(\left[a,b\right]\) wird in \(n\) Teilintervalle \(\left[x_i,x_{i+1}\right]\) unterteilt mit \(x_{i+1}=x_i+h, (i=0,1,\dots,n-1), h=\frac{b-a}{n}\).
+
+            Da die Schrittweite \(h\) hier immer gleich groß ist, wird von äquidistanten Stützstellen gesprochen.
+    
+            Zunächst wird das Intervall \(\left[x_0,x_1\right]\) betrachtet. Die gesuchte Funktion \(y(x)\) verläuft durch den Punkt \(P_0\).
+    
+            In diesem Punkt hat sie die Steigung \(y_0'=f(x_0,y_0)\).
+    
+            Mit Hilfe der Tangente in \(P_0\), die diese Steigung \(y_0'\) hat, kann der Punkt \(P_1(x_1,y_1)\) bestimmt werden.
+    
+            Dieser Punkt wird im allgemeinen nicht auf der unbekannten exakten Lösungskurve \(y=y(x)\) liegen. Der Näherungswert \(y_1\) wird von dem exakten Wert verschieden sein, und zwar im allgemeinen umso mehr, je größer die Schrittweite \(h\) gewählt wurde.
+    
+            Da \(y'(x)=f(x,y(x))\) gilt und damit \(f(x,y(x))\) genau die Steigung \(y'(x)\) der gesuchten exakten Lösung \(y(x)\) ist, gilt näherungsweise für \(h\neq0\): \(\frac{y(x+h)-y(x)}{h}\approx f(x,y(x))\)
+            
+            oder \(y(x+h)\approx y(x)+h\cdot f(x,y(x))\).
+            
+            Es gilt also \(y_1=y_0+h\cdot y_0'\).
+            
+            Die Schrittweite \(h\) muss nicht fest gewählt werden, es können auch verschiedene Schrittweiten \(h_i\) gewählt werden mit \(x_{i+1}=x_i+h_i (i=0,\dots,n-1)\).
+        \end{beispiel}
+    
+    \section*{Polygonzugverfahren von Euler}
+    
+    Wenn äquidistante Stützstellen \(x_i=x_0+i\cdot h (i=1,\dots,n)\) verwendet werden, wird die beschriebene Methode \(y_{i+1}=y_i+hf(x_i,y_i)\) das Polygonzugverfahren von Euler genannt.
+    
+    Algorithmus: (Polygonzugverfahren von Euler)
+    
+    Gegeben: Schrittweite von \(h=\frac{b-a}{n}\) mit \(n\in\mathbb{N}\).
+    
+    Berechne für \(i=0,\dots,n-1\)
+    
+    \(x_{i+1}=x_i+h\)
+    
+    \(y_{i+1}=y_i+h\cdot f(x_i,y_i)\)
+    
+    \begin{beispiel}
+        Gegeben sei \(y'=x\cdot y\) mit \(y(0)=1\).
+        
+        Exakte Lösung: \(y=e^{\frac{1}{2}x^2}\) (\(\Delta\)).
+    
+        \(x_0=0,y_0=1,h=0.1\)
+    
+        \(x_1=x_0+h=0.1\)
+        
+        \(y_1=y_0+h\cdot \underbrace{f(x_0,y_0)}_{x_0\cdot y_0}=1+0.1\cdot 0\cdot 1 = 1\)
+    
+        \(x_2=x_1+h=0.2\)
+        
+        \(y_2=y_1+h\cdot \underbrace{f(x_1,y_1)}_{x_1\cdot y_1}=1+0.1\cdot 0.1\cdot 1 = 1.01\)
+        
+        \(h=0.1\)
+    \end{beispiel}
+    
+    \section*{Runge-Kutta-Verfahren}
+    Mit der am linken Randpunkt \(P_0\) des betreffenden Intervalls berechneten Steigung \(f(x_i,y_i)\) wird bis zur Mitte \(y_i+\frac{h}{2}\) des Intervalls gegangen.
+
+    Dort wird die Steigung im Punkt \(P_1(x_i+\frac{h}{2}, y_i+\frac{h}{2}\cdot f(x_i,y_i))\) berechnet, die in der folgenden Form dargestellt werden kann:
+
+    \(\frac{k_2}{2}=f(x_i+\frac{h}{2}, y_i+\frac{k_1}{2})\) mit \(k_1=h\cdot f(x_i,y_i)\).
+
+    Nun wurd erneut vom linken Randpunkt \(P_0\) aus mit der neuen Richtung bis zum Punkt \(P_2\) in der Mitte des Intervalls gegangen, dessen Koordinaten \((x_i+\frac{h}{2},y_i+\frac{k_2}{2})\) sind. 
+    
+    Mit der in \(P_2\) berechneten Steigung \(f(x_i+\frac{h}{2},y_i+\frac{k_2}{2})=\frac{k3}{h}\) wird vom linken Randpunkt aus bis zum Punkt \(P_3(x_i+h,y_i+k3)\) gegangen, in dem ebenfalls die Steigung \(f(x_i+h,y_i+k_3)=\frac{k_4}{h}\) berechnet wird. 
+    
+    Auch mit dieser Steigung wird vpn $P_0$ aus das Intervall mit der Breite $h$ überbrückt bis zum Punkt $P_4$ mit den Koordinaten $(x_i+h,y_i+k_4)$.
+    
+    Damit gibt es vier Richtungen, in denen das Intervall überbrückt werden kann. Die beiden in der Intervallmitte berechneten Steigungen werden bei der Mittelwertbildung mit dem Gewichtsfaktor $2$ berücksichtigt.
+    
+    \[\frac{k_2}{h}=f\left(x_i+\frac{h}{2},y_i+\frac{k_1}{2}\right)\] (Steigung in \(P_1\))
+    \[\frac{k_3}{h}=f\left(x_i+\frac{h}{2},y_i+\frac{k_1}{2}\right)\]
+    \[k_1=h\cdot f(x_i,y_i)\]
+    
+    Gesuchter Punkt: \(f\left(x_0+\frac{h}{2},y\left(x_0+\frac{h}{2}\right)\right)\)
+    \[P_3(x_0+h,y_0+k_3)\]
+    \[\frac{k_4}{h}=f(x_1,y_0+k_3)\]
+    Also wird \(k=\frac{1}{6}(k_1+2k_2+2k_3+k_4)\)
+    
+    \(y_{i+1}=y_i+k\)
+    
+    \chapter*{Weitere Beispiele mathematischer Anwendung in der Informatik}
+    \section*{Das Lotka-Voltera-Modell}
+    Betrachtet wird ein Räuber-Beute-Modell bezüglich Haien und anderen Fischen.
+    
+    Der Mathematiker Vito Voltaire ging von folgenden Grundannahmen aus:
+    
+    \begin{itemize}
+        \item ohne Fische sterben die Haie an Nahrungsmangel 
+        \item ohne Haie vermehren sich die Fische ungebremst
+    \end{itemize}
+    
+    Es wird ein einfaches Modell für exponentielles Wachstum verwendet:
+    
+    \(\frac{dx}{dt}=r\cdot x, r>0\)
+    
+    $x(t)$ Anzahl der Fische zur Zeit t
+    
+    $r$ Proportionalitätsfaktor (verschieden für unterschiedliches Verhalten verschiedener Lebewesen).
+    
+    \(\frac{dy}{dt}=-s\cdot y, s>0\)
+    
+    $y(t$) Anzahl der Fische zur Zeit t
+    
+    $s$ Proportionalitätsfaktor (verschieden für unterschiedliches Verhalten verschiedener Lebewesen).
+    Zur Modellierung der Interaktionen zwischen Haien und Fischen hat Voltera die folgenden Annahmen getroffen:
+    \begin{itemize}
+        \item die Haie vermehren sich proportional zum Produkt aus Zahl der Haie und Fische, während sich die Anzahl der Fische entsprechend verringert. (wenig Haie vermehren sich bei reichlich Futter ungefähr mit derselben Rate, wie viele Haie bei wenig Futter)
+    \end{itemize}
+    Somit ergibt sich das Lotka-Voltera-Modell:
+    
+    \(\frac{dx}{dt}=rx-\alpha x\cdot y\)
+
+    \(\frac{dy}{dt}=-sy+\beta x\cdot y\)
+
+    Mit den folgenden Bezeichnungen $F(x,y)=rx-\alpha xy$ und  $G(x,y)=-sy+\beta x\cdot y$ ergibt sich $\frac{dx}{dt}=F(x,y)$ und $\frac{dy}{dt}=G(x,y)$, was ein System von zwei gewöhnlichen Differentialgleichungen erster Ordnung darstellt, wobei der Parameter $t$ auf der rechten Seite nicht auftaucht.
+    
+    Somit kann die folgende Vorgehensweise angewendet werden:
+    
+    Dividieren der beiden Gleichungen durcheinander.
+
+    \(\frac{dx}{dy}=\frac{F(x,y)}{G(x,y)}=\frac{rx-\alpha xy}{-sy+\beta xy}\)
+
+    Diese Gleichung sagt also etwas über die Änderung der Fischpopulation bei Änderung der Haipopulation.
+    
+    Es werden die folgenden Fälle betrachtet:
+    
+    \(x=0\rightarrow \frac{dx}{dy}=0\)
+
+    \(y=0\rightarrow \frac{dx}{dy}=0\)
+
+    Im Folgenden werden weitere Fälle gesucht, in denen $\frac{dy}{dx}=\infty$ oder $\frac{dy}{dx}=0$ gilt.
+    
+    \(\frac{dy}{dx}=\infty: \frac{dx}{dy}=0 \rightarrow rx=\alpha xy, x\neq0, y=\frac{r}{\alpha}\)
+
+    \(\frac{dy}{dx}=0: \frac{dx}{dy}=\infty \rightarrow sy=\beta xy, x\neq0, x=\frac{r}{\beta}\)
+
+    Es gilt weiterhin: 
+    
+    \(y<\frac{r}{\alpha}\rightarrow \frac{dx}{dt}=rx-\alpha xy>rx-\alpha x\frac{r}{\alpha}=0\)
+
+    \(y>\frac{r}{\alpha}\rightarrow \frac{dx}{dt}=rx-\alpha xy<rx-\alpha x\frac{r}{\alpha}=0\)
+    
+    Gibt es also weniger als $\frac{r}{\alpha}$ Haie, dann können sich die Fische gut vermehren, gibt es allerdings mehr als $\frac{r}{\alpha}$ Haie, dann nimmt die Anzahl der Fische ab.
+    \end{multicols}
+ 
+\end{document}          

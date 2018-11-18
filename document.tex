@@ -1,7 +1,6 @@
 % !TeX encoding = UTF-8
 % chktex-file 21 chktex-file -2 chktex-file 23
 \documentclass[fontset=ubuntu,12pt,a4paper]{scrreprt}
-\usepackage[UTF8]{ctex}
 \usepackage[utf8]{inputenc}
 \usepackage{ntheorem}
 \usepackage[ngerman]{babel}
@@ -9,6 +8,8 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{indentfirst}
 \usepackage{commath}
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -22,7 +23,7 @@
 \newtheorem*{einschub}{Einschub}
 
 \pgfplotsset{compat=1.16}
-
+\geometry{left=2cm,top=1.5cm,bottom=2cm,right=1.5cm}
 
 \begin{document}
     
@@ -1613,33 +1614,51 @@ Also wird \(k=\frac{1}{6}(k_1+2k_2+2k_3+k_4)\)
 
 \chapter{Weitere Beispiele mathematischer Anwendung in der Informatik}
 \section{Das Lotka-Voltera-Modell}
-Betrachtet wird ein Räuber-Beute-Modell bezüglich Haien und anderen Fischen.\\
-Der Mathematiker Vito Voltaire ging von folgenden Grundannahmen aus:  \\
-- ohne Fische sterben die Haie an Nahrungsmangel \\
-- ohne Haie vermehren sich die Fische ungebremst \\
-Es wird ein einfaches Modell für exponentielles Wachstum verwendet: \\
-$$\frac{dx}{dt}=r\cdot x, r>0$$ $x(t$) Anzahl der Fische zur Zeit t \\
-$r$ Proportionalitätsfaktor (verschieden für unterschiedliches Verhalten verschiedener Lebewesen).
-$$\frac{dy}{dt}=-s\cdot y, s>0$$ $y(t$) Anzahl der Fische zur Zeit t \\
-$s$ Proportionalitätsfaktor (verschieden für unterschiedliches Verhalten verschiedener Lebewesen). \\ Zur Modellierung der Interaktionen zwischen Haien und Fischen hat Voltera die folgenden Annahmen getroffen: \\
-- die Haie vermehren sich proportional zum Produkt aus Zahl der Haie und Fische, während sich die Anzahl der Fische entsprechend verringert. (wenig Haie vermehren sich bei reichlich Futter ungefähr mit derselben Rate, wie viele Haie bei wenig Futter)\\
-Somit ergibt sich das Lotka-Voltera-Modell: \\
-$$\frac{dx}{dt}=rx-\alpha x\cdot y$$
-$$\frac{dy}{dt}=-sy+\beta x\cdot y$$
-Mit den folgenden Bezeichnungen $F(x,y)=rx-\alpha xy$ und  $G(x,y)=-sy+\beta x\cdot y$ ergibt sich $\frac{dx}{dt}=F(x,y)$ und $\frac{dy}{dt}=G(x,y)$, was ein System von zwei gewöhnlichen Differentialgleichungen erster Ordnung darstellt, wobei der Parameter $t$ auf der rechten Seite nicht auftaucht. \\
-Somit kann die folgende Vorgehensweise angewendet werden: \\
-Dividieren der beiden Gleichungen durcheinander.
-$$\frac{dx}{dy}=\frac{F(x,y)}{G(x,y)}=\frac{rx-\alpha xy}{-sy+\beta xy}$$
-Diese Gleichung sagt also etwas über die Änderung der Fischpopulation bei Änderung der Haipopulation.\\
-Es werden die folgenden Fälle betrachtet: \\
-$$x=0\rightarrow \frac{dx}{dy}=0$$
-$$y=0\rightarrow \frac{dx}{dy}=0$$
-Im Folgenden werden weitere Fälle gesucht, in denen $\frac{dy}{dx}=\infty$ oder $\frac{dy}{dx}=0$ gilt.
-$$\frac{dy}{dx}=\infty: \frac{dx}{dy}=0 \rightarrow rx=\alpha xy, x\neq0, y=\frac{r}{\alpha}$$
-$$\frac{dy}{dx}=0: \frac{dx}{dy}=\infty \rightarrow sy=\beta xy, x\neq0, x=\frac{r}{\beta}$$
-Es gilt weiterhin: $$y<\frac{r}{\alpha}\rightarrow \frac{dx}{dt}=rx-\alpha xy>rx-\alpha x\frac{r}{\alpha}=0$$
-$$y>\frac{r}{\alpha}\rightarrow \frac{dx}{dt}=rx-\alpha xy<rx-\alpha x\frac{r}{\alpha}=0$$
+Betrachtet wird ein Räuber-Beute-Modell bezüglich Haien und anderen Fischen.
 
-Gibt es also weniger als $\frac{r}{\alpha}$ Haie, dann können sich die Fische gut vermehren, gibt es allerdings mehr als $\frac{r}{\alpha}$ Haie, dann nimmt die Anzahl der Fische ab. \\
+Der Mathematiker Vito Voltaire ging von folgenden Grundannahmen aus:
+
+\begin{itemize}
+	\item ohne Fische sterben die Haie an Nahrungsmangel 
+	\item ohne Haie vermehren sich die Fische ungebremst
+\end{itemize}
+
+Es wird ein einfaches Modell für exponentielles Wachstum verwendet:
+
+\[\frac{dx}{dt}=r\cdot x, r>0\] 
+$x(t$) Anzahl der Fische zur Zeit t
+
+$r$ Proportionalitätsfaktor (verschieden für unterschiedliches Verhalten verschiedener Lebewesen).
+
+\[\frac{dy}{dt}=-s\cdot y, s>0\] $y(t$) Anzahl der Fische zur Zeit t
+
+$s$ Proportionalitätsfaktor (verschieden für unterschiedliches Verhalten verschiedener Lebewesen).
+Zur Modellierung der Interaktionen zwischen Haien und Fischen hat Voltera die folgenden Annahmen getroffen:
+\begin{itemize}
+	\item die Haie vermehren sich proportional zum Produkt aus Zahl der Haie und Fische, während sich die Anzahl der Fische entsprechend verringert. (wenig Haie vermehren sich bei reichlich Futter ungefähr mit derselben Rate, wie viele Haie bei wenig Futter)
+\end{itemize}
+Somit ergibt sich das Lotka-Voltera-Modell:
+\[\frac{dx}{dt}=rx-\alpha x\cdot y\]
+\[\frac{dy}{dt}=-sy+\beta x\cdot y\]
+Mit den folgenden Bezeichnungen $F(x,y)=rx-\alpha xy$ und  $G(x,y)=-sy+\beta x\cdot y$ ergibt sich $\frac{dx}{dt}=F(x,y)$ und $\frac{dy}{dt}=G(x,y)$, was ein System von zwei gewöhnlichen Differentialgleichungen erster Ordnung darstellt, wobei der Parameter $t$ auf der rechten Seite nicht auftaucht.
+
+Somit kann die folgende Vorgehensweise angewendet werden:
+
+Dividieren der beiden Gleichungen durcheinander.
+\[\frac{dx}{dy}=\frac{F(x,y)}{G(x,y)}=\frac{rx-\alpha xy}{-sy+\beta xy}\]
+Diese Gleichung sagt also etwas über die Änderung der Fischpopulation bei Änderung der Haipopulation.
+
+Es werden die folgenden Fälle betrachtet:
+\[x=0\rightarrow \frac{dx}{dy}=0\]
+\[y=0\rightarrow \frac{dx}{dy}=0\]
+Im Folgenden werden weitere Fälle gesucht, in denen $\frac{dy}{dx}=\infty$ oder $\frac{dy}{dx}=0$ gilt.
+\[\frac{dy}{dx}=\infty: \frac{dx}{dy}=0 \rightarrow rx=\alpha xy, x\neq0, y=\frac{r}{\alpha}\]
+\[\frac{dy}{dx}=0: \frac{dx}{dy}=\infty \rightarrow sy=\beta xy, x\neq0, x=\frac{r}{\beta}\]
+Es gilt weiterhin: 
+\[y<\frac{r}{\alpha}\rightarrow \frac{dx}{dt}=rx-\alpha xy>rx-\alpha x\frac{r}{\alpha}=0\]
+\[y>\frac{r}{\alpha}\rightarrow \frac{dx}{dt}=rx-\alpha xy<rx-\alpha x\frac{r}{\alpha}=0\]
+
+Gibt es also weniger als $\frac{r}{\alpha}$ Haie, dann können sich die Fische gut vermehren, gibt es allerdings mehr als $\frac{r}{\alpha}$ Haie, dann nimmt die Anzahl der Fische ab.
+
 Skizze für eine mögliche Lösung der Lotka-Voltera-Gleichung:
 \end{document}          
